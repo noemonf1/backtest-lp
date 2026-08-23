@@ -104,6 +104,12 @@ If that boots cleanly locally, it'll boot on Railway.
 
 ## Common gotchas
 
+- **Build fails with `pip: command not found`** — Nixpacks' base
+  `python313` package ships the interpreter without `pip` on `$PATH`.
+  Fixed in `nixpacks.toml` by (a) adding `python313Packages.pip` to
+  `nixPkgs` and (b) installing into an explicit venv at `/opt/venv`.
+  The Procfile / start command then invokes `/opt/venv/bin/streamlit`
+  directly.
 - **Build fails at pyarrow install** — some Nixpacks images ship without
   a C compiler; if that happens, add `gcc` to `nixPkgs` in
   `nixpacks.toml` (already done).
