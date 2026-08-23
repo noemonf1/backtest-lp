@@ -1,5 +1,30 @@
+# Secrets
 .env
-__pycache__/*
-data/*
-tests/__pycache__/*
-kimi/__pycache__/*
+.env.local
+
+# Cached data — not persisted on Railway (no volume), regenerated on demand
+data/
+!data/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Large / generated artefacts left over from local runs
+*.parquet
+*.parquet.tmp
+uniswap_delta_hedge_backtest.zip
+backtest_results.csv
+run1_*.csv
+run1_*.png
+output/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store

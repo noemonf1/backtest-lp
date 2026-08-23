@@ -1,0 +1,21 @@
+# Keep the build context small. Nixpacks respects .dockerignore too.
+.git/
+.venv/
+venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+data/
+*.parquet
+uniswap_delta_hedge_backtest.zip
+backtest_results.csv
+run1_*.csv
+run1_*.png
+output/
+.env
+.env.local
+.vscode/
+.idea/
+.DS_Store
+tests/

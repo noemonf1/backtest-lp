@@ -1,0 +1,12 @@
+# Nixpacks build plan. Optional -- Railway would infer most of this from
+# requirements.txt + .python-version. Kept explicit so builds are
+# reproducible and the deploy log is easy to read.
+
+[phases.setup]
+nixPkgs = ["python313", "gcc"]
+
+[phases.install]
+cmds = ["pip install --no-cache-dir -r requirements.txt"]
+
+[start]
+cmd = "streamlit run app.py --server.port $PORT --server.address 0.0.0.0 --server.headless true --server.enableCORS false --server.enableXsrfProtection false"

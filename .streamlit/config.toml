@@ -1,0 +1,16 @@
+# Production Streamlit config. Local dev uses whatever you have in
+# ~/.streamlit/, and CLI flags in Procfile/nixpacks.toml still win over
+# these values.
+
+[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = false
+# Config-file uploads are small JSONs; cap the upload size to prevent abuse.
+maxUploadSize = 5
+
+[browser]
+gatherUsageStats = false
+
+[logger]
+level = "info"

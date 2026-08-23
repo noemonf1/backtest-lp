@@ -1,0 +1,14 @@
+# Railway config. Nixpacks auto-detects Python + requirements.txt; the
+# Procfile provides the start command. This file just tunes healthchecks
+# and restart behaviour.
+
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+# Streamlit exposes a healthcheck at /_stcore/health that returns 200 OK
+# once the server is ready to accept connections.
+healthcheckPath = "/_stcore/health"
+healthcheckTimeout = 60
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
