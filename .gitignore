@@ -1,0 +1,5 @@
+.env
+__pycache__/*
+data/*
+tests/__pycache__/*
+kimi/__pycache__/*
