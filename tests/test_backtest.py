@@ -163,3 +163,111 @@ def test_make_demo_tape_seeds_differ():
     _, cex1, _ = bt.make_demo_tape(days=5, seed=1)
     _, cex2, _ = bt.make_demo_tape(days=5, seed=2)
     assert not cex1.equals(cex2)
+
+
+# --------------------------------------------------------------------------- #
+# Multi-axis sweep
+# --------------------------------------------------------------------------- #
+
+
+@pytest.fixture(scope="module")
+def small_tape():
+    return bt.make_demo_tape(days=8, s0=3000.0, vol_annual=0.6, seed=42)
+
+
+def test_sweep_axes_rejects_same_field(small_tape):
+    swaps, cex, funding = small_tape
+    a = bt.Assumptions()
+    with pytest.raises(ValueError, match="must differ"):
+        bt.sweep_swap_level_axes(
+            a, swaps, cex, funding,
+            x_field="range_width", x_values=[0.1],
+            y_field="range_width", y_values=[0.1],
+        )
+
+
+def test_sweep_axes_rejects_non_sweepable(small_tape):
+    swaps, cex, funding = small_tape
+    a = bt.Assumptions()
+    with pytest.raises(ValueError, match="not sweepable"):
+        bt.sweep_swap_level_axes(
+            a, swaps, cex, funding,
+            x_field="not_a_real_field", x_values=[1.0],
+            y_field="range_width", y_values=[0.1],
+        )
+
+
+def test_sweep_axes_fee_tier_moves_fees(small_tape):
+    """A 6x fee-tier bump should approximately 6x the fee APR."""
+    swaps, cex, funding = small_tape
+    a = bt.Assumptions()
+    tbl = bt.sweep_swap_level_axes(
+        a, swaps, cex, funding,
+        x_field="fee_tier", x_values=[0.0005, 0.003],
+        y_field="range_width", y_values=[0.10],
+    )
+    assert len(tbl) == 2
+    fee_5bps = tbl[tbl["fee_tier"] == 0.0005]["fee_apr"].iloc[0]
+    fee_30bps = tbl[tbl["fee_tier"] == 0.003]["fee_apr"].iloc[0]
+    # 6x tier, 6x fees (within 10% for numerical noise on a small tape)
+    assert 5.4 < fee_30bps / fee_5bps < 6.6
+
+
+def test_sweep_axes_progress_and_cancel(small_tape):
+    swaps, cex, funding = small_tape
+    a = bt.Assumptions()
+
+    calls = []
+    tbl = bt.sweep_swap_level_axes(
+        a, swaps, cex, funding,
+        x_field="hedge_band", x_values=[0.01, 0.05],
+        y_field="range_width", y_values=[0.05, 0.15],
+        progress_cb=lambda done, total, params: calls.append((done, total)),
+    )
+    assert len(tbl) == 4
+    assert len(calls) == 4
+    assert calls[-1] == (4, 4)
+
+    # Cancel after 2 cells
+    state = {"n": 0}
+
+    def cancel_after_2():
+        state["n"] += 1
+        return state["n"] > 2
+
+    partial = bt.sweep_swap_level_axes(
+        a, swaps, cex, funding,
+        x_field="hedge_band", x_values=[0.01, 0.05, 0.10],
+        y_field="range_width", y_values=[0.05, 0.15, 0.25],
+        cancel_cb=cancel_after_2,
+    )
+    assert len(partial) < 9  # cancelled before completing all 9 cells
+
+
+def test_normalise_assumptions_syncs_taker_fee():
+    d = {"taker_fee_bps": 3.5, "binance_taker_fee": 999.9}
+    out = bt._normalise_assumptions_dict(d)
+    assert out["binance_taker_fee"] == pytest.approx(0.00035)
+
+
+def test_sweep_axes_swap_level_wrapper_equivalent(small_tape):
+    """The old sweep_swap_level(...) wrapper should still work AND
+    produce the same numbers as calling the axes function directly."""
+    swaps, cex, funding = small_tape
+    a = bt.Assumptions()
+
+    old = bt.sweep_swap_level(
+        a, swaps, cex, funding,
+        widths=(0.05, 0.10), bands=(0.01, 0.05),
+    )
+    new = bt.sweep_swap_level_axes(
+        a, swaps, cex, funding,
+        x_field="hedge_band", x_values=[0.01, 0.05],
+        y_field="range_width", y_values=[0.05, 0.10],
+    )
+
+    # Rows may be in different order; sort by the two axis columns
+    old = old.sort_values(["range_width", "hedge_band"]).reset_index(drop=True)
+    new = new.sort_values(["range_width", "hedge_band"]).reset_index(drop=True)
+    for col in ("net_apr", "fee_apr", "lvr_apr", "sharpe"):
+        pd.testing.assert_series_equal(old[col], new[col], check_names=False)

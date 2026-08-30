@@ -176,6 +176,53 @@ def run_swap_level(
     return _normalise_swap_level(run_claude.run_backtest(swaps, cex, funding, cfg))
 
 
+# Fields that are safe to sweep on for the swap_level engine, and the
+# UI labels + default value grids for each. Adding a new field here is
+# all that's needed to expose it in the multi-axis sweep UI.
+SWEEPABLE_FIELDS: dict[str, dict] = {
+    "range_width": {
+        "label": "Range width (±)",
+        "default_values": [0.02, 0.05, 0.10, 0.15, 0.25, 0.50],
+        "fmt": "{:.0%}",
+    },
+    "hedge_band": {
+        "label": "Hedge band",
+        "default_values": [0.005, 0.01, 0.02, 0.05, 0.10],
+        "fmt": "{:.1%}",
+    },
+    "fee_tier": {
+        "label": "LP fee tier",
+        "default_values": [0.0001, 0.0005, 0.003, 0.01],
+        "fmt": "{:.2%}",
+    },
+    "taker_fee_bps": {
+        "label": "Binance taker fee (bps)",
+        "default_values": [2.0, 3.0, 4.0, 4.5, 5.0],
+        "fmt": "{:.1f} bps",
+    },
+    "leverage": {
+        "label": "Perp leverage",
+        "default_values": [1, 2, 3, 5, 10],
+        "fmt": "{:.0f}x",
+    },
+    "grid_seconds": {
+        "label": "Hedge grid (s)",
+        "default_values": [10, 30, 60, 120, 300],
+        "fmt": "{:.0f}s",
+    },
+}
+
+
+def _normalise_assumptions_dict(d: dict) -> dict:
+    """Fix derived fields after a single Assumptions field has been
+    mutated (e.g. sweep-cell substitution). Currently only:
+      - binance_taker_fee = taker_fee_bps / 10_000
+    Add more here if you introduce cross-field invariants."""
+    if "taker_fee_bps" in d:
+        d["binance_taker_fee"] = float(d["taker_fee_bps"]) / 10_000
+    return d
+
+
 def sweep_swap_level(
     assumptions: Assumptions,
     swaps: pd.DataFrame,
@@ -183,10 +230,92 @@ def sweep_swap_level(
     funding: pd.Series,
     widths=(0.05, 0.10, 0.15, 0.25, 0.50),
     bands=(0.01, 0.02, 0.05, 0.10, 0.25),
+    progress_cb=None,
+    cancel_cb=None,
 ) -> pd.DataFrame:
-    return run_claude.sweep(
-        swaps, cex, funding, _to_claude_config(assumptions), widths, bands
+    """Sweep range_width × hedge_band. Thin wrapper around
+    `sweep_swap_level_axes` for backward compatibility with the CLI /
+    tests that hardcode these two axes."""
+    return sweep_swap_level_axes(
+        assumptions, swaps, cex, funding,
+        x_field="hedge_band", x_values=list(bands),
+        y_field="range_width", y_values=list(widths),
+        progress_cb=progress_cb, cancel_cb=cancel_cb,
     )
+
+
+def sweep_swap_level_axes(
+    assumptions: Assumptions,
+    swaps: pd.DataFrame,
+    cex: pd.Series,
+    funding: pd.Series,
+    x_field: str,
+    x_values: list,
+    y_field: str,
+    y_values: list,
+    progress_cb=None,
+    cancel_cb=None,
+) -> pd.DataFrame:
+    """Sweep any two Assumptions fields against each other.
+
+    The result columns are always named `{x_field}` and `{y_field}` (not
+    fixed 'hedge_band' / 'range_width') plus the standard APR/Sharpe/etc
+    columns. The old `sweep_swap_level` shape (with 'range_width' and
+    'hedge_band' columns) falls out of the wrapper above.
+
+    `progress_cb(done, total, (x_val, y_val))` fires after each cell.
+    `cancel_cb() -> bool` aborts and returns partial results.
+    """
+    if x_field == y_field:
+        raise ValueError(f"Sweep axes must differ: both are {x_field!r}")
+    for f in (x_field, y_field):
+        if f not in SWEEPABLE_FIELDS:
+            raise ValueError(
+                f"Field {f!r} is not sweepable. Add it to SWEEPABLE_FIELDS "
+                f"if you're sure it's safe."
+            )
+
+    base = assumptions.to_dict()
+    total = len(x_values) * len(y_values)
+    rows = []
+    done = 0
+
+    for yv in y_values:
+        for xv in x_values:
+            if cancel_cb is not None and cancel_cb():
+                return pd.DataFrame(rows)
+            cell = {**base, x_field: xv, y_field: yv}
+            cell = _normalise_assumptions_dict(cell)
+            try:
+                cell_a = Assumptions.from_dict(cell)
+                res = run_claude.run_backtest(
+                    swaps, cex, funding, _to_claude_config(cell_a)
+                )
+            except Exception:
+                done += 1
+                if progress_cb is not None:
+                    progress_cb(done, total, (xv, yv))
+                continue
+            s = res["summary"]
+            rows.append(
+                {
+                    x_field: xv,
+                    y_field: yv,
+                    "fee_apr": s["fee_apr_pct"],
+                    "lvr_apr": s["lvr_apr_pct"],
+                    "funding_apr": s["funding_apr_pct"],
+                    "hedge_cost_apr": s["hedge_cost_apr_pct"],
+                    "net_apr": s["net_apr_pct"],
+                    "fee_over_lvr": s["fee_over_lvr"],
+                    "in_range_pct": s["pct_time_in_range"],
+                    "sharpe": s["sharpe"],
+                    "n_hedges": s["n_hedge_trades"],
+                }
+            )
+            done += 1
+            if progress_cb is not None:
+                progress_cb(done, total, (xv, yv))
+    return pd.DataFrame(rows)
 
 
 # --------------------------------------------------------------------------- #
