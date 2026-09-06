@@ -1,0 +1,391 @@
+data_checks.py -- run at 2026-09-06 12:27:01 UTC
+pandas 3.0.2 numpy 2.4.4 matplotlib 3.11.1 scipy 1.17.1
+epoch units inferred: klines-1m open_time=ms, klines-1h open_time=ms, funding calc_time=ms
+Price formula used: P_eth = 1e12 / (sqrtPriceX96/2**96)**2  (run_claude.eth_price_from_sqrtx96)
+Sanity: first swap pool price = 1861.0609 USDC/ETH; first Binance 1m close = 1862.68
+
+================================================================================================
+A. FILE MANIFEST
+================================================================================================
+swaps_0x88e6a0_2026-08-01_2026-08-31.parquet
+    rows=159,990  size=10,468,110 B
+    first=2026-08-01 00:00:47+0000  last=2026-08-31 23:59:59+0000
+    sha256=3e28bbf3164c24bb801c7101cab0ca810623942e8a2d0876ee0f509fe90f8c83
+pool_hourly_0x88e6a0_2026-08-01_2026-09-01.parquet
+    rows=745  size=50,491 B
+    first=2026-08-01 00:00:00+0000  last=2026-09-01 00:00:00+0000
+    sha256=7e3fdf480bef3e27ff240e6d52f941f9fbe0e8caf97029663f81f9eb5a4c4186
+pool_hourly_0x88e6a0_2026-08-01_2026-08-31.parquet
+    rows=721  size=48,939 B
+    first=2026-08-01 00:00:00+0000  last=2026-08-31 00:00:00+0000
+    sha256=8d944fe1e9f8a11df476698689fb3a6070537817e9e6ac1e39ffa1bd4cd26ca6
+ETHUSDT-klines-1m-2026-08.csv
+    rows=44,640  size=4,947,296 B
+    first=2026-08-01 00:00:00+0000  last=2026-08-31 23:59:00+0000
+    sha256=f24c82daaf4eeed656444e05c5abec93d5286024036427739ce90a6baf3ad263
+ETHUSDT-klines-1h-2026-08.csv
+    rows=744  size=89,791 B
+    first=2026-08-01 00:00:00+0000  last=2026-08-31 23:00:00+0000
+    sha256=aa699e2d4e816d75363bf9a24f7aff38ea2e57934586bf07e379569ff6befe7d
+ETHUSDT-fundingRate-2026-08.csv
+    rows=93  size=2,563 B
+    first=2026-08-01 00:00:00+0000  last=2026-08-31 16:00:00+0000
+    sha256=e81333c5828b7611cc27ce119b928525cd1697d6beb1037c6d7007f510f8e37b
+ETHUSDT-aggTrades-2026-08.csv
+    rows=33,010,405  size=2,187,210,885 B
+    first=2026-08-01 00:00:00+0000  last=2026-08-31 23:59:59+0000
+    sha256=5db024bf09c9091d87b3e8000b7ce2e935838c4ea9f831d557a7968eb44c8f86
+    header=True  lines_incl_header=33,010,406  transact_time unit=ms raw first=1785542400013 last=1788220799994
+
+================================================================================================
+B. SWAPS PER DAY (UTC) AND PER HOUR-OF-DAY
+================================================================================================
+day            swaps
+2026-08-01      3315
+2026-08-02      3752
+2026-08-03      4698
+2026-08-04      4659
+2026-08-05      4900
+2026-08-06      3952
+2026-08-07      4013
+2026-08-08      3684
+2026-08-09      2790
+2026-08-10      4062
+2026-08-11      4157
+2026-08-12      3837
+2026-08-13      3391
+2026-08-14      3315
+2026-08-15      1902
+2026-08-16      1966
+2026-08-17      3668
+2026-08-18      3370
+2026-08-19      7785
+2026-08-20      7084
+2026-08-21     10395
+2026-08-22      6893
+2026-08-23      7049
+2026-08-24      7035
+2026-08-25      6866
+2026-08-26      7030
+2026-08-27      7615
+2026-08-28      7281
+2026-08-29      4134
+2026-08-30      8088
+2026-08-31      7304
+TOTAL         159990
+  days with swaps: 31 / 31;  min day 1902 (2026-08-15), max day 10395 (2026-08-21), mean/day 5160.97
+
+hour(UTC)    swaps    share
+0             7086    4.43%
+1             7015    4.38%
+2             6365    3.98%
+3             5618    3.51%
+4             4637    2.90%
+5             5273    3.30%
+6             5197    3.25%
+7             5444    3.40%
+8             5996    3.75%
+9             6050    3.78%
+10            5767    3.60%
+11            6046    3.78%
+12            6657    4.16%
+13            7943    4.96%
+14            8313    5.20%
+15            8163    5.10%
+16            8291    5.18%
+17            8506    5.32%
+18            8295    5.18%
+19            7153    4.47%
+20            6807    4.25%
+21            7289    4.56%
+22            6082    3.80%
+23            5997    3.75%
+  busiest hour-of-day: 17:00 UTC (8506 swaps); quietest: 4:00 UTC (4637)
+
+================================================================================================
+C. USD VOLUME PER DAY: sum|amount0|/1e6 (swaps) vs poolHourDatas.volumeUSD
+================================================================================================
+(hourly file rows used for August: 744; the 745th row 2026-09-01 00:00:00+0000 is excluded from the month totals)
+day                  swaps_usd  hourly_volumeUSD    ratio
+2026-08-01       29,560,428.37     29,559,897.05   1.0000
+2026-08-02       40,358,328.67     40,344,769.61   1.0003
+2026-08-03       53,586,788.24     53,592,871.47   0.9999
+2026-08-04       57,762,830.61     57,759,036.55   1.0001
+2026-08-05       78,342,356.84     78,329,585.49   1.0002
+2026-08-06       91,540,433.00     91,541,954.53   1.0000
+2026-08-07      102,651,689.62    102,646,140.60   1.0001
+2026-08-08       23,767,607.16     23,752,861.97   1.0006
+2026-08-09       31,948,641.47     31,950,475.03   0.9999
+2026-08-10       83,078,873.41     83,098,547.72   0.9998
+2026-08-11       44,597,769.32     44,557,060.84   1.0009
+2026-08-12       78,979,057.99     78,974,948.89   1.0001
+2026-08-13       56,743,861.57     56,729,753.46   1.0002
+2026-08-14       44,373,314.63     44,381,639.47   0.9998
+2026-08-15       15,744,604.47     15,739,080.83   1.0004
+2026-08-16       16,642,150.77     16,645,574.41   0.9998
+2026-08-17       80,272,286.40     80,258,817.91   1.0002
+2026-08-18       71,776,316.78     71,780,505.52   0.9999
+2026-08-19      302,904,833.05    302,733,266.30   1.0006
+2026-08-20      120,836,153.50    120,831,196.37   1.0000
+2026-08-21      191,564,896.47    191,559,089.93   1.0000
+2026-08-22      113,670,344.83    113,708,244.26   0.9997
+2026-08-23       97,181,474.04     97,179,190.86   1.0000
+2026-08-24      113,007,657.75    113,001,829.32   1.0001
+2026-08-25       89,288,729.78     89,300,072.80   0.9999
+2026-08-26       66,811,618.73     66,803,674.88   1.0001
+2026-08-27       83,227,141.99     83,238,303.55   0.9999
+2026-08-28       78,137,008.28     78,147,525.08   0.9999
+2026-08-29       25,955,000.30     25,955,207.30   1.0000
+2026-08-30       73,098,239.71     73,099,139.80   1.0000
+2026-08-31       65,189,448.67     65,185,109.34   1.0001
+TOTAL         2,422,599,886.43  2,422,385,371.11   1.0001
+  daily ratio: min 0.9997  max 1.0009  mean 1.0001
+  hourly file volumeUSD total incl. Sep-01 00:00 row: 2,423,734,230.73
+
+================================================================================================
+D. HOURLY: sum|amount0|/1e6 over swaps in hour  /  poolHourDatas.volumeUSD
+================================================================================================
+hours in August hourly file: 744; hours with volumeUSD == 0 skipped: 0; hours with zero swaps in parquet: 0
+ratio distribution:
+    count: 744
+     mean: 1.000063
+   median: 1.000060
+      std: 0.000654
+       p1: 0.998686
+       p5: 0.999007
+      p95: 1.001047
+      p99: 1.001291
+      min: 0.998445
+      max: 1.004571
+  hours with ratio outside [0.9, 1.1]: 0 of 744
+  10 hours with |ratio-1| largest:
+    2026-08-11 18:00:00+0000  swaps_usd=  7,674,174.76  volumeUSD=  7,639,253.23  ratio=1.0046
+    2026-08-19 20:00:00+0000  swaps_usd= 36,113,693.81  volumeUSD= 36,055,334.11  ratio=1.0016
+    2026-08-09 15:00:00+0000  swaps_usd=  1,013,123.51  volumeUSD=  1,011,498.50  ratio=1.0016
+    2026-08-25 15:00:00+0000  swaps_usd=  5,559,592.49  volumeUSD=  5,568,252.51  ratio=0.9984
+    2026-08-03 09:00:00+0000  swaps_usd=  1,207,935.81  volumeUSD=  1,206,095.11  ratio=1.0015
+    2026-08-18 01:00:00+0000  swaps_usd=  2,083,788.58  volumeUSD=  2,086,906.53  ratio=0.9985
+    2026-08-22 05:00:00+0000  swaps_usd= 22,610,333.66  volumeUSD= 22,643,218.93  ratio=0.9985
+    2026-08-08 14:00:00+0000  swaps_usd=  4,835,871.61  volumeUSD=  4,828,941.60  ratio=1.0014
+    2026-08-14 06:00:00+0000  swaps_usd=  1,677,102.56  volumeUSD=  1,679,434.77  ratio=0.9986
+    2026-08-11 19:00:00+0000  swaps_usd=  2,883,919.23  volumeUSD=  2,880,020.03  ratio=1.0014
+  [chart saved] /home/user/backtest-lp/docs/guide/raw/charts/D_hourly_volume_ratio_hist.png
+
+================================================================================================
+E. POOL PRICE (after swap) vs BINANCE 1m CLOSE of the containing minute
+================================================================================================
+swaps matched to a Binance minute: 159990 of 159990 (unmatched: 0)
+basis_bps = (pool_price / binance_close - 1) * 1e4, ALL swaps:
+    count: 159990
+     mean: -0.645449 bps
+   median: -0.541535 bps
+      std: 11.125538 bps
+       p1: -24.931557 bps
+       p5: -11.818388 bps
+      p95: 11.153138 bps
+      p99: 19.574236 bps
+      min: -360.452947 bps
+      max: 285.582871 bps
+LAST swap of each minute only (38092 minutes with >=1 swap out of 44640 klines):
+    count: 38092
+     mean: -0.929188 bps
+   median: -1.028685 bps
+      std: 5.218214 bps
+       p1: -10.247347 bps
+       p5: -8.654989 bps
+      p95: 8.001672 bps
+      p99: 10.334621 bps
+      min: -92.465320 bps
+      max: 213.024839 bps
+  share of last-swap-per-minute |basis| <= 5 bps: 62.43%;  <= 10 bps: 97.32%;  > 25 bps: 0.03%
+  5 largest |basis| minutes (last swap per minute):
+    2026-08-22 05:10:59+0000 block 25808505  pool=2441.56  binance=2390.63  basis=+213.0 bps
+    2026-08-19 15:27:59+0000 block 25790050  pool=2099.20  binance=2118.79  basis=-92.5 bps
+    2026-08-19 21:04:59+0000 block 25791726  pool=2247.95  binance=2262.22  basis=-63.1 bps
+    2026-08-25 02:17:47+0000 block 25829169  pool=2497.34  binance=2512.07  basis=-58.6 bps
+    2026-08-19 21:57:59+0000 block 25791991  pool=2278.53  binance=2288.99  basis=-45.7 bps
+  [chart saved] /home/user/backtest-lp/docs/guide/raw/charts/E_basis_bps_timeseries.png
+  [chart saved] /home/user/backtest-lp/docs/guide/raw/charts/E_pool_vs_binance_price.png
+
+================================================================================================
+F. FUNDING (Binance USD-M ETHUSDT)
+================================================================================================
+prints: 93; first 2026-08-01 00:00:00+0000; last 2026-08-31 16:00:00+0000
+distinct funding_interval_hours: [8]
+times of day (exact): ['00:00:00', '08:00:00', '16:00:00']
+times of day (rounded to minute): ['00:00', '08:00', '16:00']
+rate min -0.00000869  max +0.00010000  mean +0.00005191  median +0.00005131
+count positive 88, negative 5, zero 0
+sign convention as stored: positive value = longs pay shorts (Binance convention)
+annualised mean = mean * (24/8) * 365 = 5.6846% per year
+sum of rates over the month = +0.00482802  (a 1 USD short earns this fraction; = +0.4828%)
+expected prints at 8h over 31 days = 93
+
+================================================================================================
+G. INTER-BLOCK SPACING from distinct (block_number, block_time) pairs in the swaps
+================================================================================================
+distinct (block_number, block_time) pairs: 92532; distinct block_numbers: 92532 (consistent: one time per block)
+block_number min 25656296  max 25878704  span 222408 blocks
+per-block spacing = dt / d(block_number) over consecutive distinct blocks:
+    count: 92531
+     mean: 12.044116 s
+   median: 12.000000 s
+      std: 0.599510 s
+       p1: 12.000000 s
+       p5: 12.000000 s
+      p95: 12.000000 s
+      p99: 12.000000 s
+      min: 12.000000 s
+      max: 24.000000 s
+  share of per-block spacing exactly 12.0 s: 99.16%
+consecutive blocks with block_number diff == 1: count 47661, mean dt 12.0420 s, median 12.0 s, share exactly 12 s: 99.65%, min 12 s, max 24 s
+  dt value counts for diff==1: 12s:47494, 24s:167
+  block-number gap distribution (first 12): 1:47661, 2:19338, 3:9306, 4:5366, 5:3173, 6:2086, 7:1365, 8:1053, 9:715, 10:559, 11:425, 12:323 ... max gap 54
+  overall wall-clock span / block span = 12.0425 s/block
+  swaps per block with swaps: mean 1.729, max 74
+
+================================================================================================
+H. TAPE STATISTICS from Binance ETHUSDT 1m klines
+================================================================================================
+klines: 44640; first open_time 2026-08-01 00:00:00+0000; last open_time 2026-08-31 23:59:00+0000; expected 31*1440 = 44640; minute gaps != 60 s: 0
+1-minute log returns: n = 44639; mean +6.290e-06; std (ddof=1) 7.140700e-04
+max |r_1m| = +0.034753 (+3.4753%) at 2026-08-19 15:27:00+0000 (kline open_time): open 2046.42 high 2132.0 low 2040.3 close 2118.79 vol 312170.765  (prev close 2046.42)
+excess kurtosis (scipy.stats.kurtosis fisher=True, bias=True) = 264.5936   [manual m4/m2^2-3 = 264.5936]
+skew (scipy.stats.skew) = 2.4255
+lag-1 autocorr |r| = 0.4311;  lag-1 autocorr signed r = -0.0100
+realised annualised vol from 1m: std(r_1m, ddof=1)*sqrt(525600) = 51.77%  (ddof=0: 51.77%)
+realised annualised vol from daily close-to-close (UTC days, 30 returns from 31 daily closes): std*sqrt(365) = 67.82%
+month open 1861.68  close 2466.53  high 2566.4 (at 2026-08-27 09:27:00+0000)  low 1820.61 (at 2026-08-01 18:50:00+0000)
+close-to-close over month (last close / first open - 1) = +32.4895%;  log = +0.281333
+minutes with |r| > 0.2%: 696;  > 0.5%: 56;  > 1%: 12
+  [chart saved] /home/user/backtest-lp/docs/guide/raw/charts/H_close_with_max_move.png
+  [chart saved] /home/user/backtest-lp/docs/guide/raw/charts/H_1m_return_hist.png
+
+================================================================================================
+I. IN-RANGE LIQUIDITY (hourly `liquidity`) and the $1M position's L
+================================================================================================
+hourly liquidity rows (August): 744; NaN: 0; zeros: 0
+  min 1.847976e+18 at 2026-08-19 21:00:00+0000;  max 4.505772e+19 at 2026-08-29 08:00:00+0000
+  mean 8.821530e+18;  median 6.988284e+18
+  first hour 2026-08-01 00:00:00+0000: 6.926527e+18;  last hour 2026-08-31 23:00:00+0000: 4.430559e+18;  Sep-01 00:00 row: 4.430829e+18
+  max/min ratio 24.382
+run_claude.build_position(eth_price: 'float', cfg: 'Config', when: 'pd.Timestamp', capital_usd: 'Optional[float]' = None) -> 'Position'
+  body:
+    def build_position(
+        eth_price: float,
+        cfg: Config,
+        when: pd.Timestamp,
+        capital_usd: Optional[float] = None,
+    ) -> Position:
+        """Symmetric +/- range_width band around `eth_price`, sized to `capital_usd`."""
+        capital = cfg.capital_usd if capital_usd is None else capital_usd
+        p_hi_eth = eth_price * (1 + cfg.range_width)
+        p_lo_eth = eth_price * (1 - cfg.range_width)
+    
+        # NOTE the inversion: high ETH price -> low raw price -> low tick
+        t_lo = align_tick(
+            tick_from_raw(raw_from_eth_price(p_hi_eth)), cfg.tick_spacing, up=False
+        )
+        t_hi = align_tick(
+            tick_from_raw(raw_from_eth_price(p_lo_eth)), cfg.tick_spacing, up=True
+        )
+        if t_hi <= t_lo:
+            t_hi = t_lo + cfg.tick_spacing
+    
+        probe = Position(t_lo, t_hi, 1.0, when, eth_price)
+        value_per_unit_l = probe.value_usd(eth_price)
+        L = capital / value_per_unit_l
+        return Position(t_lo, t_hi, L, when, eth_price)
+bt.Assumptions() defaults: capital_usd=1000000.0, range_width=0.15
+run_claude.Config() defaults: capital_usd=1000000.0, range_width=0.15, tick_spacing=10
+P0 = first swap pool price = 1861.0609 USDC/ETH at 2026-08-01 00:00:47+0000
+$1M position at +/-15%: ticks [199630, 202660] = ETH price [1581.35, 2140.98], L = 1.589141e+17, value check 1,000,000.00 USD, max_delta 561.7696 ETH
+share = L_pos / (L_pos + hourly liquidity):  first hour 0.022428 (2.2428%),  mean 0.024209 (2.4209%),  min 0.003515,  max 0.079184,  last hour 0.034626
+  (compare: naive L_pos / hourly liquidity at first hour = 0.022943)
+
+     capital      L_position  share_first_hour  share_month_mean   share_min   share_max
+     100,000      1.5891e+16          0.002289          0.002489    0.000353    0.008526
+     300,000      4.7674e+16          0.006836          0.007421    0.001057    0.025149
+   1,000,000      1.5891e+17          0.022428          0.024209    0.003515    0.079184
+   3,000,000      4.7674e+17          0.064396          0.068507    0.010470    0.205075
+  10,000,000      1.5891e+18          0.186614          0.191490    0.034067    0.462347
+  [chart saved] /home/user/backtest-lp/docs/guide/raw/charts/I_hourly_liquidity_vs_position.png
+
+================================================================================================
+J. TICK CHECK: floor(ln(P_raw)/ln(1.0001)) == tick using the exact sqrtPriceX96 string
+================================================================================================
+  row      0  2026-08-01 00:00:47+0000  block 25656296
+      sqrt_price_x96_str = 1836535346318371944277253759023295   (float64 col rel err 0.00e+00)
+      P_raw = 5.373279E+8   tick(stored) = 201031   tick(computed) = 201031   OK
+      price = 1e12 / P_raw = 1861.0609 USDC/ETH   (Binance close that minute: 1862.68)
+  row  31998  2026-08-08 18:09:59+0000  block 25711944
+      sqrt_price_x96_str = 1806880148874685291402621709274050   (float64 col rel err 0.00e+00)
+      P_raw = 5.201152E+8   tick(stored) = 200705   tick(computed) = 200705   OK
+      price = 1e12 / P_raw = 1922.6511 USDC/ETH   (Binance close that minute: 1922.54)
+  row  63996  2026-08-18 14:37:11+0000  block 25782617
+      sqrt_price_x96_str = 1811483977487386056141786206304249   (float64 col rel err 0.00e+00)
+      P_raw = 5.227690E+8   tick(stored) = 200756   tick(computed) = 200756   OK
+      price = 1e12 / P_raw = 1912.8908 USDC/ETH   (Binance close that minute: 1911.75)
+  row  95994  2026-08-22 17:07:11+0000  block 25812074
+      sqrt_price_x96_str = 1609440379536430661651632775797567   (float64 col rel err 0.00e+00)
+      P_raw = 4.126583E+8   tick(stored) = 198391   tick(computed) = 198391   OK
+      price = 1e12 / P_raw = 2423.3123 USDC/ETH   (Binance close that minute: 2424.22)
+  row 127992  2026-08-27 08:35:35+0000  block 25845398
+      sqrt_price_x96_str = 1574631238894208189997425102465766   (float64 col rel err 0.00e+00)
+      P_raw = 3.950013E+8   tick(stored) = 197953   tick(computed) = 197953   OK
+      price = 1e12 / P_raw = 2531.6370 USDC/ETH   (Binance close that minute: 2532.98)
+  full-sample float64 check: floor(ln((sqrt_price_x96/2^96)^2)/ln 1.0001) != tick on 96 of 159990 rows (float rounding can flip rows sitting exactly on a tick boundary)
+  all 5 exact checks OK: True
+
+================================================================================================
+K. ROWS SHARING THE STOCK DEDUP KEY (block_number, block_time, sqrt_price_x96)  [backtest.py:813-815]
+================================================================================================
+rows sharing the key with another row: 42 of 159990 in 21 groups; drop_duplicates(keep='first') would drop 21 rows
+same check on the exact string column: 34 rows
+rows that collide ONLY because float64 rounds two distinct sqrtPriceX96 strings to one value: 8
+      block 25740742 log_index  459  amount0         -258,756  amount1   +137,127,622,895,248  str=1823423420124849522525384670048791
+      block 25740742 log_index  510  amount0               +0  amount1                    +18  str=1823423420124849522525538181633765
+      block 25742633 log_index   39  amount0 +576,807,851,703  amount1 -305,943,722,922,429,972,480  str=1824299675390667323961171355622927
+      block 25742633 log_index   48  amount0               +0  amount1                    +10  str=1824299675390667323961250935836555
+      block 25763312 log_index  805  amount0          -39,087  amount1    +20,769,170,213,904  str=1825831159725967160399231532459086
+      block 25763312 log_index  856  amount0               +0  amount1                    +61  str=1825831159725967160399762867483263
+      block 25805299 log_index  408  amount0     +297,309,643  amount1 -122,456,953,883,229,152  str=1608329586602677041318689304637956
+      block 25805299 log_index  720  amount0               +0  amount1                    +45  str=1608329586602677041319652084441530
+dust rows in the whole file (|amount0| <= 1 raw and amount1 == 0): 25; of these 17 share the dedup key with another row
+rows sharing (block_number, log_index): 0  (true duplicates)
+  example group 1: block 25669962 2026-08-02 21:43:11+0000 sqrt_price_x96=1.820796e+33
+      log_index  519  amount0               +6,385  amount1         -3,370,173,974,854  str=1820796339896605077573699691248246
+      log_index  848  amount0                   +1  amount1                         +0  str=1820796339896605077573699691248246
+  example group 2: block 25691038 2026-08-05 20:12:23+0000 sqrt_price_x96=1.809546e+33
+      log_index   35  amount0         -382,823,409  amount1   +199,800,000,000,000,000  str=1809545913602849670092471358108045
+      log_index  151  amount0                   +1  amount1                         +0  str=1809545913602849670092471358108045
+  example group 3: block 25691391 2026-08-05 21:22:59+0000 sqrt_price_x96=1.812926e+33
+      log_index  258  amount0                 +146  amount1            -75,922,233,133  str=1812925966797312231790447109859057
+      log_index  260  amount0                   +1  amount1                         +0  str=1812925966797312231790447109859057
+  USD volume in the rows keep='first' would drop: 0.00 (0.0000% of month volume)
+
+================================================================================================
+SUMMARY
+================================================================================================
+  total_swaps: 159990
+  total_usd_volume_swaps: 2422599886.4326468
+  total_usd_volume_hourly_file_august: 2422385371.107279
+  volume_ratio_swaps_over_hourly: 1.0000885554082048
+  basis_bps_all_swaps_mean: -0.6454486589168791
+  basis_bps_all_swaps_p1: -24.931557322744112
+  basis_bps_all_swaps_p99: 19.574236366303477
+  basis_bps_lastmin_mean: -0.9291875813674423
+  basis_bps_lastmin_p1: -10.247347451261678
+  basis_bps_lastmin_p99: 10.334621315492095
+  funding_annualised_mean_pct: 5.684604193548387
+  funding_sum_month: 0.00482802
+  block_spacing_median_s: 12.0
+  adjacent_block_share_12s: 0.9964960869473993
+  max_1m_move_pct: 3.4753245969421087
+  max_1m_move_time: 2026-08-19 15:27:00+0000
+  realised_vol_1m_pct: 51.76884458949639
+  realised_vol_daily_pct: 67.81748746644968
+  excess_kurtosis_1m: 264.5935674219268
+  share_1M_first_hour: 0.022428252611341896
+  share_1M_month_mean: 0.024208885203275875
+  dedup_key_rows: 42

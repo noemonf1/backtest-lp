@@ -1,0 +1,12 @@
+{
+ "note": "app Local CSV path + stress shock {'days': 7, 'pct': -0.2, 'shape': 'linear'}",
+ "stress": {
+  "days": 7,
+  "pct": -0.2,
+  "shape": "linear"
+ },
+ "bars_shocked": 169,
+ "last_close_unshocked": 2466.53,
+ "last_close_shocked": 1973.2240000000002,
+ "min_close_shocked": 1835.75
+}

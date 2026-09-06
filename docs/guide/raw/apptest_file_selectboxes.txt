@@ -1,0 +1,3 @@
+Swaps file: options=['data/swaps_0x88e6a0_2026-08-01_2026-08-31.parquet'] value='data/swaps_0x88e6a0_2026-08-01_2026-08-31.parquet'
+CEX price file: options=['data/ETHUSDT-aggTrades-2026-08.csv', 'data/ETHUSDT-klines-1h-2026-08.csv', 'data/ETHUSDT-klines-1m-2026-08.csv'] value='data/ETHUSDT-aggTrades-2026-08.csv'
+Funding file: options=['(none — assume 0)', 'data/ETHUSDT-fundingRate-2026-08.csv'] value='(none — assume 0)'

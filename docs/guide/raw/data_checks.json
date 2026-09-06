@@ -1,0 +1,889 @@
+{
+  "A_file_manifest": {
+    "swaps_0x88e6a0_2026-08-01_2026-08-31.parquet": {
+      "path": "/home/user/backtest-lp/data/swaps_0x88e6a0_2026-08-01_2026-08-31.parquet",
+      "rows": 159990,
+      "first_timestamp": "2026-08-01 00:00:47+0000",
+      "last_timestamp": "2026-08-31 23:59:59+0000",
+      "size_bytes": 10468110,
+      "sha256": "3e28bbf3164c24bb801c7101cab0ca810623942e8a2d0876ee0f509fe90f8c83"
+    },
+    "pool_hourly_0x88e6a0_2026-08-01_2026-09-01.parquet": {
+      "path": "/home/user/backtest-lp/data/pool_hourly_0x88e6a0_2026-08-01_2026-09-01.parquet",
+      "rows": 745,
+      "first_timestamp": "2026-08-01 00:00:00+0000",
+      "last_timestamp": "2026-09-01 00:00:00+0000",
+      "size_bytes": 50491,
+      "sha256": "7e3fdf480bef3e27ff240e6d52f941f9fbe0e8caf97029663f81f9eb5a4c4186"
+    },
+    "pool_hourly_0x88e6a0_2026-08-01_2026-08-31.parquet": {
+      "path": "/home/user/backtest-lp/data/pool_hourly_0x88e6a0_2026-08-01_2026-08-31.parquet",
+      "rows": 721,
+      "first_timestamp": "2026-08-01 00:00:00+0000",
+      "last_timestamp": "2026-08-31 00:00:00+0000",
+      "size_bytes": 48939,
+      "sha256": "8d944fe1e9f8a11df476698689fb3a6070537817e9e6ac1e39ffa1bd4cd26ca6"
+    },
+    "ETHUSDT-klines-1m-2026-08.csv": {
+      "path": "/home/user/backtest-lp/data/ETHUSDT-klines-1m-2026-08.csv",
+      "rows": 44640,
+      "first_timestamp": "2026-08-01 00:00:00+0000",
+      "last_timestamp": "2026-08-31 23:59:00+0000",
+      "size_bytes": 4947296,
+      "sha256": "f24c82daaf4eeed656444e05c5abec93d5286024036427739ce90a6baf3ad263"
+    },
+    "ETHUSDT-klines-1h-2026-08.csv": {
+      "path": "/home/user/backtest-lp/data/ETHUSDT-klines-1h-2026-08.csv",
+      "rows": 744,
+      "first_timestamp": "2026-08-01 00:00:00+0000",
+      "last_timestamp": "2026-08-31 23:00:00+0000",
+      "size_bytes": 89791,
+      "sha256": "aa699e2d4e816d75363bf9a24f7aff38ea2e57934586bf07e379569ff6befe7d"
+    },
+    "ETHUSDT-fundingRate-2026-08.csv": {
+      "path": "/home/user/backtest-lp/data/ETHUSDT-fundingRate-2026-08.csv",
+      "rows": 93,
+      "first_timestamp": "2026-08-01 00:00:00+0000",
+      "last_timestamp": "2026-08-31 16:00:00+0000",
+      "size_bytes": 2563,
+      "sha256": "e81333c5828b7611cc27ce119b928525cd1697d6beb1037c6d7007f510f8e37b"
+    },
+    "ETHUSDT-aggTrades-2026-08.csv": {
+      "path": "/home/user/backtest-lp/data/ETHUSDT-aggTrades-2026-08.csv",
+      "rows": 33010405,
+      "first_timestamp": "2026-08-01 00:00:00+0000",
+      "last_timestamp": "2026-08-31 23:59:59+0000",
+      "size_bytes": 2187210885,
+      "sha256": "5db024bf09c9091d87b3e8000b7ce2e935838c4ea9f831d557a7968eb44c8f86",
+      "has_header": true,
+      "line_count_incl_header": 33010406,
+      "first_transact_time_raw": 1785542400013,
+      "last_transact_time_raw": 1788220799994,
+      "transact_time_unit": "ms"
+    }
+  },
+  "B_swaps_per_day": {
+    "per_day": {
+      "2026-08-01": 3315,
+      "2026-08-02": 3752,
+      "2026-08-03": 4698,
+      "2026-08-04": 4659,
+      "2026-08-05": 4900,
+      "2026-08-06": 3952,
+      "2026-08-07": 4013,
+      "2026-08-08": 3684,
+      "2026-08-09": 2790,
+      "2026-08-10": 4062,
+      "2026-08-11": 4157,
+      "2026-08-12": 3837,
+      "2026-08-13": 3391,
+      "2026-08-14": 3315,
+      "2026-08-15": 1902,
+      "2026-08-16": 1966,
+      "2026-08-17": 3668,
+      "2026-08-18": 3370,
+      "2026-08-19": 7785,
+      "2026-08-20": 7084,
+      "2026-08-21": 10395,
+      "2026-08-22": 6893,
+      "2026-08-23": 7049,
+      "2026-08-24": 7035,
+      "2026-08-25": 6866,
+      "2026-08-26": 7030,
+      "2026-08-27": 7615,
+      "2026-08-28": 7281,
+      "2026-08-29": 4134,
+      "2026-08-30": 8088,
+      "2026-08-31": 7304
+    },
+    "total": 159990,
+    "min_day": {
+      "date": "2026-08-15",
+      "swaps": 1902
+    },
+    "max_day": {
+      "date": "2026-08-21",
+      "swaps": 10395
+    },
+    "mean_per_day": 5160.967741935484,
+    "per_hour_of_day_utc": {
+      "0": 7086,
+      "1": 7015,
+      "2": 6365,
+      "3": 5618,
+      "4": 4637,
+      "5": 5273,
+      "6": 5197,
+      "7": 5444,
+      "8": 5996,
+      "9": 6050,
+      "10": 5767,
+      "11": 6046,
+      "12": 6657,
+      "13": 7943,
+      "14": 8313,
+      "15": 8163,
+      "16": 8291,
+      "17": 8506,
+      "18": 8295,
+      "19": 7153,
+      "20": 6807,
+      "21": 7289,
+      "22": 6082,
+      "23": 5997
+    },
+    "busiest_hour_utc": 17,
+    "quietest_hour_utc": 4
+  },
+  "C_usd_volume_per_day": {
+    "per_day": {
+      "2026-08-01": {
+        "swaps_usd": 29560428.373546,
+        "hourly_volumeUSD": 29559897.049820937,
+        "ratio": 1.0000179744781983
+      },
+      "2026-08-02": {
+        "swaps_usd": 40358328.673615,
+        "hourly_volumeUSD": 40344769.60944741,
+        "ratio": 1.0003360798512135
+      },
+      "2026-08-03": {
+        "swaps_usd": 53586788.236608,
+        "hourly_volumeUSD": 53592871.47177417,
+        "ratio": 0.9998864917105743
+      },
+      "2026-08-04": {
+        "swaps_usd": 57762830.605647,
+        "hourly_volumeUSD": 57759036.55219568,
+        "ratio": 1.0000656876166534
+      },
+      "2026-08-05": {
+        "swaps_usd": 78342356.841222,
+        "hourly_volumeUSD": 78329585.48944964,
+        "ratio": 1.000163046334186
+      },
+      "2026-08-06": {
+        "swaps_usd": 91540433.000784,
+        "hourly_volumeUSD": 91541954.52916361,
+        "ratio": 0.9999833788956393
+      },
+      "2026-08-07": {
+        "swaps_usd": 102651689.620075,
+        "hourly_volumeUSD": 102646140.5950024,
+        "ratio": 1.0000540597536394
+      },
+      "2026-08-08": {
+        "swaps_usd": 23767607.157622,
+        "hourly_volumeUSD": 23752861.967020236,
+        "ratio": 1.0006207753247687
+      },
+      "2026-08-09": {
+        "swaps_usd": 31948641.468211,
+        "hourly_volumeUSD": 31950475.026040085,
+        "ratio": 0.9999426125017674
+      },
+      "2026-08-10": {
+        "swaps_usd": 83078873.414178,
+        "hourly_volumeUSD": 83098547.72305761,
+        "ratio": 0.9997632412428532
+      },
+      "2026-08-11": {
+        "swaps_usd": 44597769.317742,
+        "hourly_volumeUSD": 44557060.84233564,
+        "ratio": 1.0009136256888758
+      },
+      "2026-08-12": {
+        "swaps_usd": 78979057.991032,
+        "hourly_volumeUSD": 78974948.88519304,
+        "ratio": 1.0000520304969738
+      },
+      "2026-08-13": {
+        "swaps_usd": 56743861.569552,
+        "hourly_volumeUSD": 56729753.458159894,
+        "ratio": 1.000248689806179
+      },
+      "2026-08-14": {
+        "swaps_usd": 44373314.634822,
+        "hourly_volumeUSD": 44381639.46713248,
+        "ratio": 0.9998124262102431
+      },
+      "2026-08-15": {
+        "swaps_usd": 15744604.46656,
+        "hourly_volumeUSD": 15739080.82588266,
+        "ratio": 1.0003509506519757
+      },
+      "2026-08-16": {
+        "swaps_usd": 16642150.774755,
+        "hourly_volumeUSD": 16645574.409013603,
+        "ratio": 0.9997943216512403
+      },
+      "2026-08-17": {
+        "swaps_usd": 80272286.3985,
+        "hourly_volumeUSD": 80258817.91189913,
+        "ratio": 1.0001678131693348
+      },
+      "2026-08-18": {
+        "swaps_usd": 71776316.780437,
+        "hourly_volumeUSD": 71780505.52312884,
+        "ratio": 0.9999416451213137
+      },
+      "2026-08-19": {
+        "swaps_usd": 302904833.046828,
+        "hourly_volumeUSD": 302733266.3017776,
+        "ratio": 1.0005667257752882
+      },
+      "2026-08-20": {
+        "swaps_usd": 120836153.496628,
+        "hourly_volumeUSD": 120831196.36672552,
+        "ratio": 1.0000410252488723
+      },
+      "2026-08-21": {
+        "swaps_usd": 191564896.47458,
+        "hourly_volumeUSD": 191559089.93040994,
+        "ratio": 1.00003031202629
+      },
+      "2026-08-22": {
+        "swaps_usd": 113670344.827012,
+        "hourly_volumeUSD": 113708244.2553125,
+        "ratio": 0.9996666958623035
+      },
+      "2026-08-23": {
+        "swaps_usd": 97181474.043394,
+        "hourly_volumeUSD": 97179190.8553066,
+        "ratio": 1.0000234946192421
+      },
+      "2026-08-24": {
+        "swaps_usd": 113007657.747538,
+        "hourly_volumeUSD": 113001829.32258034,
+        "ratio": 1.0000515781469432
+      },
+      "2026-08-25": {
+        "swaps_usd": 89288729.783516,
+        "hourly_volumeUSD": 89300072.80092734,
+        "ratio": 0.9998729786319813
+      },
+      "2026-08-26": {
+        "swaps_usd": 66811618.728263,
+        "hourly_volumeUSD": 66803674.876649216,
+        "ratio": 1.000118913392541
+      },
+      "2026-08-27": {
+        "swaps_usd": 83227141.988405,
+        "hourly_volumeUSD": 83238303.54684775,
+        "ratio": 0.9998659083863181
+      },
+      "2026-08-28": {
+        "swaps_usd": 78137008.282973,
+        "hourly_volumeUSD": 78147525.084064,
+        "ratio": 0.9998654237472052
+      },
+      "2026-08-29": {
+        "swaps_usd": 25955000.303608,
+        "hourly_volumeUSD": 25955207.296652324,
+        "ratio": 0.9999920249897465
+      },
+      "2026-08-30": {
+        "swaps_usd": 73098239.710722,
+        "hourly_volumeUSD": 73099139.79709199,
+        "ratio": 0.9999876867720675
+      },
+      "2026-08-31": {
+        "swaps_usd": 65189448.674272,
+        "hourly_volumeUSD": 65185109.33721708,
+        "ratio": 1.000066569452733
+      }
+    },
+    "total_swaps_usd": 2422599886.4326468,
+    "total_hourly_volumeUSD_august": 2422385371.107279,
+    "total_hourly_volumeUSD_all_745_rows": 2423734230.734071,
+    "ratio_total": 1.0000885554082048,
+    "ratio_daily_min": 0.9996666958623035,
+    "ratio_daily_max": 1.0009136256888758,
+    "ratio_daily_mean": 1.0000730383082956
+  },
+  "D_hourly_volume_ratio": {
+    "hours_total": 744,
+    "hours_skipped_volumeUSD_zero": 0,
+    "hours_with_zero_swaps": 0,
+    "ratio": {
+      "count": 744,
+      "mean": 1.000062992568683,
+      "median": 1.0000603671237684,
+      "std": 0.0006540405307707805,
+      "p1": 0.9986862691275451,
+      "p5": 0.9990070999134354,
+      "p95": 1.0010469677857827,
+      "p99": 1.0012912109584735,
+      "min": 0.9984447508558651,
+      "max": 1.0045713278842212
+    },
+    "hours_outside_0.9_1.1": 0,
+    "worst_10": [
+      {
+        "hour": "2026-08-11 18:00:00+0000",
+        "swaps_usd": 7674174.758638,
+        "volumeUSD": 7639253.22734521,
+        "ratio": 1.0045713278842212
+      },
+      {
+        "hour": "2026-08-19 20:00:00+0000",
+        "swaps_usd": 36113693.806971,
+        "volumeUSD": 36055334.11449213,
+        "ratio": 1.0016186146630495
+      },
+      {
+        "hour": "2026-08-09 15:00:00+0000",
+        "swaps_usd": 1013123.509333,
+        "volumeUSD": 1011498.5008961684,
+        "ratio": 1.00160653568482
+      },
+      {
+        "hour": "2026-08-25 15:00:00+0000",
+        "swaps_usd": 5559592.490424,
+        "volumeUSD": 5568252.510375087,
+        "ratio": 0.9984447508558651
+      },
+      {
+        "hour": "2026-08-03 09:00:00+0000",
+        "swaps_usd": 1207935.8129440001,
+        "volumeUSD": 1206095.111858348,
+        "ratio": 1.0015261657787635
+      },
+      {
+        "hour": "2026-08-18 01:00:00+0000",
+        "swaps_usd": 2083788.579964,
+        "volumeUSD": 2086906.5286566648,
+        "ratio": 0.9985059471280336
+      },
+      {
+        "hour": "2026-08-22 05:00:00+0000",
+        "swaps_usd": 22610333.659775,
+        "volumeUSD": 22643218.932163447,
+        "ratio": 0.9985476767906998
+      },
+      {
+        "hour": "2026-08-08 14:00:00+0000",
+        "swaps_usd": 4835871.610328,
+        "volumeUSD": 4828941.603173925,
+        "ratio": 1.0014350985626996
+      },
+      {
+        "hour": "2026-08-14 06:00:00+0000",
+        "swaps_usd": 1677102.557535,
+        "volumeUSD": 1679434.7696863862,
+        "ratio": 0.998611311261692
+      },
+      {
+        "hour": "2026-08-11 19:00:00+0000",
+        "swaps_usd": 2883919.231969,
+        "volumeUSD": 2880020.0298565766,
+        "ratio": 1.0013538802063877
+      }
+    ],
+    "chart": "/home/user/backtest-lp/docs/guide/raw/charts/D_hourly_volume_ratio_hist.png"
+  },
+  "E_pool_vs_binance_basis": {
+    "swaps_matched": 159990,
+    "swaps_unmatched": 0,
+    "basis_bps_all_swaps": {
+      "count": 159990,
+      "mean": -0.6454486589168791,
+      "median": -0.5415349645015999,
+      "std": 11.125538107323743,
+      "p1": -24.931557322744112,
+      "p5": -11.818388483317399,
+      "p95": 11.153137818808547,
+      "p99": 19.574236366303477,
+      "min": -360.4529473381579,
+      "max": 285.5828710875885
+    },
+    "basis_bps_last_swap_per_minute": {
+      "count": 38092,
+      "mean": -0.9291875813674423,
+      "median": -1.0286853167706944,
+      "std": 5.218214356522362,
+      "p1": -10.247347451261678,
+      "p5": -8.654988500434001,
+      "p95": 8.001671523000574,
+      "p99": 10.334621315492095,
+      "min": -92.46531988555296,
+      "max": 213.0248389224021
+    },
+    "minutes_with_swaps": 38092,
+    "klines_1m_total": 44640,
+    "share_abs_le_5bps": 0.624278063635409,
+    "share_abs_le_10bps": 0.9732227239315342,
+    "share_abs_gt_25bps": 0.00034127900871574085,
+    "largest_5": [
+      {
+        "block_time": "2026-08-22 05:10:59+0000",
+        "block_number": 25808505,
+        "pool_price": 2441.556357067306,
+        "binance_close": 2390.63,
+        "basis_bps": 213.0248389224021
+      },
+      {
+        "block_time": "2026-08-19 15:27:59+0000",
+        "block_number": 25790050,
+        "pool_price": 2099.198540487969,
+        "binance_close": 2118.79,
+        "basis_bps": -92.46531988555296
+      },
+      {
+        "block_time": "2026-08-19 21:04:59+0000",
+        "block_number": 25791726,
+        "pool_price": 2247.9521826472246,
+        "binance_close": 2262.22,
+        "basis_bps": -63.0699814906388
+      },
+      {
+        "block_time": "2026-08-25 02:17:47+0000",
+        "block_number": 25829169,
+        "pool_price": 2497.3413175771234,
+        "binance_close": 2512.07,
+        "basis_bps": -58.63165605606846
+      },
+      {
+        "block_time": "2026-08-19 21:57:59+0000",
+        "block_number": 25791991,
+        "pool_price": 2278.5313208263146,
+        "binance_close": 2288.99,
+        "basis_bps": -45.691240126366495
+      }
+    ],
+    "charts": [
+      "/home/user/backtest-lp/docs/guide/raw/charts/E_basis_bps_timeseries.png",
+      "/home/user/backtest-lp/docs/guide/raw/charts/E_pool_vs_binance_price.png"
+    ]
+  },
+  "F_funding": {
+    "prints": 93,
+    "first": "2026-08-01 00:00:00+0000",
+    "last": "2026-08-31 16:00:00+0000",
+    "distinct_interval_hours": [
+      8
+    ],
+    "times_of_day_exact": [
+      "00:00:00",
+      "08:00:00",
+      "16:00:00"
+    ],
+    "times_of_day_rounded": [
+      "00:00",
+      "08:00",
+      "16:00"
+    ],
+    "rate_min": -8.69e-06,
+    "rate_max": 0.0001,
+    "rate_mean": 5.191419354838709e-05,
+    "rate_median": 5.131e-05,
+    "count_positive": 88,
+    "count_negative": 5,
+    "count_zero": 0,
+    "sign_convention": "positive = longs pay shorts (Binance)",
+    "annualised_mean_pct": 5.684604193548387,
+    "sum_of_rates": 0.00482802,
+    "expected_prints": 93.0
+  },
+  "G_block_spacing": {
+    "distinct_block_time_pairs": 92532,
+    "distinct_blocks": 92532,
+    "block_min": 25656296,
+    "block_max": 25878704,
+    "per_block_spacing_s": {
+      "count": 92531,
+      "mean": 12.04411578314199,
+      "median": 12.0,
+      "std": 0.5995104198105233,
+      "p1": 12.0,
+      "p5": 12.0,
+      "p95": 12.0,
+      "p99": 12.0,
+      "min": 12.0,
+      "max": 24.0
+    },
+    "share_per_block_spacing_exactly_12s": 0.9916244285698846,
+    "adjacent_blocks": {
+      "count": 47661,
+      "mean_dt_s": 12.042046956631207,
+      "median_dt_s": 12.0,
+      "share_exactly_12s": 0.9964960869473993,
+      "min_dt_s": 12.0,
+      "max_dt_s": 24.0,
+      "dt_value_counts": {
+        "12": 47494,
+        "24": 167
+      }
+    },
+    "block_gap_counts_first_12": {
+      "1": 47661,
+      "2": 19338,
+      "3": 9306,
+      "4": 5366,
+      "5": 3173,
+      "6": 2086,
+      "7": 1365,
+      "8": 1053,
+      "9": 715,
+      "10": 559,
+      "11": 425,
+      "12": 323
+    },
+    "max_block_gap": 54,
+    "wallclock_seconds_per_block_overall": 12.04251645624258,
+    "swaps_per_block_mean": 1.7290234729607055,
+    "swaps_per_block_max": 74
+  },
+  "H_tape_stats": {
+    "klines": 44640,
+    "minute_gaps_not_60s": 0,
+    "n_returns": 44639,
+    "mean_r_1m": 6.290373747273727e-06,
+    "std_r_1m_ddof1": 0.0007140700104734675,
+    "max_abs_r_1m": {
+      "log_return": 0.03475324596942109,
+      "pct": 3.4753245969421087,
+      "open_time_utc": "2026-08-19 15:27:00+0000",
+      "open": 2046.42,
+      "high": 2132.0,
+      "low": 2040.3,
+      "close": 2118.79,
+      "prev_close": 2046.42,
+      "volume": 312170.765
+    },
+    "excess_kurtosis": 264.5935674219268,
+    "excess_kurtosis_method": "scipy.stats.kurtosis(fisher=True, bias=True)",
+    "excess_kurtosis_manual": 264.5935674219268,
+    "skew": 2.425507910992963,
+    "acf1_abs_returns": 0.4311010328609909,
+    "acf1_signed_returns": -0.00996194365713397,
+    "realised_vol_1m_annualised": 0.5176884458949639,
+    "realised_vol_1m_annualised_ddof0": 0.5176826472508944,
+    "realised_vol_daily_annualised": 0.6781748746644968,
+    "n_daily_returns": 30,
+    "n_daily_closes": 31,
+    "month_open": 1861.68,
+    "month_close": 2466.53,
+    "month_high": 2566.4,
+    "month_high_time": "2026-08-27 09:27:00+0000",
+    "month_low": 1820.61,
+    "month_low_time": "2026-08-01 18:50:00+0000",
+    "month_return_close_over_open": 0.3248947187486573,
+    "month_log_return": 0.28133299873308415,
+    "minutes_abs_r_gt_0.2pct": 696,
+    "minutes_abs_r_gt_0.5pct": 56,
+    "minutes_abs_r_gt_1pct": 12,
+    "charts": [
+      "/home/user/backtest-lp/docs/guide/raw/charts/H_close_with_max_move.png",
+      "/home/user/backtest-lp/docs/guide/raw/charts/H_1m_return_hist.png"
+    ]
+  },
+  "I_liquidity": {
+    "hourly_rows_august": 744,
+    "min": 1.8479764631422904e+18,
+    "min_at": "2026-08-19 21:00:00+0000",
+    "max": 4.50577169367181e+19,
+    "max_at": "2026-08-29 08:00:00+0000",
+    "mean": 8.821530320347373e+18,
+    "median": 6.988284186446561e+18,
+    "first_hour": {
+      "ts": "2026-08-01 00:00:00+0000",
+      "liquidity": 6.926527012332037e+18
+    },
+    "last_hour": {
+      "ts": "2026-08-31 23:00:00+0000",
+      "liquidity": 4.430559062782308e+18
+    },
+    "sep01_row": {
+      "ts": "2026-09-01 00:00:00+0000",
+      "liquidity": 4.430828955732915e+18
+    },
+    "defaults": {
+      "capital_usd": 1000000.0,
+      "range_width": 0.15,
+      "tick_spacing": 10
+    },
+    "P0": 1861.0609001224764,
+    "P0_time": "2026-08-01 00:00:47+0000",
+    "position_1M": {
+      "tick_lower": 199630,
+      "tick_upper": 202660,
+      "eth_price_lower": 1581.3502479550627,
+      "eth_price_upper": 2140.980540117063,
+      "L": 1.589140622842724e+17,
+      "value_usd_check": 1000000.0,
+      "max_delta_eth": 561.7696400544799
+    },
+    "share_1M": {
+      "first_hour": 0.022428252611341896,
+      "month_mean": 0.024208885203275875,
+      "min": 0.0035145047026563865,
+      "max": 0.0791842206990814,
+      "last_hour": 0.0346257746703696
+    },
+    "share_by_capital": {
+      "100000": {
+        "L": 1.5891406228427238e+16,
+        "share_first_hour": 0.002289030316286004,
+        "share_month_mean": 0.0024890790918732602,
+        "share_min": 0.00035256565455146327,
+        "share_max": 0.008526036898630868
+      },
+      "300000": {
+        "L": 4.767421868528171e+16,
+        "share_first_hour": 0.006835796259111888,
+        "share_month_mean": 0.00742064022153049,
+        "share_min": 0.001056951673936888,
+        "share_max": 0.025149263597088266
+      },
+      "1000000": {
+        "L": 1.589140622842724e+17,
+        "share_first_hour": 0.022428252611341896,
+        "share_month_mean": 0.024208885203275875,
+        "share_min": 0.0035145047026563865,
+        "share_max": 0.0791842206990814
+      },
+      "3000000": {
+        "L": 4.7674218685281715e+17,
+        "share_first_hour": 0.06439617066812989,
+        "share_month_mean": 0.06850697583914148,
+        "share_min": 0.010469920935242459,
+        "share_max": 0.20507521925451946
+      },
+      "10000000": {
+        "L": 1.5891406228427238e+18,
+        "share_first_hour": 0.18661374432682531,
+        "share_month_mean": 0.19149034482853333,
+        "share_min": 0.034067474337657944,
+        "share_max": 0.4623469562100488
+      }
+    },
+    "chart": "/home/user/backtest-lp/docs/guide/raw/charts/I_hourly_liquidity_vs_position.png"
+  },
+  "J_tick_check": {
+    "rows": [
+      {
+        "row": 0,
+        "block_time": "2026-08-01 00:00:47+0000",
+        "block_number": 25656296,
+        "sqrt_price_x96_str": "1836535346318371944277253759023295",
+        "tick_stored": 201031,
+        "tick_computed": 201031,
+        "ok": true,
+        "p_raw": "5.373279294268E+8",
+        "price_usdc_per_eth": 1861.0609001224764,
+        "binance_close": 1862.68
+      },
+      {
+        "row": 31998,
+        "block_time": "2026-08-08 18:09:59+0000",
+        "block_number": 25711944,
+        "sqrt_price_x96_str": "1806880148874685291402621709274050",
+        "tick_stored": 200705,
+        "tick_computed": 200705,
+        "ok": true,
+        "p_raw": "5.201151757653E+8",
+        "price_usdc_per_eth": 1922.6510715219317,
+        "binance_close": 1922.54
+      },
+      {
+        "row": 63996,
+        "block_time": "2026-08-18 14:37:11+0000",
+        "block_number": 25782617,
+        "sqrt_price_x96_str": "1811483977487386056141786206304249",
+        "tick_stored": 200756,
+        "tick_computed": 200756,
+        "ok": true,
+        "p_raw": "5.227690005715E+8",
+        "price_usdc_per_eth": 1912.8907775840662,
+        "binance_close": 1911.75
+      },
+      {
+        "row": 95994,
+        "block_time": "2026-08-22 17:07:11+0000",
+        "block_number": 25812074,
+        "sqrt_price_x96_str": "1609440379536430661651632775797567",
+        "tick_stored": 198391,
+        "tick_computed": 198391,
+        "ok": true,
+        "p_raw": "4.126583325358E+8",
+        "price_usdc_per_eth": 2423.3122686628335,
+        "binance_close": 2424.22
+      },
+      {
+        "row": 127992,
+        "block_time": "2026-08-27 08:35:35+0000",
+        "block_number": 25845398,
+        "sqrt_price_x96_str": "1574631238894208189997425102465766",
+        "tick_stored": 197953,
+        "tick_computed": 197953,
+        "ok": true,
+        "p_raw": "3.950013307135E+8",
+        "price_usdc_per_eth": 2531.6370408013004,
+        "binance_close": 2532.98
+      }
+    ],
+    "all_ok": true,
+    "float64_full_sample_mismatches": 96
+  },
+  "K_dedup_key": {
+    "rows_sharing_key": 42,
+    "groups": 21,
+    "rows_dropped_by_keep_first": 21,
+    "rows_sharing_key_exact_string": 34,
+    "rows_sharing_block_logindex": 0,
+    "rows_colliding_float64_only": 8,
+    "float64_only_collisions": [
+      {
+        "block_number": 25740742,
+        "log_index": 459,
+        "amount0": -258756.0,
+        "amount1": 137127622895248.02,
+        "sqrt_price_x96_str": "1823423420124849522525384670048791"
+      },
+      {
+        "block_number": 25740742,
+        "log_index": 510,
+        "amount0": 0.0,
+        "amount1": 18.0,
+        "sqrt_price_x96_str": "1823423420124849522525538181633765"
+      },
+      {
+        "block_number": 25742633,
+        "log_index": 39,
+        "amount0": 576807851703.0,
+        "amount1": -3.0594372292243e+20,
+        "sqrt_price_x96_str": "1824299675390667323961171355622927"
+      },
+      {
+        "block_number": 25742633,
+        "log_index": 48,
+        "amount0": 0.0,
+        "amount1": 10.0,
+        "sqrt_price_x96_str": "1824299675390667323961250935836555"
+      },
+      {
+        "block_number": 25763312,
+        "log_index": 805,
+        "amount0": -39087.0,
+        "amount1": 20769170213904.0,
+        "sqrt_price_x96_str": "1825831159725967160399231532459086"
+      },
+      {
+        "block_number": 25763312,
+        "log_index": 856,
+        "amount0": 0.0,
+        "amount1": 61.00000000000001,
+        "sqrt_price_x96_str": "1825831159725967160399762867483263"
+      },
+      {
+        "block_number": 25805299,
+        "log_index": 408,
+        "amount0": 297309643.0,
+        "amount1": -1.2245695388322915e+17,
+        "sqrt_price_x96_str": "1608329586602677041318689304637956"
+      },
+      {
+        "block_number": 25805299,
+        "log_index": 720,
+        "amount0": 0.0,
+        "amount1": 45.0,
+        "sqrt_price_x96_str": "1608329586602677041319652084441530"
+      }
+    ],
+    "dust_rows_total": 25,
+    "dust_rows_sharing_key": 17,
+    "usd_volume_dropped": 1.7e-05,
+    "examples": [
+      {
+        "block_number": 25669962,
+        "block_time": "2026-08-02 21:43:11+0000",
+        "sqrt_price_x96": 1.820796339896605e+33,
+        "rows": [
+          {
+            "log_index": 519,
+            "amount0": 6385.0,
+            "amount1": -3370173974854.0,
+            "sqrt_price_x96_str": "1820796339896605077573699691248246"
+          },
+          {
+            "log_index": 848,
+            "amount0": 1.0,
+            "amount1": 0.0,
+            "sqrt_price_x96_str": "1820796339896605077573699691248246"
+          }
+        ]
+      },
+      {
+        "block_number": 25691038,
+        "block_time": "2026-08-05 20:12:23+0000",
+        "sqrt_price_x96": 1.8095459136028497e+33,
+        "rows": [
+          {
+            "log_index": 35,
+            "amount0": -382823409.0,
+            "amount1": 1.998e+17,
+            "sqrt_price_x96_str": "1809545913602849670092471358108045"
+          },
+          {
+            "log_index": 151,
+            "amount0": 1.0,
+            "amount1": 0.0,
+            "sqrt_price_x96_str": "1809545913602849670092471358108045"
+          }
+        ]
+      },
+      {
+        "block_number": 25691391,
+        "block_time": "2026-08-05 21:22:59+0000",
+        "sqrt_price_x96": 1.8129259667973122e+33,
+        "rows": [
+          {
+            "log_index": 258,
+            "amount0": 146.0,
+            "amount1": -75922233133.0,
+            "sqrt_price_x96_str": "1812925966797312231790447109859057"
+          },
+          {
+            "log_index": 260,
+            "amount0": 1.0,
+            "amount1": 0.0,
+            "sqrt_price_x96_str": "1812925966797312231790447109859057"
+          }
+        ]
+      }
+    ]
+  },
+  "summary": {
+    "total_swaps": 159990,
+    "total_usd_volume_swaps": 2422599886.4326468,
+    "total_usd_volume_hourly_file_august": 2422385371.107279,
+    "volume_ratio_swaps_over_hourly": 1.0000885554082048,
+    "basis_bps_all_swaps_mean": -0.6454486589168791,
+    "basis_bps_all_swaps_p1": -24.931557322744112,
+    "basis_bps_all_swaps_p99": 19.574236366303477,
+    "basis_bps_lastmin_mean": -0.9291875813674423,
+    "basis_bps_lastmin_p1": -10.247347451261678,
+    "basis_bps_lastmin_p99": 10.334621315492095,
+    "funding_annualised_mean_pct": 5.684604193548387,
+    "funding_sum_month": 0.00482802,
+    "block_spacing_median_s": 12.0,
+    "adjacent_block_share_12s": 0.9964960869473993,
+    "max_1m_move_pct": 3.4753245969421087,
+    "max_1m_move_time": "2026-08-19 15:27:00+0000",
+    "realised_vol_1m_pct": 51.76884458949639,
+    "realised_vol_daily_pct": 67.81748746644968,
+    "excess_kurtosis_1m": 264.5935674219268,
+    "share_1M_first_hour": 0.022428252611341896,
+    "share_1M_month_mean": 0.024208885203275875,
+    "dedup_key_rows": 42
+  },
+  "charts": [
+    "D_hourly_volume_ratio_hist.png",
+    "E_basis_bps_timeseries.png",
+    "E_pool_vs_binance_price.png",
+    "H_1m_return_hist.png",
+    "H_close_with_max_move.png",
+    "I_hourly_liquidity_vs_position.png"
+  ]
+}

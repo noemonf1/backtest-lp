@@ -1,0 +1,8 @@
+{
+ "note": "app Local CSV path: 1s series -> 1h OHLC, volume=quote_volume=0 (app.py:1131-1138)",
+ "bars": 744,
+ "quote_volume_sum": 0.0,
+ "range_lower": 1584.3405,
+ "range_upper": 2143.5195,
+ "first_close": 1863.93
+}

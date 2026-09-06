@@ -1,0 +1,16 @@
+  [expander 'Fetch data']
+    CAPTION: 'Download missing Binance CSVs into `data/`. Files already on disk are skipped — no network call.'
+    CAPTION: '**Pool swap events** (needed by the swap_level engine). Fetched from the Uniswap v3 subgraph via The Graph gateway — **requires `THEGRAPH_API_KEY` in your env** ([get a free key](https://thegraph.com/studio/)). Slow: ~2–3M swaps/month for ETH/USDC 0.05%, many minutes per month. Cached in `data/`.'
+      [column None]
+      [column None]
+  [expander 'Save / load config']
+HEADER: 'Engine'
+HEADER: 'Data source'
+[expander 'Backtest window']
+  CAPTION: 'Optional. If set, series are clipped to `[start, end]` before the engine sees them. Leave both blank for the full range.'
+  [expander 'Position sizing']
+    CAPTION: '**Repositioning**'
+  [expander 'Hedge policy']
+  [expander 'Cost model']
+  [expander 'Mechanics (advanced)']
+  [expander 'Analysis + Run']

@@ -1,0 +1,46 @@
+loaded swaps=159990 cex_1s=2678341 [2026-08-01 00:00:59+00:00 .. 2026-08-31 23:59:59+00:00] funding=93 in 1.2s
+[    4.0s] default                      net=   -11592 fees=   28956 lvr=   -4134 fund=   1495 hedge=   3540 gas=   540 netAPR= -11.39 trades=  150 inr=98.2
+adapter == direct: False
+[    7.0s] range_0.02                   net=  -129455 fees=  120556 lvr=   -8939 fund=   2111 hedge=  84110 gas=  3780 netAPR=-110.75 trades= 3549 inr=82.3
+[    9.6s] range_0.05                   net=   -45228 fees=   71555 lvr=   -6431 fund=   2303 hedge=  23542 gas=  1620 netAPR= -38.76 trades= 1075 inr=93.2
+[   12.3s] range_0.10                   net=   -14513 fees=   37330 lvr=   -4740 fund=   1504 hedge=   6713 gas=  1080 netAPR= -13.53 trades=  292 inr=90.1
+[   15.0s] range_0.15                   net=   -11592 fees=   28956 lvr=   -4134 fund=   1495 hedge=   3540 gas=   540 netAPR= -11.39 trades=  150 inr=98.2
+[   17.9s] range_0.25                   net=    -7275 fees=   18730 lvr=   -5530 fund=   1837 hedge=   1800 gas=   540 netAPR=  -7.28 trades=   68 inr=98.3
+[   20.9s] range_0.50                   net=    -2436 fees=   10262 lvr=   -3198 fund=   1287 hedge=    342 gas=     0 netAPR=  -2.49 trades=   13 inr=100.0
+[   23.9s] band_0.005                   net=   -21367 fees=   28956 lvr=   -4134 fund=   1483 hedge=  13390 gas=   540 netAPR= -21.02 trades= 3218 inr=98.2
+[   27.1s] band_0.010                   net=   -16633 fees=   28956 lvr=   -4134 fund=   1484 hedge=   8439 gas=   540 netAPR= -16.34 trades= 1094 inr=98.2
+[   30.2s] band_0.020                   net=   -12670 fees=   28956 lvr=   -4134 fund=   1491 hedge=   4873 gas=   540 netAPR=  -12.5 trades=  312 inr=98.2
+[   33.3s] band_0.030                   net=   -11592 fees=   28956 lvr=   -4134 fund=   1495 hedge=   3540 gas=   540 netAPR= -11.39 trades=  150 inr=98.2
+[   36.3s] band_0.050                   net=   -11299 fees=   28956 lvr=   -4134 fund=   1518 hedge=   2509 gas=   540 netAPR= -11.14 trades=   63 inr=98.2
+[   39.4s] band_0.100                   net=    -9327 fees=   28956 lvr=   -4134 fund=   1470 hedge=   1492 gas=   540 netAPR=  -9.27 trades=   15 inr=98.2
+[   50.6s] grid_10                      net=   -11623 fees=   28956 lvr=   -4134 fund=   1463 hedge=   3540 gas=   540 netAPR= -11.42 trades=  150 inr=98.2
+[   55.4s] grid_30                      net=   -11623 fees=   28956 lvr=   -4134 fund=   1463 hedge=   3540 gas=   540 netAPR= -11.42 trades=  150 inr=98.2
+[   58.1s] grid_60                      net=   -11592 fees=   28956 lvr=   -4134 fund=   1495 hedge=   3540 gas=   540 netAPR= -11.39 trades=  150 inr=98.2
+[   59.6s] grid_120                     net=    -9792 fees=   28901 lvr=   -4219 fund=   1512 hedge=   3359 gas=   540 netAPR=  -9.64 trades=  135 inr=98.2
+[   60.3s] grid_300                     net=    -7910 fees=   28963 lvr=   -4234 fund=   1509 hedge=   3221 gas=   540 netAPR=  -7.76 trades=  129 inr=98.2
+[   63.0s] fee_0.0001                   net=   -34756 fees=    5791 lvr=  -27299 fund=   1495 hedge=   3540 gas=   540 netAPR= -34.16 trades=  150 inr=98.2
+[   65.8s] fee_0.0005                   net=   -11592 fees=   28956 lvr=   -4134 fund=   1495 hedge=   3540 gas=   540 netAPR= -11.39 trades=  150 inr=98.2
+[   68.5s] fee_0.0030                   net=   133187 fees=  173735 lvr=  140645 fund=   1495 hedge=   3540 gas=   540 netAPR= 130.89 trades=  150 inr=98.2
+[   71.3s] fee_0.0100                   net=   538568 fees=  579116 lvr=  546026 fund=   1495 hedge=   3540 gas=   540 netAPR= 529.27 trades=  150 inr=98.2
+[   74.2s] capital_100k                 net=    -1115 fees=    2978 lvr=    -431 fund=    149 hedge=    321 gas=    90 netAPR= -10.96 trades=  150 inr=98.2
+[   77.0s] capital_300k                 net=    -3265 fees=    8879 lvr=   -1281 fund=    448 hedge=    986 gas=   190 netAPR= -10.69 trades=  150 inr=98.2
+[   79.7s] capital_1000k                net=   -11592 fees=   28956 lvr=   -4134 fund=   1495 hedge=   3540 gas=   540 netAPR= -11.39 trades=  150 inr=98.2
+[   82.3s] capital_3000k                net=   -41816 fees=   81842 lvr=  -11346 fund=   4484 hedge=  12791 gas=  1540 netAPR=  -13.7 trades=  150 inr=98.2
+[   85.0s] capital_10000k               net=  -209481 fees=  227868 lvr=  -28877 fund=  14946 hedge=  67982 gas=  5040 netAPR= -20.59 trades=  150 inr=98.2
+[   87.6s] leverage_1                   net=   -11592 fees=   28956 lvr=   -4134 fund=   1495 hedge=   3540 gas=   540 netAPR=  -7.61 trades=  150 inr=98.2
+[   90.3s] leverage_2                   net=   -11592 fees=   28956 lvr=   -4134 fund=   1495 hedge=   3540 gas=   540 netAPR=  -9.78 trades=  150 inr=98.2
+[   93.0s] leverage_3                   net=   -11592 fees=   28956 lvr=   -4134 fund=   1495 hedge=   3540 gas=   540 netAPR=  -10.8 trades=  150 inr=98.2
+[   95.6s] leverage_5                   net=   -11592 fees=   28956 lvr=   -4134 fund=   1495 hedge=   3540 gas=   540 netAPR= -11.78 trades=  150 inr=98.2
+[   98.3s] leverage_10                  net=   -11592 fees=   28956 lvr=   -4134 fund=   1495 hedge=   3540 gas=   540 netAPR= -12.65 trades=  150 inr=98.2
+[  100.5s] reposition_off               net=    -8812 fees=    8846 lvr=     782 fund=   1044 hedge=   1085 gas=     0 netAPR=  -8.66 trades=   54 inr=44.5
+[  103.2s] reposition_on                net=   -11592 fees=   28956 lvr=   -4134 fund=   1495 hedge=   3540 gas=   540 netAPR= -11.39 trades=  150 inr=98.2
+[  103.8s] week_1                       net=       29 fees=    3576 lvr=     434 fund=    324 hedge=    365 gas=     0 netAPR=   0.13 trades=   20 inr=100.0
+[  104.5s] week_2                       net=      312 fees=    2664 lvr=     616 fund=    463 hedge=    275 gas=     0 netAPR=   1.35 trades=   16 inr=100.0
+[  105.1s] week_3                       net=    -7778 fees=    8388 lvr=   -2399 fund=    431 hedge=   1540 gas=   540 netAPR=  -34.0 trades=   51 inr=91.9
+[  105.7s] week_4                       net=    -3667 fees=   10751 lvr=   -2377 fund=    841 hedge=   1205 gas=     0 netAPR= -15.44 trades=   60 inr=100.0
+[  108.4s] markout_60                   net=   -11601 fees=   28947 lvr=   36655 fund=   1495 hedge=   3540 gas=   540 netAPR=  -11.4 trades=  150 inr=98.2
+[  111.1s] markout_300                  net=   -11599 fees=   28948 lvr=   35024 fund=   1495 hedge=   3540 gas=   540 netAPR=  -11.4 trades=  150 inr=98.2
+aggTrades loaded: 2678400 1s rows in 61s
+[  174.5s] default_aggtrades            net=   -11601 fees=   28947 lvr=   34360 fund=   1495 hedge=   3540 gas=   540 netAPR=  -11.4 trades=  150 inr=98.2
+[  177.4s] default_nofunding            net=   -13086 fees=   28956 lvr=   -4134 fund=      0 hedge=   3540 gas=   540 netAPR= -12.86 trades=  150 inr=98.2
+ALL DONE in 177s

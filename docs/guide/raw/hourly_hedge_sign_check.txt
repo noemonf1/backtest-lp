@@ -1,0 +1,10 @@
+bars 744 price first/last 1863.93 2466.53
+lp_value t0 932025.1223317583 initial capital 1000000.0 unused at t0 67974.87766824174
+lp_pnl end (lp_value - capital) -36729.4187934543
+engine hedge pnl (realized+unrealized at end) 106112.07688430682
+correct hedge pnl  sum(h[i-1]*(p[i]-p[i-1]))      -45646.46037664928
+engine total_pnl end 69273.68306349112
+total with correct hedge pnl -82484.85419746499
+summary {'backtest_days': 30, 'initial_capital': 1000000.0, 'price_range': (1584.3405, 2143.5195), 'final_lp_value': np.float64(963270.5812065457), 'total_fees_earned': np.float64(0.0), 'total_funding_pnl': np.float64(870.7121597485442), 'total_binance_fees': np.float64(783.7497496879541), 'total_slippage': np.float64(195.93743742198853), 'hedge_realized_pnl': np.float64(106112.07688430682), 'hedge_unrealized_pnl': np.float64(0.0), 'net_pnl': np.float64(69273.68306349112), 'net_pnl_pct': np.float64(6.927368306349112), 'net_apr': np.float64(84.34070912980044), 'rebalance_count': np.int64(339), 'time_in_range': np.float64(60.752688172043015), 'fees_vs_hedge_costs': np.float64(-1850.399346858487), 'fees_cover_hedge': np.False_}
+first reducing trade at 2026-08-02 01:00:00+00:00 hedge before -258.16429806966136 after -238.83186521845752 price 1856.29 avg before 1861.0502148601734 realized jump -92.02653414160474
+timeseries binance_fees column sum 249915.41189267134 vs cum_binance_fees end 783.7497496879541

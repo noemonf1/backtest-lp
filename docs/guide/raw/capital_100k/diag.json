@@ -1,0 +1,106 @@
+{
+ "window": {
+  "grid_start": "2026-08-01 00:00:00+00:00",
+  "grid_end": "2026-08-31 23:59:00+00:00",
+  "grid_steps": 44640,
+  "days": 31.0,
+  "n_swaps_input": 159990,
+  "n_swaps_attributed": 159989
+ },
+ "position_t0": {
+  "entry_eth_price": 1862.68,
+  "opened_at": "2026-08-01 00:00:00+00:00",
+  "tick_lower": 199620,
+  "tick_upper": 202650,
+  "eth_price_lower": 1582.9323100004246,
+  "eth_price_upper": 2143.1224843553855,
+  "liquidity_L": 1.588442366207049e+16,
+  "usdc_at_entry": 53573.31252717558,
+  "eth_at_entry": 24.92467169499024,
+  "eth_value_usd_at_entry": 46426.68747282442,
+  "value_usd_at_entry": 100000.0,
+  "delta_eth_at_entry": 24.92467169499024,
+  "max_delta_eth": 56.124212543719835,
+  "hedge_notional_usd_at_entry": 46426.68747282442,
+  "delta_fraction_of_max": 0.4440983768916906,
+  "band_abs_eth": 1.683726376311595
+ },
+ "positions": [
+  {
+   "opened_at": "2026-08-01 00:00:00+00:00",
+   "entry": 1862.68,
+   "lower": 1582.9323100004246,
+   "upper": 2143.1224843553855,
+   "L": 1.588442366207049e+16,
+   "capital_value_at_open": 100000.0
+  },
+  {
+   "opened_at": "2026-08-20 02:50:00+00:00",
+   "entry": 2251.02,
+   "lower": 1912.2289860441565,
+   "upper": 2588.9552631762463,
+   "L": 1.4923696666187454e+16,
+   "capital_value_at_open": 103280.79217833673
+  }
+ ],
+ "hedge": {
+  "n_trades": 150,
+  "turnover_eth": 284.49227493607344,
+  "turnover_usd": 635376.3677571695,
+  "mean_clip_eth": 1.8966151662404893,
+  "mean_clip_usd": 4235.842451714463,
+  "max_clip_usd": 44168.94891332483,
+  "first_trade_eth": -0.0,
+  "first_trade_usd": 0.0,
+  "cost_spread_and_fee_usd": 317.68818387858477,
+  "cost_impact_usd": 3.6181020826553856,
+  "cost_total_usd": 321.3062859612402,
+  "hedge_pnl_usd": -10141.87906772849,
+  "lp_pnl_usd": 6310.436531186191,
+  "max_abs_hedge_eth": 28.69044595659452,
+  "max_notional_usd": 52832.02170677098
+ },
+ "attribution": {
+  "fee_usd": 2978.0401493822947,
+  "lvr_usd": -431.052670980923,
+  "markout_usd": 3409.092820362901,
+  "n_in_range": 157051,
+  "pct_swaps_in_range": 98.16362374913275,
+  "share_in_range_mean": 0.0027312847853570702,
+  "share_in_range_min": 0.0003311032248493071,
+  "share_in_range_max": 0.004286715609531298,
+  "gross_volume_usd_in_range": 2335160984.3898983,
+  "gross_volume_usd_all": 2422583319.3069572,
+  "pool_fees_total_usd_in_range": 1167990.2658266039,
+  "n_taker_bought_eth": 86529
+ },
+ "reconciliation": {
+  "net_usd_sum": -1115.2730852711584,
+  "decomp_usd_sum": 3147.222122252064,
+  "discrete_hedge_error_usd": -4262.495207523222,
+  "path_lvr_usd": -431.05267098092304,
+  "closed_form_lvr_usd": 3725.7929671492698,
+  "sigma_var_per_step": 5.098845572007115e-07,
+  "sigma_annualised": 0.5176826472508944,
+  "grid_seconds": 60
+ },
+ "funding": {
+  "n_stamps_in_window": 93,
+  "sum_rate": 0.00482802,
+  "funding_usd": 149.4355878500863
+ },
+ "gas": {
+  "gas_usd_sum": 90.0,
+  "n_repositions": 1,
+  "reposition_times": [
+   "2026-08-20 02:50:00+00:00"
+  ]
+ },
+ "capital": {
+  "capital_usd": 100000.0,
+  "margin_usd": 19812,
+  "capital_base_usd": 119812,
+  "leverage": 4.0,
+  "margin_buffer": 1.5
+ }
+}

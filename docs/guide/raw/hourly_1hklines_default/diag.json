@@ -1,0 +1,10 @@
+{
+ "note": "real 1h klines with quote_volume; pool_volume_24h = quote_volume*0.08*24 (backtest.py:442-446); pool_share default 0.001",
+ "bars": 744,
+ "binance_quote_volume_usd": 236750172915.71194,
+ "pool_volume_usd_from_swaps": 2422599886.432647,
+ "pool_over_binance_volume_ratio": 0.010232726999084996,
+ "pool_volume_multiplier_used": 0.08,
+ "pool_share_used": 0.001,
+ "implied_pool_volume_usd": 18940013833.256954
+}

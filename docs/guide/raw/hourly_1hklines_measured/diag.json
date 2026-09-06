@@ -1,0 +1,5 @@
+{
+ "note": "same as hourly_1hklines_default but pool_share = measured mean in-range share of the $1M position",
+ "pool_share_used": 0.026549786111921075,
+ "pool_volume_multiplier_used": 0.08
+}

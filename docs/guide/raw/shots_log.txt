@@ -1,0 +1,41 @@
+2026-09-06T12:26:15Z === LIVE session start ===
+2026-09-06T12:26:26Z opened https://backtest-lp-production.up.railway.app/; title='ETH/USDC Hedged LP Backtest'
+2026-09-06T12:26:27Z screenshot 01_live_backtest_tab.png (73628 bytes)
+2026-09-06T12:26:34Z screenshot 02_live_docs_engines.png (150834 bytes)
+2026-09-06T12:26:37Z screenshot 03_live_docs_data.png (164931 bytes)
+2026-09-06T12:26:40Z screenshot 04_live_docs_inputs.png (164371 bytes)
+2026-09-06T12:26:43Z screenshot 05_live_docs_outputs.png (164926 bytes)
+2026-09-06T12:26:47Z screenshot 06_live_docs_interpreting.png (216218 bytes)
+2026-09-06T12:26:51Z collapsed all expanders
+2026-09-06T12:26:53Z open expanders now: ['Fetch data']
+2026-09-06T12:26:53Z expander 'Fetch data' text: keyboard_arrow_down |  | Fetch data |  | Download missing Binance CSVs into data/. Files already on disk are skipped — no network call. |  | From (YYYY-MM) |  | To (YYYY-MM) |  | CEX price resolution |  | Fetch now |  | Pool swap events (needed by the swap_level engine). Fetched from the Uniswap v3 subgraph via The Graph gateway — requires THEGRAPH_API_KEY in your env (get a free key). Slow: ~2–3M swaps/month for ETH/USDC 0.05%, many minutes per month. Cached in data/. |  | Swaps from (YYYY-MM-DD) |  | Swaps to (YYYY-MM-DD) |  | Fetch swap events |  | Cancel
+2026-09-06T12:26:53Z screenshot 07_live_sidebar_fetch_data.png (96159 bytes)
+2026-09-06T12:26:55Z open expanders now: ['Save / load config']
+2026-09-06T12:26:55Z expander 'Save / load config' text: keyboard_arrow_down |  | Save / load config |  | Download current config (JSON) |  | Load config |  | upload |  | Upload |  | 5MB per file • JSON |  | Reset all to defaults
+2026-09-06T12:26:55Z screenshot 08_live_sidebar_save_load_config.png (76320 bytes)
+2026-09-06T12:26:58Z open expanders now: ['Backtest window']
+2026-09-06T12:26:58Z expander 'Backtest window' text: keyboard_arrow_down |  | Backtest window |  | Optional. If set, series are clipped to [start, end] before the engine sees them. Leave both blank for the full range. |  | Window start (YYYY-MM-DD) |  | Window end (YYYY-MM-DD)
+2026-09-06T12:26:58Z screenshot 09_live_sidebar_backtest_window.png (85023 bytes)
+2026-09-06T12:27:00Z open expanders now: ['Position sizing']
+2026-09-06T12:27:00Z expander 'Position sizing' text: keyboard_arrow_down |  | Position sizing |  | Capital deployed (USD) |  | Range width (± fraction around spot) |  | 0.15 |  | 0.02 |  | 0.75 |  | Repositioning |  | Reposition when out of range? |  | Reposition buffer (hours)
+2026-09-06T12:27:01Z screenshot 10_live_sidebar_position_sizing.png (75999 bytes)
+2026-09-06T12:27:03Z open expanders now: ['Hedge policy']
+2026-09-06T12:27:03Z expander 'Hedge policy' text: keyboard_arrow_down |  | Hedge policy |  | Hedge band (fraction of max delta) |  | 0.03 |  | 0.005 |  | 0.25 |  | Perp leverage |  | Margin buffer (× notional/leverage)
+2026-09-06T12:27:03Z screenshot 11_live_sidebar_hedge_policy.png (77160 bytes)
+2026-09-06T12:27:06Z open expanders now: ['Cost model']
+2026-09-06T12:27:06Z expander 'Cost model' text: keyboard_arrow_down |  | Cost model |  | LP fee tier (bps) |  | Binance taker fee (bps) |  | Half-spread when using klines (bps) |  | Linear impact (bps per $100k clip) |  | Gas per reposition (USD) |  | Swap cost to re-ratio on reposition (bps)
+2026-09-06T12:27:06Z screenshot 12_live_sidebar_cost_model.png (76900 bytes)
+2026-09-06T12:27:08Z open expanders now: ['Mechanics (advanced)']
+2026-09-06T12:27:08Z expander 'Mechanics (advanced)' text: keyboard_arrow_down |  | Mechanics (advanced) |  | Hedge decision grid (s) |  | Fee markout window (s)
+2026-09-06T12:27:08Z screenshot 13_live_sidebar_mechanics_advanced.png (77682 bytes)
+2026-09-06T12:27:11Z open expanders now: ['Analysis + Run']
+2026-09-06T12:27:11Z expander 'Analysis + Run' text: keyboard_arrow_down |  | Analysis + Run |  | Run range × hedge-band sweep |  | Rolling-window distribution (30d) |  | Backtest by month |  | Run label (optional)
+2026-09-06T12:27:11Z screenshot 14_live_sidebar_analysis_plus_run.png (80968 bytes)
+2026-09-06T12:27:14Z Mode select shows: 'Demo (synthetic tape)'; engine: 'swap_level (reference)'
+2026-09-06T12:27:15Z clicked Run backtest
+2026-09-06T12:29:36Z run finished (status widget detached)
+2026-09-06T12:29:45Z live demo metrics: ['Net PnL (USD) |  | $18,308', 'Fees APR |  | 75.17%', 'LVR APR |  | -50.95%', 'Funding APR |  | 3.49% |  | collected (perp paid you)', 'Hedge cost APR |  | -6.24%', 'Fees / LVR |  | 1.475', '% time in range |  | 96.4%', 'Sharpe (daily) |  | 20.28', 'Max drawdown |  | $-1,770']
+2026-09-06T12:29:45Z live demo h3: ['INSUFFICIENT WINDOW (25d < 30d) — net 20.08% APR · engine: swap_level · 25 days', 'Cumulative PnL', 'PnL attribution', 'ETH price and LP delta', 'Fetch data', 'Backtest window', 'Engine', 'LP leg', 'Hedge leg', 'Mechanics (swap_level)', 'LP fee tier — 1 / 5 / 30 / 100 bps.', 'Run controls', 'Verdict banner', 'Top-row metrics', 'Second-row metrics', 'Charts', 'Sweep (swap_level only)', 'Run comparison', 'Assumptions dataclass (source of truth)']
+2026-09-06T12:29:45Z live demo alerts: ['Synthetic tape — GBM prices + simulated swaps. Great for validating the engine and exploring parameter sensitivity, but ']
+2026-09-06T12:29:48Z screenshot 15_live_demo_run.png (178949 bytes)
+2026-09-06T12:29:48Z === LIVE session end ===

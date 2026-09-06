@@ -1,0 +1,10 @@
+app-path klines: 744 2026-08-01 00:00:00+00:00 2026-08-31 23:00:00+00:00 quote_volume sum 0.0
+[   1.4s] hourly_localcsv            net=69274 fees=0 fund=871 hedge=980 netAPR=84.34 trades=339 inr=60.8 days=30
+binance 1h quote_volume sum=236,750,172,916 pool volume=2,422,599,886 ratio=0.01023 measured share=0.02655
+[   1.9s] hourly_1hklines_default    net=72999 fees=3725 fund=871 hedge=980 netAPR=88.88 trades=339 inr=60.8 days=30
+[   2.4s] hourly_1hklines_measured   net=168169 fees=98896 fund=871 hedge=980 netAPR=204.75 trades=339 inr=60.8 days=30
+[   2.9s] hourly_1hklines_measured_ratio net=81923 fees=12650 fund=871 hedge=980 netAPR=99.74 trades=339 inr=60.8 days=30
+[   3.4s] hourly_stress_default      net=65320 fees=0 fund=920 hedge=1260 netAPR=79.53 trades=313 inr=69.8 days=30
+[   3.9s] hourly_stress_30d1         net=63269 fees=0 fund=909 hedge=1329 netAPR=77.03 trades=339 inr=62.8 days=30
+[   4.3s] hourly_stress_30d1_step    net=-15947 fees=0 fund=972 hedge=1358 netAPR=-19.42 trades=317 inr=64.1 days=30
+ALL DONE 4s
