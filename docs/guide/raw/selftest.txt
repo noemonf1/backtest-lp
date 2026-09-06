@@ -1,0 +1,4 @@
+result type BacktestResult ['attribution', 'engine', 'extras', 'summary', 'timeseries']
+summary keys ['days', 'capital_lp_usd', 'margin_usd', 'capital_base_usd', 'range_width', 'hedge_band', 'n_repositions', 'n_hedge_trades', 'pct_time_in_range', 'mean_liquidity_share_pct', 'fees_usd', 'lvr_usd', 'fee_over_lvr', 'funding_usd', 'hedge_cost_usd', 'gas_reposition_usd', 'net_usd', 'fee_apr_pct', 'lvr_apr_pct', 'funding_apr_pct', 'hedge_cost_apr_pct', 'net_apr_pct', 'sharpe', 'max_drawdown_usd', 'discrete_hedge_error_usd', 'closed_form_lvr_usd']
+GOT {'net_usd': 18308, 'fees_usd': 68532, 'lvr_usd': 46454, 'n_hedge_trades': 297, 'n_swaps': 173718}
+SELFTEST PASS wall_s 3.2

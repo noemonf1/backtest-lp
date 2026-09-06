@@ -1,0 +1,17 @@
+{
+ "got": {
+  "net_usd": 18308.0,
+  "fees_usd": 68532.0,
+  "lvr_usd": 46454.0,
+  "n_hedge_trades": 297.0,
+  "n_swaps": 173718.0
+ },
+ "expected": {
+  "net_usd": 18308,
+  "fees_usd": 68532,
+  "lvr_usd": 46454,
+  "n_hedge_trades": 297,
+  "n_swaps": 173718
+ },
+ "pass": true
+}
