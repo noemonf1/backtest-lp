@@ -10,3 +10,21 @@
 2026-09-06T12:36:19Z INFO backtest_app: swap_level_backtest start swaps=159990 cex_len=2678341 capital=1000000 range_w=0.15 hedge_b=0.03
 2026-09-06T12:36:19Z INFO backtest_app: swap_level_backtest done in 0.42s swaps=159990 cex_len=2678341 capital=1000000 range_w=0.15 hedge_b=0.03
 2026-09-06T12:36:19Z INFO backtest_app: backtest_complete engine=swap_level net_apr=-11.39 days=31.0
+2026-09-06T12:48:39Z INFO backtest_app: swap_level_backtest start swaps=159990 cex_len=2678341 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T12:48:40Z INFO backtest_app: swap_level_backtest done in 0.65s swaps=159990 cex_len=2678341 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T12:48:40Z INFO backtest_app: backtest_complete engine=swap_level net_apr=-11.39 days=31.0
+2026-09-06T12:56:33Z INFO backtest_app: swap_level_backtest start swaps=159990 cex_len=2678341 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T12:56:33Z INFO backtest_app: swap_level_backtest done in 0.48s swaps=159990 cex_len=2678341 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T12:56:33Z INFO backtest_app: backtest_complete engine=swap_level net_apr=-11.39 days=31.0
+2026-09-06T13:01:03Z INFO backtest_app: swap_level_backtest start swaps=159990 cex_len=2678341 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T13:01:03Z INFO backtest_app: swap_level_backtest done in 0.66s swaps=159990 cex_len=2678341 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T13:01:03Z INFO backtest_app: backtest_complete engine=swap_level net_apr=-11.39 days=31.0
+2026-09-06T13:02:02Z INFO backtest_app: swap_level_backtest start swaps=159990 cex_len=2678341 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T13:02:02Z INFO backtest_app: swap_level_backtest done in 0.47s swaps=159990 cex_len=2678341 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T13:02:02Z INFO backtest_app: backtest_complete engine=swap_level net_apr=-11.39 days=31.0
+2026-09-06T13:03:47Z INFO backtest_app: swap_level_backtest start swaps=159990 cex_len=2678341 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T13:03:48Z INFO backtest_app: swap_level_backtest done in 0.62s swaps=159990 cex_len=2678341 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T13:03:48Z INFO backtest_app: backtest_complete engine=swap_level net_apr=-11.39 days=31.0
+2026-09-06T13:03:50Z INFO backtest_app: sweep start x_field=hedge_band x_n=5 y_field=range_width y_n=6 total_cells=30
+2026-09-06T13:04:04Z INFO backtest_app: sweep done in 14.67s x_field=hedge_band x_n=5 y_field=range_width y_n=6 total_cells=30
+2026-09-06T13:04:04Z INFO backtest_app: sweep_result cells_completed=30 cancelled=False

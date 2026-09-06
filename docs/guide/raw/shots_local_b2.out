@@ -1,0 +1,38 @@
+2026-09-06T12:56:11Z === LOCAL session B2 start ===
+2026-09-06T12:56:25Z set_select 'Mode' -> 'Real data (files)'; widget now shows 'Mode'
+2026-09-06T12:56:29Z set_select 'CEX price file' -> 'data/ETHUSDT-klines-1m-2026-08.csv'; widget now shows 'CEX price file'
+2026-09-06T12:56:32Z set_select 'Funding file' -> 'data/ETHUSDT-fundingRate-2026-08.csv'; widget now shows 'Funding file'
+2026-09-06T12:56:32Z file selectboxes: {'Swaps file': 'data/swaps_0x88e6a0_2026-08-01_2026-08-31.parquet', 'CEX price file': 'data/ETHUSDT-klines-1m-2026-08.csv', 'Funding file': 'data/ETHUSDT-fundingRate-2026-08.csv'}
+2026-09-06T12:56:32Z clicked Run backtest
+2026-09-06T12:59:01Z run finished (status widget detached)
+2026-09-06T12:59:01Z run 7 took 149s
+2026-09-06T12:59:02Z run 7 alerts: []
+2026-09-06T12:59:09Z run7_default_real_data banner: 'FEES DO NOT COVER THE COST — net -11.39% APR · engine: swap_level · 31 days'
+2026-09-06T12:59:09Z run7_default_real_data metrics: ['Net PnL (USD) |  | $-11,592', 'Fees APR |  | 28.46%', 'LVR APR |  | 4.06%', 'Funding APR |  | 1.47% |  | collected (perp paid you)', 'Hedge cost APR |  | -3.48%', 'Fees / LVR |  | nan', '% time in range |  | 98.2%', 'Sharpe (daily) |  | -5.55', 'Max drawdown |  | $-13,161']
+2026-09-06T12:59:14Z tall viewport 2741
+2026-09-06T12:59:18Z full page png kept in scratch only (19 already exists)
+2026-09-06T12:59:18Z shots 19-25 already captured in session B; skipping crops
+2026-09-06T12:59:42Z screenshot 26_local_run_full_summary_open.png
+2026-09-06T13:00:12Z screenshot 27_local_run_timeseries_open.png
+2026-09-06T13:01:00Z set_checkbox 'Rolling-window distribution (30d)' -> True; now True
+2026-09-06T13:01:04Z clicked Run backtest
+2026-09-06T13:01:20Z run finished (status widget detached)
+2026-09-06T13:01:20Z run 8 took 19s
+2026-09-06T13:01:26Z run8_rolling_on banner: 'FEES DO NOT COVER THE COST — net -11.39% APR · engine: swap_level · 31 days'
+2026-09-06T13:01:26Z run8_rolling_on metrics: ['Net PnL (USD) |  | $-11,592', 'Fees APR |  | 28.46%', 'LVR APR |  | 4.06%', 'Funding APR |  | 1.47% |  | collected (perp paid you)', 'Hedge cost APR |  | -3.48%', 'Fees / LVR |  | nan', '% time in range |  | 98.2%', 'Sharpe (daily) |  | -5.55', 'Max drawdown |  | $-13,161']
+2026-09-06T13:01:38Z run 8 h3s: ['FEES DO NOT COVER THE COST — net -11.39% APR · engine: swap_level · 31 days', 'Cumulative PnL', 'PnL attribution', 'ETH price and LP delta', '30-day rolling APR', 'Run comparison', 'Fetch data', 'Backtest window', 'Engine', 'LP leg', 'Hedge leg', 'Mechanics (swap_level)', 'LP fee tier — 1 / 5 / 30 / 100 bps.', 'Run controls', 'Verdict banner', 'Top-row metrics', 'Second-row metrics', 'Charts', 'Sweep (swap_level only)', 'Run comparison', 'Assumptions dataclass (source of truth)']
+2026-09-06T13:01:40Z rolling table text: ['statAPR (%)min-11.62p25-11.6median-11.59p75-11.58max-11.57std0.03', 'runenginenet APR (%)fees APR (%)LVR APR (%)funding APR (%)hedge cost APR (%)Sharpe% in range1. Run 1swap_level-11.3928.464.061.47-3.48-5.5598.2★ 2. Run 2swap_level-11.3928.464.061.47-3.48-5.5598.2', 'swap_level (reference)hourly (fast fallback)Data granularitySwap-level pool events + 1s CEXHourly OHLC onlyLVRPath-exact from swap-level eventsNot modelledHedge executionHalf-spread + taker fee + linear impactFlat bps slippageRepositioningBuffer-based, gas + swap cost modelledNot modelledData requiredSwap parquet + Binance klines/aggTradesBinance klines onlySpeedSlower (millions of events)FastBest forAccurate PnL attributionQuick parameter exploration', "binance_taker_feefloat0.0004capital_usdfloat1000000.0fee_tierfloat0.0005gas_usd_per_repositionfloat40.0grid_secondsint60half_spread_bpsfloat0.5hedge_bandfloat0.03impact_bps_per_100kfloat0.8leveragefloat4.0lower_priceNoneTypeNonelp_rebalance_swap_bpsfloat5.0margin_bufferfloat1.5markout_secondsint0pool_sharefloat0.001pool_volume_multiplierfloat0.08range_widthfloat0.15rebalance_modestr'threshold'rebalance_period_hint24rebalance_threshold_pctfloat0.05repositionboolTruereposition_buffer_hoursfloat6.0slippage_bpsfloat1.0taker_fee_bpsfloat4.5upper_priceNoneTypeNonefrom_dictmethodNo docs availableto_dictfunctionNo docs available"]
+2026-09-06T13:01:41Z crop 28_local_run_rolling_apr.png box=(288, 2433, 1600, 2868) (22706 bytes)
+2026-09-06T13:01:58Z set_checkbox 'Backtest by month' -> True; now True
+2026-09-06T13:02:03Z clicked Run backtest
+2026-09-06T13:02:22Z run finished (status widget detached)
+2026-09-06T13:02:22Z run 9 took 23s
+2026-09-06T13:02:29Z run9_rolling_bymonth_on banner: 'FEES DO NOT COVER THE COST — net -11.39% APR · engine: swap_level · 31 days'
+2026-09-06T13:02:29Z run9_rolling_bymonth_on metrics: ['Net PnL (USD) |  | $-11,592', 'Fees APR |  | 28.46%', 'LVR APR |  | 4.06%', 'Funding APR |  | 1.47% |  | collected (perp paid you)', 'Hedge cost APR |  | -3.48%', 'Fees / LVR |  | nan', '% time in range |  | 98.2%', 'Sharpe (daily) |  | -5.55', 'Max drawdown |  | $-13,161']
+2026-09-06T13:02:46Z run 9 h3s: ['FEES DO NOT COVER THE COST — net -11.39% APR · engine: swap_level · 31 days', 'Cumulative PnL', 'PnL attribution', 'ETH price and LP delta', '30-day rolling APR', 'Backtest by month', 'Run comparison', 'Fetch data', 'Backtest window', 'Engine', 'LP leg', 'Hedge leg', 'Mechanics (swap_level)', 'LP fee tier — 1 / 5 / 30 / 100 bps.', 'Run controls', 'Verdict banner', 'Top-row metrics', 'Second-row metrics', 'Charts', 'Sweep (swap_level only)', 'Run comparison', 'Assumptions dataclass (source of truth)']
+2026-09-06T13:02:47Z run 9 alerts: ['Loaded data spans only 1 month — need at least 2 for a monthly breakdown. Widen the backtest window.']
+2026-09-06T13:03:05Z crop 29_local_run_by_month.png box=(288, 2972, 1600, 3144) (22972 bytes)
+2026-09-06T13:03:05Z Run comparison h3 count 1
+2026-09-06T13:03:07Z crop 30_local_run_comparison.png box=(288, 3144, 1600, 3993) (55750 bytes)
+2026-09-06T13:03:08Z comparison multiselect: 'Overlay runs (up to 5) |  | 2. Run 2 | ★ 3. Run 3'
+2026-09-06T13:03:08Z === LOCAL session B2 end ===

@@ -1,0 +1,9 @@
+2026-09-06T13:03:22Z === LOCAL session C (sweep) start ===
+2026-09-06T13:03:37Z set_select 'Mode' -> 'Real data (files)'; widget now shows 'Mode'
+2026-09-06T13:03:41Z set_select 'CEX price file' -> 'data/ETHUSDT-klines-1m-2026-08.csv'; widget now shows 'CEX price file'
+2026-09-06T13:03:44Z set_select 'Funding file' -> 'data/ETHUSDT-fundingRate-2026-08.csv'; widget now shows 'Funding file'
+2026-09-06T13:03:44Z files: {'Swaps file': 'data/swaps_0x88e6a0_2026-08-01_2026-08-31.parquet', 'CEX price file': 'data/ETHUSDT-klines-1m-2026-08.csv', 'Funding file': 'data/ETHUSDT-fundingRate-2026-08.csv'}
+2026-09-06T13:03:47Z set_checkbox 'Run range × hedge-band sweep' -> True; now True
+2026-09-06T13:03:47Z checkbox 'Rolling-window distribution (30d)' checked=False
+2026-09-06T13:03:47Z checkbox 'Backtest by month' checked=False
+2026-09-06T13:03:47Z clicked Run backtest

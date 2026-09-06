@@ -232,3 +232,35 @@ def next_h3_after(pg, h3_loc):
 def main_bottom_y(pg):
     b = bbox(pg.locator('[data-testid="stMainBlockContainer"]').first)
     return b["y"] + b["height"]
+
+# ---- crop-from-one-screenshot helpers (avoid repeated renderer work) -------
+from PIL import Image
+SCRATCH = "/tmp/claude-0/-home-user-backtest-lp/6729deee-6da0-540c-97ce-3c2bb3ec6cde/scratchpad"
+os.makedirs(SCRATCH, exist_ok=True)
+
+def tall_once(pg, max_h=16000):
+    hm, hs = content_height(pg)
+    h = int(min(max(max(hm, hs) + 40, 1000), max_h))
+    cur = pg.viewport_size["height"]
+    if abs(cur - h) > 30:
+        pg.set_viewport_size({"width": 1600, "height": h}); time.sleep(2.0)
+    return h
+
+def page_png(pg, tmpname):
+    path = f"{SCRATCH}/{tmpname}"
+    pg.screenshot(path=path, full_page=False)
+    return path
+
+def main_x_range(pg):
+    b = bbox(pg.locator('[data-testid="stMainBlockContainer"]').first)
+    return b["x"], b["width"]
+
+def crop(src, name, y0, y1, pg=None, x0=None, w=None, pad=12):
+    im = Image.open(src)
+    if x0 is None or w is None:
+        x0, w = main_x_range(pg)
+    box = (int(max(x0 - pad, 0)), int(max(y0 - pad, 0)), int(min(x0 + w + pad, im.width)), int(min(y1 + pad, im.height)))
+    out = f"{SHOTS}/{name}"
+    im.crop(box).save(out)
+    log(f"crop {name} box={box} ({os.path.getsize(out)} bytes)")
+    return out

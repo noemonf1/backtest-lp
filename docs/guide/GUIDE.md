@@ -308,11 +308,34 @@ Why a trader should care that both gaps exist. The first gap is a data-quality a
 
 Local app, `swap_level`, `Real data (files)`, swaps parquet, 1-minute klines, funding file, every other control at its default. The same run through the test harness (`raw/apptest/default_ui_metrics.json`) and through Python (`raw/default/summary.json`) gives the same 26 fields (SCENARIOS.md section 1).
 
-<!--SHOTS:results-->
+![The full results page of the default run on the local app: red verdict banner, capital-base caption, nine metric tiles, download buttons, Cumulative PnL, PnL attribution, ETH price and LP delta, and the two collapsed expanders.](screenshots/19_local_run_default_full.png)
+
+![Verdict banner and capital-base caption of the default run.](screenshots/20_local_run_verdict_banner.png)
+
+![The nine metric tiles of the default run.](screenshots/21_local_run_metric_tiles.png)
+
+![Cumulative PnL chart of the default run.](screenshots/22_local_run_cumulative_pnl.png)
+
+![PnL attribution, Cumulative tab: fees, −LVR, funding, −hedge cost, −gas.](screenshots/23_local_run_attribution_cumulative.png)
+
+![PnL attribution, Daily bars tab.](screenshots/24_local_run_attribution_daily_bars.png)
+
+![ETH price and LP delta section: the grid price, then lp_delta against hedge_delta.](screenshots/25_local_run_eth_price_lp_delta.png)
+
+![Full summary expander opened: the 26 summary fields as JSON.](screenshots/26_local_run_full_summary_open.png)
+
+![Timeseries (first 500 rows) expander opened: the 60-second grid frame.](screenshots/27_local_run_timeseries_open.png)
+
+![30-day rolling APR section after a second run with the rolling option on: two windows, all at −11.6%.](screenshots/28_local_run_rolling_apr.png)
+
+![Backtest by month section: the one-month info message.](screenshots/29_local_run_by_month.png)
+
+![Run comparison section with two identical runs overlaid and the KPI table.](screenshots/30_local_run_comparison.png)
+
 
 ### 7.1 Verdict banner and capital base
 
-`FEES DO NOT COVER THE COST — net -11.39% APR · engine: swap_level · 31 days`. Red because `net_apr_pct` ≤ 0 (app.py:1263-1268). The day count is `(last grid row − first) / 86400` = 31.0. Below it: `Capital base = LP $1,000,000 + hedge margin $198,120 = $1,198,120 (denominator for all APRs below)`. The margin is the peak perp notional over the month, 528,320 USD when the short reached 286.9 ETH at 18:46 UTC on Aug 1, near the month's low, divided by 4x leverage and multiplied by the 1.5 buffer. If the window were under 30 days the banner would read `INSUFFICIENT WINDOW` in orange instead (app.py:1259-1262), which is what every weekly run in section 8.10 shows.
+`FEES DO NOT COVER THE COST — net -11.39% APR · engine: swap_level · 31 days`. Red because `net_apr_pct` ≤ 0 (app.py:1263-1268). The day count is `(last grid row − first) / 86400` = 31.0. Below it: `Capital base = LP $1,000,000 + hedge margin $198,120 = $1,198,120 (denominator for all APRs below)`. On screen the words "hedge margin" render in an italic serif face because the app's Markdown treats the two dollar signs in that caption as a LaTeX span (app.py:1281-1284); the numbers are unaffected. The margin is the peak perp notional over the month, 528,320 USD when the short reached 286.9 ETH at 18:46 UTC on Aug 1, near the month's low, divided by 4x leverage and multiplied by the 1.5 buffer. If the window were under 30 days the banner would read `INSUFFICIENT WINDOW` in orange instead (app.py:1259-1262), which is what every weekly run in section 8.10 shows.
 
 ### 7.2 The nine tiles
 
