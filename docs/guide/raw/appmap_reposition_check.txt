@@ -1,0 +1,8 @@
+n_repositions: 13 gas_reposition_usd: 7020
+repo 1 @ 2024-01-01 10:06:00+00:00: price=2915.07 old_value=978,321.08 new_value=977,791.92 writedown=529.16 gas_usd_col=540.00
+repo 2 @ 2024-01-01 21:48:00+00:00: price=2981.60 old_value=982,756.74 new_value=982,225.36 writedown=531.38 gas_usd_col=540.00
+repo 3 @ 2024-01-03 02:51:00+00:00: price=3067.50 old_value=987,427.05 new_value=986,893.34 writedown=533.71 gas_usd_col=540.00
+repo 4 @ 2024-01-05 03:17:00+00:00: price=2976.95 old_value=962,750.23 new_value=962,228.86 writedown=521.38 gas_usd_col=540.00
+repo 5 @ 2024-01-05 09:05:00+00:00: price=3063.19 old_value=967,112.66 new_value=966,589.11 writedown=523.56 gas_usd_col=540.00
+sum writedown over all repositions = 6,763.26; sum gas_usd column = 7,020.00
+Both are subtracted from net_usd: writedown via lp_pnl_usd (line 699-701), gas_usd via line 706.

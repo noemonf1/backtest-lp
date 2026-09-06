@@ -1,0 +1,18 @@
+2026-09-06 12:04:39.351 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-09-06 12:04:40.183 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-09-06 12:04:40.492 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-09-06 12:04:41.173 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-09-06 12:04:41.715 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-09-06 12:04:41.950 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-09-06T12:04:43Z INFO backtest_app: swap_level_backtest start swaps=34706 cex_len=432000 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T12:04:43Z INFO backtest_app: swap_level_backtest done in 0.09s swaps=34706 cex_len=432000 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T12:04:43Z INFO backtest_app: backtest_complete engine=swap_level net_apr=21.28 days=5.0
+2026-09-06T12:04:44Z INFO backtest_app: sweep start x_field=hedge_band x_n=5 y_field=range_width y_n=6 total_cells=30
+2026-09-06T12:04:46Z INFO backtest_app: sweep done in 2.89s x_field=hedge_band x_n=5 y_field=range_width y_n=6 total_cells=30
+2026-09-06T12:04:46Z INFO backtest_app: sweep_result cells_completed=30 cancelled=False
+2026-09-06T12:04:47Z INFO backtest_app: swap_level_backtest start swaps=34706 cex_len=432000 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T12:04:47Z INFO backtest_app: swap_level_backtest done in 0.09s swaps=34706 cex_len=432000 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T12:04:47Z INFO backtest_app: backtest_complete engine=swap_level net_apr=21.28 days=5.0
+2026-09-06T12:04:47Z INFO backtest_app: sweep start x_field=hedge_band x_n=5 y_field=range_width y_n=6 total_cells=30
+2026-09-06T12:04:50Z INFO backtest_app: sweep done in 2.75s x_field=hedge_band x_n=5 y_field=range_width y_n=6 total_cells=30
+2026-09-06T12:04:50Z INFO backtest_app: sweep_result cells_completed=30 cancelled=False

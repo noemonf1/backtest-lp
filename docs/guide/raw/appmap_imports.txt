@@ -1,0 +1,72 @@
+app.py:16:from __future__ import annotations
+app.py:18:import contextlib
+app.py:19:import json
+app.py:20:import logging
+app.py:21:import os
+app.py:22:import time
+app.py:23:import traceback
+app.py:24:from copy import deepcopy
+app.py:25:from pathlib import Path
+app.py:27:import numpy as np
+app.py:28:import pandas as pd
+app.py:29:import plotly.graph_objects as go
+app.py:30:import streamlit as st
+app.py:32:import backtest as bt
+backtest.py:22:from __future__ import annotations
+backtest.py:24:import dataclasses
+backtest.py:25:from dataclasses import dataclass, field
+backtest.py:26:from pathlib import Path
+backtest.py:27:from typing import Optional
+backtest.py:29:import numpy as np
+backtest.py:30:import pandas as pd
+backtest.py:32:import run_claude
+backtest.py:33:from kimi.uniswap_delta_hedge_backtest import (
+run_claude.py:60:from __future__ import annotations
+run_claude.py:62:import argparse
+run_claude.py:63:import io
+run_claude.py:64:import math
+run_claude.py:65:import os
+run_claude.py:66:import sys
+run_claude.py:67:import zipfile
+run_claude.py:68:from dataclasses import asdict, dataclass, field
+run_claude.py:69:from datetime import datetime, timezone
+run_claude.py:70:from typing import Iterable, Optional
+run_claude.py:72:import numpy as np
+run_claude.py:73:import pandas as pd
+run_kimi.py:10:import json
+run_kimi.py:11:import time
+run_kimi.py:12:from dataclasses import dataclass
+run_kimi.py:13:from datetime import datetime, timedelta
+run_kimi.py:14:from typing import Literal, Optional, Tuple
+run_kimi.py:16:import numpy as np
+run_kimi.py:17:import pandas as pd
+run_kimi.py:18:import requests
+kimi/demo_backtest.py:8:import pandas as pd
+kimi/demo_backtest.py:9:import numpy as np
+kimi/demo_backtest.py:10:import matplotlib.pyplot as plt
+kimi/demo_backtest.py:11:from dataclasses import dataclass
+kimi/demo_backtest.py:12:from typing import Tuple, Literal
+kimi/demo_backtest.py:13:from datetime import datetime, timedelta
+kimi/uniswap_delta_hedge_backtest.py:10:import pandas as pd
+kimi/uniswap_delta_hedge_backtest.py:11:import numpy as np
+kimi/uniswap_delta_hedge_backtest.py:12:import requests
+kimi/uniswap_delta_hedge_backtest.py:13:import time
+kimi/uniswap_delta_hedge_backtest.py:14:from dataclasses import dataclass
+kimi/uniswap_delta_hedge_backtest.py:15:from typing import Optional, Tuple, Literal
+kimi/uniswap_delta_hedge_backtest.py:16:from datetime import datetime, timedelta
+kimi/uniswap_delta_hedge_backtest.py:17:import json
+kimi/uniswap_real_data_backtest.py:13:import pandas as pd
+kimi/uniswap_real_data_backtest.py:14:import numpy as np
+kimi/uniswap_real_data_backtest.py:15:import requests
+kimi/uniswap_real_data_backtest.py:16:import time
+kimi/uniswap_real_data_backtest.py:17:from dataclasses import dataclass
+kimi/uniswap_real_data_backtest.py:18:from typing import Optional, Tuple, Literal
+kimi/uniswap_real_data_backtest.py:19:from datetime import datetime, timedelta
+kimi/uniswap_real_data_backtest.py:20:import json
+kimi/uniswap_real_data_fetcher.py:12:import requests
+kimi/uniswap_real_data_fetcher.py:13:import pandas as pd
+kimi/uniswap_real_data_fetcher.py:14:import numpy as np
+kimi/uniswap_real_data_fetcher.py:15:from datetime import datetime, timedelta
+kimi/uniswap_real_data_fetcher.py:16:import time
+kimi/uniswap_real_data_fetcher.py:17:from typing import Optional, List
+./Makefile:9:	.venv/bin/python run_claude.py --demo --demo-days 25 --sweep --out run1

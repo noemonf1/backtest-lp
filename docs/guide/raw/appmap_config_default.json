@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "assumptions": {
+    "capital_usd": 1000000.0,
+    "range_width": 0.15,
+    "lower_price": null,
+    "upper_price": null,
+    "reposition": true,
+    "reposition_buffer_hours": 6.0,
+    "gas_usd_per_reposition": 40.0,
+    "lp_rebalance_swap_bps": 5.0,
+    "hedge_band": 0.03,
+    "rebalance_threshold_pct": 0.05,
+    "rebalance_mode": "threshold",
+    "rebalance_period_h": 24,
+    "taker_fee_bps": 4.5,
+    "binance_taker_fee": 0.0004,
+    "half_spread_bps": 0.5,
+    "impact_bps_per_100k": 0.8,
+    "slippage_bps": 1.0,
+    "leverage": 4.0,
+    "margin_buffer": 1.5,
+    "grid_seconds": 60,
+    "markout_seconds": 0,
+    "pool_share": 0.001,
+    "pool_volume_multiplier": 0.08,
+    "fee_tier": 0.0005
+  }
+}

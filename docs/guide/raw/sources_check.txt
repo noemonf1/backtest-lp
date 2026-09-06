@@ -1,0 +1,60 @@
+== 1. TickMath: floor(log(price)/log(1.0001)) == tick on the real pool file ==
+rows: 721 columns: ['volumeUSD', 'feesUSD', 'liquidity', 'sqrtPrice', 'tick', 'tvlUSD', 'txCount']
+2026-08-01 00:00:00+00:00  sqrtPrice=1.835438e+33  raw_price=5.366862e+08  eth_price=1863.29  tick_file=201019  tick_code=201019  tick_formula=201019  match=True
+2026-08-01 01:00:00+00:00  sqrtPrice=1.834888e+33  raw_price=5.363644e+08  eth_price=1864.40  tick_file=201013  tick_code=201013  tick_formula=201013  match=True
+2026-08-05 04:00:00+00:00  sqrtPrice=1.834277e+33  raw_price=5.360070e+08  eth_price=1865.65  tick_file=201006  tick_code=201006  tick_formula=201006  match=True
+2026-08-16 00:00:00+00:00  sqrtPrice=1.826856e+33  raw_price=5.316787e+08  eth_price=1880.84  tick_file=200925  tick_code=200925  tick_formula=200925  match=True
+2026-08-21 20:00:00+00:00  sqrtPrice=1.604016e+33  raw_price=4.098814e+08  eth_price=2439.73  tick_file=198323  tick_code=198323  tick_formula=198323  match=True
+2026-08-31 00:00:00+00:00  sqrtPrice=1.607956e+33  raw_price=4.118976e+08  eth_price=2427.79  tick_file=198372  tick_code=198372  tick_formula=198372  match=True
+all rows: mismatches=0 of 721 (sample match=True)
+also: 1.0001**tick vs (sqrtPrice/2^96)^2 ratio at row0 = 0.9999708792811294
+
+== 2. Amount formulas: code vs SqrtPriceMath.sol vs Elsts calculate_x/calculate_y ==
+build_position(P=3000.0, +-15%): tick_lower=194850 tick_upper=197890 L=1.247683e+17 eth_lower=2547.86 eth_upper=3452.99
+tick_lower % 10 = 0  tick_upper % 10 = 0
+value_usd(P0) = 1000000.000000  (target capital 1000000)
+P= 2400.0 in_range=False  amt0(code)=0.000000e+00 x(Elsts)=0.000000e+00 amt0(Sol)=0.000000e+00 relerr=0.0e+00  amt1(code)=3.485388e+20 y(Elsts)=3.485388e+20 amt1(Sol)=3.485388e+20 relerr=0.0e+00  L_back(Elsts get_liquidity)=1.247683e+17 relerr=0.0e+00
+P= 2600.0 in_range=True  amt0(code)=6.410943e+10 x(Elsts)=6.410943e+10 amt0(Sol)=6.410943e+10 relerr=4.4e-15  amt1(code)=3.236304e+20 y(Elsts)=3.236304e+20 amt1(Sol)=3.236304e+20 relerr=0.0e+00  L_back(Elsts get_liquidity)=1.247683e+17 relerr=1.3e-16
+P= 3000.0 in_range=True  amt0(code)=5.359906e+11 x(Elsts)=5.359906e+11 amt0(Sol)=5.359906e+11 relerr=2.3e-16  amt1(code)=1.546698e+20 y(Elsts)=1.546698e+20 amt1(Sol)=1.546698e+20 relerr=0.0e+00  L_back(Elsts get_liquidity)=1.247683e+17 relerr=0.0e+00
+P= 3400.0 in_range=True  amt0(code)=9.773288e+11 x(Elsts)=9.773288e+11 amt0(Sol)=9.773288e+11 relerr=2.5e-16  amt1(code)=1.648144e+19 y(Elsts)=1.648144e+19 amt1(Sol)=1.648144e+19 relerr=0.0e+00  L_back(Elsts get_liquidity)=1.247683e+17 relerr=0.0e+00
+P= 3600.0 in_range=False  amt0(code)=1.033801e+12 x(Elsts)=1.033801e+12 amt0(Sol)=1.033801e+12 relerr=1.2e-16  amt1(code)=0.000000e+00 y(Elsts)=0.000000e+00 amt1(Sol)=0.000000e+00 relerr=0.0e+00  L_back(Elsts get_liquidity)=1.247683e+17 relerr=0.0e+00
+
+== 3. LVR closed form: |V''(P)| analytic vs np.gradient used in _closed_form_lvr ==
+L_raw=1.247683e+17  L_human = L_raw*sqrt(1e12)/1e18 = 124768.274074
+path: n=20000 steps of 60s, min P=2710.5 max P=3454.6, steps in range=19998
+np.gradient finite values: 20000 of 20000; non-finite: 0
+in-range median |gamma_fd|/gamma_analytic = 1.0000
+in-range 5th/95th pct of that ratio = [0.99999919 1.00000079]
+var per 60s step = 7.975e-07  -> annualised sigma = sqrt(var*525600) = 0.6474 (input 0.65)
+closed-form LVR, finite-difference gamma (code) = 27603.10 USD
+closed-form LVR, analytic gamma L/(2P^1.5)      = 27601.79 USD   ratio code/analytic = 1.0000
+_closed_form_lvr() on the same frame = 27603.10 USD
+with 3 repeated consecutive prices: non-finite gradient values = 4 (nan=4, inf=0); nansum result finite? True
+with 2 repeated consecutive prices: non-finite = 2 (nan=2, inf=0); nansum result finite? True
+
+== 4. Path LVR sign and fee-net execution (attribute_swaps arithmetic on one synthetic swap) ==
+taker buys 1 ETH for 3001 USDC gross; fee=0.0005; CEX=3002.0
+  fee_usd (gross USDC in * fee) = 1.5005
+  fee-net USDC reaching reserves = 2999.4995; p_exec = 2999.4995; lvr_usd (share=1) = 2.5005
+  gross markout = 1*(3002-3001) = 1.0000; fee - lvr = -1.0000
+
+== 5. Binance USD-M funding file ==
+columns: ['calc_time', 'funding_interval_hours', 'last_funding_rate']
+rows: 93  first: 2026-08-01 00:00:00.001000+00:00  last: 2026-08-31 16:00:00.001000+00:00
+distinct funding_interval_hours: [8]
+distinct times of day (floored to the second) and counts:
+t
+00:00:00    31
+08:00:00    31
+16:00:00    31
+max |calc_time - nearest 8h boundary| in ms: 26
+rows dated in August 2026: 93 (31 days * 3 = 93)
+mean last_funding_rate (Aug 2026) = 0.00005191
+annualised mean = rate * 3 * 365 = 0.056846 = 5.6846%
+min=-0.00000869 max=0.00010000 n_negative=5
+load_funding() index head: [Timestamp('2026-08-01 00:00:00.001000+0000', tz='UTC'), Timestamp('2026-08-01 08:00:00+0000', tz='UTC'), Timestamp('2026-08-01 16:00:00+0000', tz='UTC')]
+
+== 6. Funding sign as applied in simulate_hedge: cash = -(hedge*p) * rate ==
+hedge=-100 ETH (short), p=3000, rate=+0.0001: funding_usd=+30.00
+hedge=-100 ETH (short), p=3000, rate=-0.0001: funding_usd=-30.00
+hedge=+100 ETH (long), p=3000, rate=+0.0001: funding_usd=-30.00

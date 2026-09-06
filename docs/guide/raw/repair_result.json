@@ -1,0 +1,1882 @@
+{
+ "summary": {
+  "raw_rows": 159798,
+  "page_boundaries": 155,
+  "seconds_probed": 310,
+  "rows_added": 192,
+  "fraction_added": 0.0012015169151053204,
+  "final_rows": 159990,
+  "first": "2026-08-01 00:00:47+00:00",
+  "last": "2026-08-31 23:59:59+00:00",
+  "stock_dedup_key_would_drop": 21,
+  "hourly_file": "/home/user/backtest-lp/data/pool_hourly_0x88e6a0_2026-08-01_2026-09-01.parquet",
+  "hourly_rows": 745,
+  "hourly_first": "2026-08-01 00:00:00+00:00",
+  "hourly_last": "2026-09-01 00:00:00+00:00",
+  "swap_hours_missing_in_hourly": 0,
+  "final_path": "/home/user/backtest-lp/data/swaps_0x88e6a0_2026-08-01_2026-08-31.parquet",
+  "wall_seconds": 266.2
+ },
+ "per_second": {
+  "1785577042": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785577043": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785603094": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785603095": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1785619030": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785619031": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 4,
+   "rows_already_held": 0,
+   "rows_added": 2
+  },
+  "1785645286": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785645287": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785677206": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785677207": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785694174": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785694175": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1785713050": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785713051": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785734578": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785734579": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785754066": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785754067": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785770278": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785770279": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785784282": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785784283": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1785803650": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785803651": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 14,
+   "rows_already_held": 0,
+   "rows_added": 9
+  },
+  "1785825262": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785825263": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785849574": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785849575": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785867082": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785867083": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785894562": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785894563": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 5,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1785922570": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785922571": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1785941626": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785941627": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785951346": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785951347": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 2
+  },
+  "1785964834": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785964835": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1785986686": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1785986687": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1786011454": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786011455": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 4,
+   "rows_already_held": 0,
+   "rows_added": 3
+  },
+  "1786030714": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786030715": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786049410": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786049411": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786076242": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786076243": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786103806": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786103807": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1786116634": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786116635": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786133386": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786133387": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786164946": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786164947": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786194070": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786194071": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786211866": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786211867": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 5,
+   "rows_already_held": 0,
+   "rows_added": 3
+  },
+  "1786232794": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786232795": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786268578": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786268579": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786303822": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786303823": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786323694": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786323695": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786349566": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786349567": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786372954": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786372955": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786385230": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786385231": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1786409578": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786409579": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786438210": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786438211": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1786460578": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786460579": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786469974": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786469975": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 6,
+   "rows_already_held": 0,
+   "rows_added": 2
+  },
+  "1786491898": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786491899": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786518274": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786518275": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786539370": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786539371": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786569778": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786569779": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786595758": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786595759": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786624138": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786624139": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786641442": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786641443": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786671250": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786671251": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1786699906": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786699907": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 4,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1786721638": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786721639": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 5,
+   "rows_already_held": 0,
+   "rows_added": 3
+  },
+  "1786747786": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786747787": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786795270": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786795271": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786839586": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786839587": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786917778": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786917779": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786942546": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786942547": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786969870": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786969871": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 12,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1786988206": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1786988207": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787014834": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787014835": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787043634": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787043635": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787066158": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787066159": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787088310": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787088311": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787118022": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787118023": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787143738": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787143739": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787151934": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787151935": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 32,
+   "rows_already_held": 0,
+   "rows_added": 30
+  },
+  "1787155630": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787155631": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 4,
+   "rows_already_held": 0,
+   "rows_added": 3
+  },
+  "1787164006": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787164007": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787172802": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787172803": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 9,
+   "rows_already_held": 0,
+   "rows_added": 6
+  },
+  "1787176006": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787176007": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 4,
+   "rows_already_held": 0,
+   "rows_added": 3
+  },
+  "1787184178": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787184179": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787195614": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787195615": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787210650": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787210651": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787226586": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787226587": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787237566": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787237567": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787246866": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787246867": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787260834": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787260835": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787274274": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787274275": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 4,
+   "rows_already_held": 0,
+   "rows_added": 3
+  },
+  "1787283898": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787283899": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787296510": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787296511": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 11,
+   "rows_already_held": 0,
+   "rows_added": 2
+  },
+  "1787303914": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787303915": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787313610": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787313611": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787325238": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787325239": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787333914": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787333915": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 7,
+   "rows_already_held": 0,
+   "rows_added": 4
+  },
+  "1787338474": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787338475": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 9,
+   "rows_already_held": 0,
+   "rows_added": 2
+  },
+  "1787345026": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787345027": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 7,
+   "rows_already_held": 0,
+   "rows_added": 5
+  },
+  "1787350126": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787350127": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 7,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787357254": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787357255": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 5,
+   "rows_already_held": 0,
+   "rows_added": 4
+  },
+  "1787367322": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787367323": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787376430": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787376431": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787387878": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787387879": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 5,
+   "rows_already_held": 0,
+   "rows_added": 2
+  },
+  "1787399410": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787399411": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787415010": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787415011": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787429170": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787429171": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 2
+  },
+  "1787446450": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787446451": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 4,
+   "rows_already_held": 0,
+   "rows_added": 3
+  },
+  "1787455078": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787455079": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787466082": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787466083": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 5,
+   "rows_already_held": 0,
+   "rows_added": 3
+  },
+  "1787481610": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787481611": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 4,
+   "rows_already_held": 0,
+   "rows_added": 2
+  },
+  "1787493730": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787493731": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787506354": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787506355": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787520838": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787520839": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787530846": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787530847": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787542354": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787542355": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787562790": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787562791": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 11,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787572918": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787572919": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787581822": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787581823": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787592922": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787592923": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787611702": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787611703": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787624338": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787624339": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 2
+  },
+  "1787634970": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787634971": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787647246": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787647247": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787660614": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787660615": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787671570": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787671571": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787686114": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787686115": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787700382": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787700383": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 15,
+   "rows_already_held": 0,
+   "rows_added": 10
+  },
+  "1787712910": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787712911": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 5,
+   "rows_already_held": 0,
+   "rows_added": 4
+  },
+  "1787731486": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787731487": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 8,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787745358": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787745359": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787757022": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787757023": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 8,
+   "rows_already_held": 0,
+   "rows_added": 3
+  },
+  "1787766430": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787766431": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787775802": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787775803": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 13,
+   "rows_already_held": 0,
+   "rows_added": 6
+  },
+  "1787787382": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787787383": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787796286": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787796287": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787812330": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787812331": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 8,
+   "rows_already_held": 0,
+   "rows_added": 2
+  },
+  "1787823226": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787823227": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787834890": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787834891": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 4,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787844910": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787844911": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 7,
+   "rows_already_held": 0,
+   "rows_added": 2
+  },
+  "1787855662": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787855663": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787864002": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787864003": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 10,
+   "rows_already_held": 0,
+   "rows_added": 2
+  },
+  "1787877850": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787877851": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 11,
+   "rows_already_held": 0,
+   "rows_added": 7
+  },
+  "1787901094": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787901095": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787914498": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787914499": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 4,
+   "rows_already_held": 0,
+   "rows_added": 3
+  },
+  "1787926522": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787926523": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 9,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787935726": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787935727": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 7,
+   "rows_already_held": 0,
+   "rows_added": 5
+  },
+  "1787945182": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787945183": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 10,
+   "rows_already_held": 0,
+   "rows_added": 4
+  },
+  "1787957758": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787957759": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1787972866": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787972867": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787996590": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1787996591": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 11,
+   "rows_already_held": 0,
+   "rows_added": 8
+  },
+  "1788015934": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788015935": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788038026": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788038027": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788058870": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788058871": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788077302": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788077303": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788089122": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788089123": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 4,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788095950": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788095951": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 6,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788106438": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788106439": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 7,
+   "rows_already_held": 0,
+   "rows_added": 2
+  },
+  "1788114118": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788114119": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 8,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788121930": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788121931": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788132166": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788132167": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 4,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788139138": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788139139": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 5,
+   "rows_already_held": 0,
+   "rows_added": 2
+  },
+  "1788154858": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788154859": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1788163882": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788163883": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 3,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788179302": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788179303": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788189250": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788189251": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 1,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788198982": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788198983": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 2,
+   "rows_already_held": 0,
+   "rows_added": 1
+  },
+  "1788209626": {
+   "is_boundary": false,
+   "subgraph_rows_at_second": 0,
+   "rows_already_held": 0,
+   "rows_added": 0
+  },
+  "1788209627": {
+   "is_boundary": true,
+   "subgraph_rows_at_second": 4,
+   "rows_already_held": 0,
+   "rows_added": 0
+  }
+ }
+}

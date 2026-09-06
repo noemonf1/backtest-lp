@@ -1,0 +1,7 @@
+Local-CSV-shaped klines, empty funding:
+  fees_usd = 0 (pool_share=0.01, multiplier=0.5)
+  funding_usd = 2957  funding_apr_pct = 5.68
+  with explicit zero funding: funding_usd = 0
+  with quote_volume=5e7 per bar: fees_usd = 58625
+  4h bars, per-bar quote_volume = 4x: fees_usd = 232000  (1h gave 58625 )
+  ratio 4h/1h fees = 3.96  (same total volume, so a correct model gives ~1.0)

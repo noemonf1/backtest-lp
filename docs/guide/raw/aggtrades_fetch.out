@@ -1,0 +1,3 @@
+  GET https://data.binance.vision/data/futures/um/monthly/aggTrades/ETHUSDT/ETHUSDT-aggTrades-2026-08.zip
+{'aggTrades': {'paths': ['/home/user/backtest-lp/data/ETHUSDT-aggTrades-2026-08.csv'], 'downloaded': ['/home/user/backtest-lp/data/ETHUSDT-aggTrades-2026-08.csv'], 'skipped': []}}
+wall s 69.0

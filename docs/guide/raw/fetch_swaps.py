@@ -100,9 +100,15 @@ def fetch_slice(idx: int, ts_gte: int, ts_lt: int) -> pd.DataFrame:
                     "block_number": int(s["transaction"]["blockNumber"]),
                     "block_time": int(s["timestamp"]),
                     "log_index": int(s["logIndex"]),
-                    "amount0": int(round(float(s["amount0"]) * scale0)),
-                    "amount1": int(round(float(s["amount1"]) * scale1)),
-                    "sqrt_price_x96": int(s["sqrtPriceX96"]),
+                    # stock code stores Python ints here (backtest.py:782-784); raw
+                    # amount1 (18 dec) and sqrtPriceX96 exceed int64 and pyarrow
+                    # raises OverflowError on to_parquet. run_claude.normalise_swaps
+                    # casts all three to float64 anyway (run_claude.py:269-270),
+                    # so float64 is stored; the exact sqrtPriceX96 string is kept.
+                    "amount0": float(s["amount0"]) * scale0,
+                    "amount1": float(s["amount1"]) * scale1,
+                    "sqrt_price_x96": float(int(s["sqrtPriceX96"])),
+                    "sqrt_price_x96_str": s["sqrtPriceX96"],
                     "tick": int(s["tick"]),
                 }
             )

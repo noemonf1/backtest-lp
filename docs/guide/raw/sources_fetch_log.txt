@@ -1,0 +1,26 @@
+Source fetch log, 2026-09-06 UTC. Each URL was requested once with: curl -sS -L -o <file> -w '%{http_code}'
+A status of 000 means the TLS CONNECT was rejected by the egress proxy before any HTTP response.
+
+https://uniswap.org/whitepaper-v3.pdf                                                           000 (connect_rejected)
+https://arxiv.org/abs/2208.06046                                                                000 (connect_rejected)
+https://arxiv.org/pdf/2208.06046                                                                000 (connect_rejected)
+https://export.arxiv.org/pdf/2208.06046                                                         000 (connect_rejected)
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4811111                                     000 (connect_rejected)
+https://atiselsts.github.io/pdfs/uniswap-v3-liquidity-math.pdf                                  000 (connect_rejected)
+https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Get-Funding-Rate-History 000 (connect_rejected)
+https://www.binance.com/en/support/faq/360033525031                                             000 (connect_rejected)
+
+git clone --depth 1 https://github.com/Uniswap/v3-core            -> OK, HEAD d0831dc6b8a318df3872b6d68f6de135c9f3ec29 (2026-04-30)
+git clone --depth 1 https://github.com/atiselsts/uniswap-v3-liquidity-math -> OK, HEAD a1e991d58b43e224d6d2df7a59192c31cd0bf173 (2023-07-11)
+
+Proxy relay failures recorded for these hosts (curl $HTTPS_PROXY/__agentproxy/status, field recentRelayFailures):
+  (none retained) The status endpoint keeps only the last 20 relay failures. By the time this log was written the
+  buffer held 20 entries for error.thegraph.com:443 (oldest 2026-09-06T12:07:11Z) from an unrelated process, so the
+  earlier entries had rolled off. The harness notice printed at fetch time read:
+    "7 connections through the agent proxy failed:
+     - www.binance.com:443 - connect_rejected (the egress proxy denied the CONNECT (organization policy) ...)
+     - developers.binance.com:443 - connect_rejected
+     - atiselsts.github.io:443 - connect_rejected
+     - and 3 more"
+  The three unnamed hosts are uniswap.org, arxiv.org and papers.ssrn.com (the remaining URLs in the list above).
+  The export.arxiv.org retry was a separate later request and also returned 000.

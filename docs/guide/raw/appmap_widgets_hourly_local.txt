@@ -1,0 +1,52 @@
+(flex_container)
+  [expander] label='Fetch data'
+    (caption) 'Download missing Binance CSVs into `data/`. Files already on disk are skipped — no network call.'
+    <text_input> label='From (YYYY-MM)' key='fetch_start' value='2024-01' {'help': 'Earliest month to download (inclusive). Binance packages one file per calendar month; already-cached months are skipped.', 'placeholder': '', 'default': '2024-01', 'type': 0}
+    <text_input> label='To (YYYY-MM)' key='fetch_end' value='2024-01' {'help': 'Latest month to download (inclusive). Set equal to **From** for a single-month fetch.', 'placeholder': '', 'default': '2024-01', 'type': 0}
+    <selectbox> label='CEX price resolution' key='fetch_cex_choice' value='klines 1m (~5 MB/month) — recommended' {'help': 'The swap_level engine resamples whatever you give it to 1s internally. aggTrades is only worth downloading if you genuinely need sub-minute CEX mark accuracy for LVR.', 'placeholder': '', 'default': 0, 'options': ['klines 1m (~5 MB/month) — recommended', 'klines 1h (~200 KB/month) — smallest', 'aggTrades (~3.5 GB/month) — path-exact LVR']}
+    <button> label='Fetch now' key='fetch_binance_btn' value=False {'default': False, 'type': 'secondary'}
+    (divider)
+    (caption) '**Pool swap events** (needed by the swap_level engine). Fetched from the Uniswap v3 subgraph via The Graph gateway — **requires `THEGRAPH_API_KEY` in your env** ([get a free key](https://thegraph.com/studio/)). Slow: ~2–3M swaps/month for ETH/USDC 0.05%, many minutes per month. Cached in `data/`.'
+    <text_input> label='Swaps from (YYYY-MM-DD)' key='fetch_swap_start' value='2024-01-01' {'help': 'First day to fetch swap events from (inclusive). Subgraph pagination is slow — start narrow (~1 week) and extend once you know throughput.', 'placeholder': '', 'default': '2024-01-01', 'type': 0}
+    <text_input> label='Swaps to (YYYY-MM-DD)' key='fetch_swap_end' value='2024-01-08' {'help': 'Last day to fetch (inclusive). Longer ranges take proportionally longer; ~2–3M swaps per month for ETH/USDC 0.05%.', 'placeholder': '', 'default': '2024-01-08', 'type': 0}
+    (flex_container)
+      [column]
+        <button> label='Fetch swap events' key='fetch_swaps_btn' value=False {'default': False, 'type': 'secondary'}
+      [column]
+        <button> label='Cancel' key='fetch_swaps_cancel' value=False {'default': False, 'type': 'secondary'}
+(flex_container)
+  [expander] label='Save / load config'
+    <download_button> label='Download current config (JSON)' key=None value=False {'default': False, 'type': 'secondary'}
+    <file_uploader> label='Load config' key='cfg_upload' value=None {'help': 'Restore a previously downloaded config JSON. Loading triggers a full-page rerun so sliders reflect the new values immediately.', 'type': ['.json']}
+    <button> label='Reset all to defaults' key=None value=False {'default': False, 'type': 'secondary'}
+(header) 'Engine'
+<selectbox> label='Backtest engine' key=None value='hourly (fast fallback)' {'help': '**swap_level** is path-exact and models LVR + gas + realistic hedge execution, but needs swap events.\n\n**hourly** just needs Binance klines (can live-fetch) and gives a rough fees-vs-funding picture.', 'placeholder': '', 'default': 0, 'options': ['swap_level (reference)', 'hourly (fast fallback)']}
+(header) 'Data source'
+<selectbox> label='Mode' key=None value='Local CSV files' {'help': '**Live** pulls the last N days of klines + funding directly from Binance (no local files). **Local** uses cached CSVs from `data/`.', 'placeholder': '', 'default': 0, 'options': ['Live fetch from Binance', 'Local CSV files']}
+<selectbox> label='CEX price file' key=None value='data/ETHUSDT-aggTrades-2026-08.csv' {'help': 'Binance klines CSV. Missing files are auto-fetched on Run using the date range from Fetch data.', 'placeholder': '', 'default': 0, 'options': ['data/ETHUSDT-aggTrades-2026-08.csv', 'data/ETHUSDT-klines-1h-2026-08.csv', 'data/ETHUSDT-klines-1m-2026-08.csv']}
+<selectbox> label='Funding file' key=None value='data/ETHUSDT-fundingRate-2026-08.csv' {'help': 'Binance perp funding-rate CSV. Empty = funding assumed zero.', 'placeholder': '', 'default': 0, 'options': ['data/ETHUSDT-fundingRate-2026-08.csv']}
+[expander] label='Backtest window'
+  (caption) 'Optional. If set, series are clipped to `[start, end]` before the engine sees them. Leave both blank for the full range.'
+  <text_input> label='Window start (YYYY-MM-DD)' key='win_start' value='' {'help': 'Clip the loaded data to start on this date. Useful for isolating a sub-period from a large cached CSV without re-downloading.', 'placeholder': 'e.g. 2024-01-15', 'default': '', 'type': 0}
+  <text_input> label='Window end (YYYY-MM-DD)' key='win_end' value='' {'help': 'Clip the loaded data to end on this date (inclusive). Leave blank to run to the last available data point.', 'placeholder': 'e.g. 2024-02-01', 'default': '', 'type': 0}
+(flex_container)
+  [expander] label='Position sizing'
+    <number_input> label='Capital deployed (USD)' key=None value=1000000.0 {'min': 1000.0, 'max': 1.7976931348623157e+308, 'step': 50000.0, 'help': "Notional USD you're allocating to the LP position. Together with `Perp leverage × margin buffer`, this determines the **capital base** used as the APR denominator.", 'placeholder': '', 'format': '%0.2f', 'has_min': True, 'default': 1000000.0}
+    <selectbox> label='Range specification' key=None value='Symmetric ± around spot' {'help': '**Symmetric** centres the range on current spot and grows both ways by the same %. **Absolute** pins fixed lower / upper prices regardless of where spot is.', 'placeholder': '', 'default': 0, 'options': ['Symmetric ± around spot', 'Absolute price bounds']}
+    <select_slider> label='Range width (± fraction around spot)' key=None value=0.15 {'min': 0.0, 'max': 6.0, 'step': 1.0, 'help': 'Width of the LP price band, symmetric around current spot. A value of 0.10 means the range spans [spot × 0.90, spot × 1.10]. Tighter = higher fees per dollar but exits range more often.', 'format': '%s', 'default': [3.0], 'options': ['0.02', '0.05', '0.1', '0.15', '0.25', '0.5', '0.75'], 'type': 2}
+    <number_input> label='Our share of pool active liquidity' key=None value=0.001 {'min': 1e-05, 'max': 0.5, 'step': 0.0005, 'help': "Assumed fraction of the pool's in-range liquidity you own. Fees earned = pool_volume × fee_tier × share. Only used by the hourly engine (swap_level derives this from real events).", 'placeholder': '', 'format': '%.5f', 'has_min': True, 'has_max': True, 'default': 0.001}
+    <number_input> label='Pool volume as fraction of Binance quote volume' key=None value=0.08 {'min': 0.001, 'max': 1.0, 'step': 0.01, 'help': "Rough proxy — the hourly engine doesn't have real Uniswap volume, so it multiplies Binance quote volume by this. 8% is a reasonable default for ETH/USDC.", 'placeholder': '', 'format': '%0.2f', 'has_min': True, 'has_max': True, 'default': 0.08}
+  [expander] label='Hedge policy'
+    <selectbox> label='Rebalance mode' key=None value='threshold' {'help': '**threshold** = trigger on delta drift. **periodic** = trigger on a fixed clock (every N hours). Threshold adapts to volatility; periodic gives predictable costs.', 'placeholder': '', 'default': 0, 'options': ['threshold', 'periodic']}
+    <select_slider> label='Rebalance threshold (fraction of |delta|)' key=None value=0.05 {'min': 0.0, 'max': 4.0, 'step': 1.0, 'help': 'Hourly-engine analog of hedge band. Rebalance when residual delta drifts by this fraction of current |delta|.', 'format': '%s', 'default': [2.0], 'options': ['0.01', '0.02', '0.05', '0.1', '0.2'], 'type': 2}
+    <selectbox> label='Perp leverage' key=None value=4 {'help': 'Perp margin leverage. Margin required = max_notional / leverage × margin_buffer. Higher = less capital tied up but closer to liquidation.', 'placeholder': '', 'default': 3, 'options': ['1', '2', '3', '4', '5', '10']}
+    <number_input> label='Margin buffer (× notional/leverage)' key=None value=1.5 {'min': 1.0, 'max': 1.7976931348623157e+308, 'step': 0.1, 'help': 'Multiplier on the minimum margin for liquidation safety. 1.5 means you post 50% more than the minimum. The extra sits in your capital base, dragging APR.', 'placeholder': '', 'format': '%0.2f', 'has_min': True, 'default': 1.5}
+  [expander] label='Cost model'
+    <selectbox> label='LP fee tier (bps)' key=None value=5 {'help': 'Uniswap pool fee tier. 1 = 0.01%, 5 = 0.05%, 30 = 0.30%, 100 = 1.00%. Default 5 = ETH/USDC 0.05% pool.', 'placeholder': '', 'default': 1, 'options': ['1', '5', '30', '100']}
+    <selectbox> label='Binance taker fee (bps)' key=None value=4.5 {'help': 'Binance perp taker fee. 5 bps = VIP0 default, 4.5 = BNB discount, lower with VIP tier. Applies to every hedge rebalance trade.', 'placeholder': '', 'default': 3, 'options': ['2.0', '3.0', '4.0', '4.5', '5.0']}
+    <number_input> label='Flat slippage on hedge trades (bps)' key=None value=1.0 {'min': 0.0, 'max': 1.7976931348623157e+308, 'step': 0.5, 'help': 'Hourly-engine analog of half-spread + impact combined into one flat number. 1 bp is a reasonable ETH-perp default.', 'placeholder': '', 'format': '%0.2f', 'has_min': True, 'default': 1.0}
+  [expander] label='Analysis + Run'
+    <checkbox> label='Rolling-window distribution (30d)' key=None value=False {'help': 'Split the backtest into overlapping 30-day windows and show the APR variation across them. Reveals whether a positive net APR is stable or driven by one lucky window.', 'default': False, 'type': 0}
+    <checkbox> label='Backtest by month' key=None value=False {'help': 'Run one backtest per calendar month and show a monthly APR bar chart. Reveals regime dependency. Needs ≥ 2 months of loaded data.', 'default': False, 'type': 0}
+    <checkbox> label='Stress test (price shock)' key=None value=False {'help': 'Overlay a synthetic price move on the last N days of klines before running the engine. Hourly-engine only — swap-level uses baked-in real swap events.', 'default': False, 'type': 0}
+    <text_input> label='Run label (optional)' key=None value='' {'help': "Annotates this run in the comparison table. Blank auto-generates 'Run N'. Only kept in-memory for the session (last 5 runs).", 'placeholder': "e.g. 'wide range, tight band'", 'default': '', 'type': 0}

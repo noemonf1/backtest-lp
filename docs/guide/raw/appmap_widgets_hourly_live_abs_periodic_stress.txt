@@ -1,0 +1,56 @@
+(flex_container)
+  [expander] label='Fetch data'
+    (caption) 'Download missing Binance CSVs into `data/`. Files already on disk are skipped — no network call.'
+    <text_input> label='From (YYYY-MM)' key='fetch_start' value='2024-01' {'help': 'Earliest month to download (inclusive). Binance packages one file per calendar month; already-cached months are skipped.', 'placeholder': '', 'default': '2024-01', 'type': 0}
+    <text_input> label='To (YYYY-MM)' key='fetch_end' value='2024-01' {'help': 'Latest month to download (inclusive). Set equal to **From** for a single-month fetch.', 'placeholder': '', 'default': '2024-01', 'type': 0}
+    <selectbox> label='CEX price resolution' key='fetch_cex_choice' value='klines 1m (~5 MB/month) — recommended' {'help': 'The swap_level engine resamples whatever you give it to 1s internally. aggTrades is only worth downloading if you genuinely need sub-minute CEX mark accuracy for LVR.', 'placeholder': '', 'default': 0, 'options': ['klines 1m (~5 MB/month) — recommended', 'klines 1h (~200 KB/month) — smallest', 'aggTrades (~3.5 GB/month) — path-exact LVR']}
+    <button> label='Fetch now' key='fetch_binance_btn' value=False {'default': False, 'type': 'secondary'}
+    (divider)
+    (caption) '**Pool swap events** (needed by the swap_level engine). Fetched from the Uniswap v3 subgraph via The Graph gateway — **requires `THEGRAPH_API_KEY` in your env** ([get a free key](https://thegraph.com/studio/)). Slow: ~2–3M swaps/month for ETH/USDC 0.05%, many minutes per month. Cached in `data/`.'
+    <text_input> label='Swaps from (YYYY-MM-DD)' key='fetch_swap_start' value='2024-01-01' {'help': 'First day to fetch swap events from (inclusive). Subgraph pagination is slow — start narrow (~1 week) and extend once you know throughput.', 'placeholder': '', 'default': '2024-01-01', 'type': 0}
+    <text_input> label='Swaps to (YYYY-MM-DD)' key='fetch_swap_end' value='2024-01-08' {'help': 'Last day to fetch (inclusive). Longer ranges take proportionally longer; ~2–3M swaps per month for ETH/USDC 0.05%.', 'placeholder': '', 'default': '2024-01-08', 'type': 0}
+    (flex_container)
+      [column]
+        <button> label='Fetch swap events' key='fetch_swaps_btn' value=False {'default': False, 'type': 'secondary'}
+      [column]
+        <button> label='Cancel' key='fetch_swaps_cancel' value=False {'default': False, 'type': 'secondary'}
+(flex_container)
+  [expander] label='Save / load config'
+    <download_button> label='Download current config (JSON)' key=None value=False {'default': False, 'type': 'secondary'}
+    <file_uploader> label='Load config' key='cfg_upload' value=None {'help': 'Restore a previously downloaded config JSON. Loading triggers a full-page rerun so sliders reflect the new values immediately.', 'type': ['.json']}
+    <button> label='Reset all to defaults' key=None value=False {'default': False, 'type': 'secondary'}
+(header) 'Engine'
+<selectbox> label='Backtest engine' key=None value='hourly (fast fallback)' {'help': '**swap_level** is path-exact and models LVR + gas + realistic hedge execution, but needs swap events.\n\n**hourly** just needs Binance klines (can live-fetch) and gives a rough fees-vs-funding picture.', 'placeholder': '', 'default': 0, 'options': ['swap_level (reference)', 'hourly (fast fallback)']}
+(header) 'Data source'
+<selectbox> label='Mode' key=None value='Live fetch from Binance' {'help': '**Live** pulls the last N days of klines + funding directly from Binance (no local files). **Local** uses cached CSVs from `data/`.', 'placeholder': '', 'default': 0, 'options': ['Live fetch from Binance', 'Local CSV files']}
+<slider> label='Lookback (days)' key=None value=30 {'min': 7.0, 'max': 180.0, 'step': 1.0, 'help': "How many trailing days of Binance data to pull. Live fetch is capped by Binance's rate limits — keep under 180 to avoid throttling.", 'format': '%d', 'default': [30.0], 'options': [], 'type': 1}
+<selectbox> label='Bar interval' key=None value='1h' {'help': 'Kline bar granularity. The hourly engine treats each bar as one hedge decision; 1h is standard.', 'placeholder': '', 'default': 0, 'options': ['1h', '4h', '1d']}
+[expander] label='Backtest window'
+  (caption) 'Optional. If set, series are clipped to `[start, end]` before the engine sees them. Leave both blank for the full range.'
+  <text_input> label='Window start (YYYY-MM-DD)' key='win_start' value='' {'help': 'Clip the loaded data to start on this date. Useful for isolating a sub-period from a large cached CSV without re-downloading.', 'placeholder': 'e.g. 2024-01-15', 'default': '', 'type': 0}
+  <text_input> label='Window end (YYYY-MM-DD)' key='win_end' value='' {'help': 'Clip the loaded data to end on this date (inclusive). Leave blank to run to the last available data point.', 'placeholder': 'e.g. 2024-02-01', 'default': '', 'type': 0}
+(flex_container)
+  [expander] label='Position sizing'
+    <number_input> label='Capital deployed (USD)' key=None value=1000000.0 {'min': 1000.0, 'max': 1.7976931348623157e+308, 'step': 50000.0, 'help': "Notional USD you're allocating to the LP position. Together with `Perp leverage × margin buffer`, this determines the **capital base** used as the APR denominator.", 'placeholder': '', 'format': '%0.2f', 'has_min': True, 'default': 1000000.0}
+    <selectbox> label='Range specification' key=None value='Absolute price bounds' {'help': '**Symmetric** centres the range on current spot and grows both ways by the same %. **Absolute** pins fixed lower / upper prices regardless of where spot is.', 'placeholder': '', 'default': 0, 'options': ['Symmetric ± around spot', 'Absolute price bounds']}
+    <number_input> label='Lower price (USDC/ETH)' key=None value=1800.0 {'min': -1.7976931348623157e+308, 'max': 1.7976931348623157e+308, 'step': 50.0, 'help': 'Absolute lower bound of the LP range. Only fees are earned while spot is between this and the upper bound.', 'placeholder': '', 'format': '%0.2f', 'default': 1800.0}
+    <number_input> label='Upper price (USDC/ETH)' key=None value=2200.0 {'min': -1.7976931348623157e+308, 'max': 1.7976931348623157e+308, 'step': 50.0, 'help': 'Absolute upper bound of the LP range. Above this, the position is 100% USDC and earns no fees until price returns.', 'placeholder': '', 'format': '%0.2f', 'default': 2200.0}
+    <number_input> label='Our share of pool active liquidity' key=None value=0.001 {'min': 1e-05, 'max': 0.5, 'step': 0.0005, 'help': "Assumed fraction of the pool's in-range liquidity you own. Fees earned = pool_volume × fee_tier × share. Only used by the hourly engine (swap_level derives this from real events).", 'placeholder': '', 'format': '%.5f', 'has_min': True, 'has_max': True, 'default': 0.001}
+    <number_input> label='Pool volume as fraction of Binance quote volume' key=None value=0.08 {'min': 0.001, 'max': 1.0, 'step': 0.01, 'help': "Rough proxy — the hourly engine doesn't have real Uniswap volume, so it multiplies Binance quote volume by this. 8% is a reasonable default for ETH/USDC.", 'placeholder': '', 'format': '%0.2f', 'has_min': True, 'has_max': True, 'default': 0.08}
+  [expander] label='Hedge policy'
+    <selectbox> label='Rebalance mode' key=None value='periodic' {'help': '**threshold** = trigger on delta drift. **periodic** = trigger on a fixed clock (every N hours). Threshold adapts to volatility; periodic gives predictable costs.', 'placeholder': '', 'default': 1, 'options': ['threshold', 'periodic']}
+    <selectbox> label='Rebalance every (hours)' key=None value=24 {'help': 'Periodic-mode: force a rebalance every N hours regardless of drift. Trades hedge tracking error for predictable execution cost.', 'placeholder': '', 'default': 4, 'options': ['1', '4', '8', '12', '24', '48']}
+    <selectbox> label='Perp leverage' key=None value=4 {'help': 'Perp margin leverage. Margin required = max_notional / leverage × margin_buffer. Higher = less capital tied up but closer to liquidation.', 'placeholder': '', 'default': 3, 'options': ['1', '2', '3', '4', '5', '10']}
+    <number_input> label='Margin buffer (× notional/leverage)' key=None value=1.5 {'min': 1.0, 'max': 1.7976931348623157e+308, 'step': 0.1, 'help': 'Multiplier on the minimum margin for liquidation safety. 1.5 means you post 50% more than the minimum. The extra sits in your capital base, dragging APR.', 'placeholder': '', 'format': '%0.2f', 'has_min': True, 'default': 1.5}
+  [expander] label='Cost model'
+    <selectbox> label='LP fee tier (bps)' key=None value=5 {'help': 'Uniswap pool fee tier. 1 = 0.01%, 5 = 0.05%, 30 = 0.30%, 100 = 1.00%. Default 5 = ETH/USDC 0.05% pool.', 'placeholder': '', 'default': 1, 'options': ['1', '5', '30', '100']}
+    <selectbox> label='Binance taker fee (bps)' key=None value=4.5 {'help': 'Binance perp taker fee. 5 bps = VIP0 default, 4.5 = BNB discount, lower with VIP tier. Applies to every hedge rebalance trade.', 'placeholder': '', 'default': 3, 'options': ['2.0', '3.0', '4.0', '4.5', '5.0']}
+    <number_input> label='Flat slippage on hedge trades (bps)' key=None value=1.0 {'min': 0.0, 'max': 1.7976931348623157e+308, 'step': 0.5, 'help': 'Hourly-engine analog of half-spread + impact combined into one flat number. 1 bp is a reasonable ETH-perp default.', 'placeholder': '', 'format': '%0.2f', 'has_min': True, 'default': 1.0}
+  [expander] label='Analysis + Run'
+    <checkbox> label='Rolling-window distribution (30d)' key=None value=False {'help': 'Split the backtest into overlapping 30-day windows and show the APR variation across them. Reveals whether a positive net APR is stable or driven by one lucky window.', 'default': False, 'type': 0}
+    <checkbox> label='Backtest by month' key=None value=False {'help': 'Run one backtest per calendar month and show a monthly APR bar chart. Reveals regime dependency. Needs ≥ 2 months of loaded data.', 'default': False, 'type': 0}
+    <checkbox> label='Stress test (price shock)' key=None value=True {'help': 'Overlay a synthetic price move on the last N days of klines before running the engine. Hourly-engine only — swap-level uses baked-in real swap events.', 'default': False, 'type': 0}
+    <number_input> label='Shock over last N days' key=None value=7 {'min': 1.0, 'max': 90.0, 'step': 1.0, 'help': 'How many days at the END of the loaded window to apply the shock to. Earlier data is left untouched.', 'placeholder': '', 'format': '%d', 'has_min': True, 'has_max': True, 'default': 7.0}
+    <slider> label='Total price move (%)' key=None value=-20 {'min': -50.0, 'max': 50.0, 'step': 1.0, 'help': 'Total price change over the shock window. Negative = crash, positive = pump. Applied uniformly to OHLC so bar shape is preserved.', 'format': '%d', 'default': [-20.0], 'options': [], 'type': 1}
+    <selectbox> label='Shape' key=None value='linear' {'help': '**linear:** smooth ramp from 0% to `pct` over the shock window. **step:** instant jump at the start of the window (worst-case impulse test).', 'placeholder': '', 'default': 0, 'options': ['linear', 'step']}
+    <text_input> label='Run label (optional)' key=None value='' {'help': "Annotates this run in the comparison table. Blank auto-generates 'Run N'. Only kept in-memory for the session (last 5 runs).", 'placeholder': "e.g. 'wide range, tight band'", 'default': '', 'type': 0}

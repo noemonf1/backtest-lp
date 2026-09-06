@@ -1,0 +1,93 @@
+(title) 'ETH/USDC v3 delta-hedged LP backtest'
+(caption) 'Sizes a symmetric LP position, delta-hedges on Binance perps, and attributes PnL into fees / LVR / funding / hedge cost / gas.'
+(tab_container)
+  [tab] label='Backtest'
+    <button> label='Run backtest' key=None value=True {'default': False, 'type': 'primary'}
+    (caption) 'Loaded 34,706 swaps · CEX 2024-01-01 00:00:00+00:00 → 2024-01-05 23:59:59+00:00'
+    (warning) '**Synthetic tape** — GBM prices + simulated swaps. Great for validating the engine and exploring parameter sensitivity, but numbers do NOT reflect real ETH/USDC PnL.'
+    (markdown) '### :orange[INSUFFICIENT WINDOW (5d < 30d)] — net **21.28% APR** · engine: `swap_level` · 5 days'
+    (caption) ':orange[Treat this as directional only.] Regime dependency and noise dominate over windows shorter than 30 days — extend the backtest window or turn on the rolling-window distribution to see stability.'
+    (caption) 'Capital base = LP $1,000,000 + hedge margin $218,048 = **$1,218,048** (denominator for all APRs below)'
+    (flex_container)
+      [column]
+        (metric)
+      [column]
+        (metric)
+      [column]
+        (metric)
+      [column]
+        (metric)
+      [column]
+        (metric)
+    (flex_container)
+      [column]
+        (metric)
+      [column]
+        (metric)
+      [column]
+        (metric)
+      [column]
+        (metric)
+    (flex_container)
+      [column]
+        <download_button> label='Download summary (JSON)' key=None value=False {'default': False, 'type': 'secondary'}
+      [column]
+        <download_button> label='Download timeseries (CSV)' key=None value=False {'default': False, 'type': 'secondary'}
+    (subheader) 'Cumulative PnL'
+    (vega_lite_chart)
+    (subheader) 'PnL attribution'
+    (tab_container)
+      [tab] label='Cumulative'
+        (vega_lite_chart)
+      [tab] label='Daily bars'
+        (vega_lite_chart)
+        (caption) 'Positive bars = income (fees, funding-received), negative = costs. Net = sum of the stack per day.'
+    (subheader) 'ETH price and LP delta'
+    (vega_lite_chart)
+    (vega_lite_chart)
+    (info) 'Not enough data for 30-day rolling windows.'
+    [expander] label='Full summary'
+      (json) '{"days": 5.0, "capital_lp_usd": 1000000.0, "margin_usd": 218048, "capital_base_usd": 1218048, "range_width": 0.15, "hedge_band": 0.03, "n_repositions": 0, "n_hedge_trades": 62, "pct_time_in_range": 100.0, "mean_liquidity_share_pct": 0.974, "fees_usd": 14194, "lvr_usd": 10008, "fee_over_lvr": 1.418, "funding_usd": 392, "hedge_cost_usd": 1082, "gas_reposition_usd": 0, "net_usd": 3550, "fee_apr_pct": 85.08, "lvr_apr_pct": -59.99, "funding_apr_pct": 2.35, "hedge_cost_apr_pct": -6.49, "net_apr_pct": 21.28, "sharpe": 38.51, "max_drawdown_usd": -609, "discrete_hedge_error_usd": 55, "closed_form_lvr_usd": 10095}'
+    [expander] label='Timeseries (first 500 rows)'
+      (dataframe)
+    (subheader) 'Backtest by month'
+    (caption) 'Splits the loaded data into calendar months and runs one backtest per month. Reveals regime dependency (e.g. does the strategy work in low-vol months?).'
+    (info) 'Loaded data spans only 1 month — need at least 2 for a monthly breakdown. Widen the backtest window.'
+    (subheader) 'Parameter sweep'
+    (caption) 'Pick any two Assumptions fields as the sweep axes. Each cell runs a full backtest — a 5×5 grid on real data can take many minutes; cancel any time to see partial results.'
+    (flex_container)
+      [column]
+        <selectbox> label='X axis (columns)' key='sweep_x_field' value='hedge_band' {'help': "Assumption field varied along the heatmap's X axis (columns). Each unique X value becomes one column.", 'placeholder': '', 'default': 1, 'options': ['Range width (±)', 'Hedge band', 'LP fee tier', 'Binance taker fee (bps)', 'Perp leverage', 'Hedge grid (s)']}
+        <text_input> label='X values (comma-separated)' key='sweep_x_values' value='0.005, 0.01, 0.02, 0.05, 0.1' {'help': "Comma-separated list of values to try along the X axis. Types are inferred from the field's defaults (int for grid_seconds, float for hedge_band, etc).", 'placeholder': '', 'default': '0.005, 0.01, 0.02, 0.05, 0.1', 'type': 0}
+      [column]
+        <selectbox> label='Y axis (rows)' key='sweep_y_field' value='range_width' {'help': 'Assumption field varied along the Y axis (rows). Must differ from the X axis — same field on both axes is meaningless.', 'placeholder': '', 'default': 0, 'options': ['Range width (±)', 'LP fee tier', 'Binance taker fee (bps)', 'Perp leverage', 'Hedge grid (s)']}
+        <text_input> label='Y values (comma-separated)' key='sweep_y_values' value='0.02, 0.05, 0.1, 0.15, 0.25, 0.5' {'help': 'Comma-separated list of Y-axis values. Total cell count = |X values| × |Y values|; each cell is a full backtest.', 'placeholder': '', 'default': '0.02, 0.05, 0.1, 0.15, 0.25, 0.5', 'type': 0}
+    (empty)
+    (empty)
+    (empty)
+    (plotly_chart)
+    (info) '**Best cell:** Range width (±) 5% × Hedge band 10.0% → net APR 51.60%, Sharpe 28.68'
+    [expander] label='Full sweep table'
+      (dataframe)
+    (subheader) 'Run comparison'
+    (caption) '★ marks the current run (most recent).'
+    <multiselect> label='Overlay runs (up to 5)' key=None value=['1. Run 1', '★ 2. Run 2'] {'placeholder': '', 'default': [0, 1], 'options': ['1. Run 1', '★ 2. Run 2']}
+    (vega_lite_chart)
+    (dataframe)
+  [tab] label='Documentation'
+    (markdown) 'This app backtests a **delta-hedged Uniswap v3 LP position**. You provide liquidity to ETH/USDC inside a price band, and short an equivalent amount of ETH on Binance perpetual futures so your value stays roughly independent of ETH price. The question is whether the fees you earn on-chain cover LVR (loss-vs-rebalancing), funding, and the cost of running the hedge.'
+    (markdown) '> **Net PnL = Fees − LVR − Funding cost − Hedge execution − Gas**'
+    (tab_container)
+      [tab] label='Engines'
+        (markdown) '| | swap_level (reference) | hourly (fast fallback) |\n|---|---|---|\n| Data granularity | Swap-level pool events + 1s CEX | Hourly OHLC only |\n| LVR | Path-exact from swap-level events | Not modelled |\n| Hedge execution | Half-spread + taker fee + linear impact | Flat bps slippage |\n| Repositioning | Buffer-based, gas + swap cost modelled | Not modelled |\n| Data required | Swap parquet + Binance klines/aggTrades | Binance klines only |\n| Speed | Slower (millions of events) | Fast |\n| Best for | Accurate PnL attribution | Quick parameter exploration |\n\nThe swap-level engine has a **Demo (synthetic tape)** mode that generates\nGBM prices and simulated swap events — useful for validating the engine or\nexploring parameters without downloading anything.'
+      [tab] label='Data'
+        (markdown) '- **Uniswap swaps** — parquet with per-swap events. Two ways to obtain:\n  1. **Auto-fetch from the subgraph** via **Fetch data → Fetch swap\n     events**. Requires `THEGRAPH_API_KEY` in your env\n     ([free key here](https://thegraph.com/studio/)).\n     Slow — ~2–3M events per month for ETH/USDC 0.05%.\n  2. Or drop your own `*swap*.parquet` dump in the repo root or `data/`\n     — cryo, Dune, and Allium exports all work. Required columns:\n     `block_number, block_time, amount0, amount1, sqrt_price_x96,\n     liquidity, tick` (aliases handled automatically).\n- **Binance klines / aggTrades** — auto-downloaded from\n  `data.binance.vision`. Cached in `data/`. `load_cex_prices` handles\n  both formats and resamples to 1-second bars internally.\n- **Binance funding rates** — 8-hour funding history, auto-downloaded.\n- **Uniswap pool hourly aggregates** — optional, needs a Graph API key.\n  Disabled by default; 1-minute klines suffice for exploration.'
+      [tab] label='Inputs'
+        (markdown) "### Fetch data\n- **From / To (YYYY-MM)** — month range for Binance CSV downloads. Months\n  already cached on disk are skipped.\n- **CEX price resolution** — klines 1m (default, ~5 MB/mo) / klines 1h\n  (smallest) / aggTrades (~3.5 GB/mo, only for path-exact LVR).\n\n### Backtest window\n- Optional YYYY-MM-DD start/end. Clips *all* input series before handing\n  them to the engine, so you can backtest a slice of downloaded data\n  without re-downloading.\n\n### Engine\n- **swap_level** (reference, needs swap events) vs **hourly** (fast\n  fallback, klines only).\n\n### LP leg\n- **Capital deployed** — notional put into the LP position.\n- **Range width** — position covers `[spot × (1−w), spot × (1+w)]`.\n  Tighter = more fees per dollar, but exits range more often.\n- **Absolute price bounds** (hourly only) — pin the range.\n- **Reposition** — re-centre after N hours out of range. Costs gas +\n  swap slippage.\n- **Pool share** / **volume multiplier** (hourly) — proxies for fees\n  when we don't have real pool volume data.\n\n### Hedge leg\n- **Hedge band** (swap_level) — rebalance when residual delta exceeds\n  this fraction of max ETH delta.\n- **Rebalance mode** (hourly) — *threshold* (drift %) or *periodic*\n  (fixed hours).\n- **Binance taker fee** — perp taker fee (bps).\n- **Half-spread** (swap_level) — bid-ask approximation when using klines.\n- **Linear impact** (swap_level) — market impact model for large clips.\n- **Flat slippage** (hourly) — simpler analog.\n- **Perp leverage / margin buffer** — `margin = notional / leverage × buffer`.\n\n### Mechanics (swap_level)\n- **Hedge decision grid (s)** — how often the hedge is checked.\n- **Fee markout window (s)** — CEX mark delay for measuring fill quality.\n\n### LP fee tier — 1 / 5 / 30 / 100 bps.\n\n### Run controls\n- **Range × hedge-band sweep** — Cartesian grid.\n- **Rolling-window distribution** — split into 30-day windows, plot APR\n  variation across them (regime dependency check).\n- **Run label** — annotates this run in the comparison table."
+      [tab] label='Outputs'
+        (markdown) '### Verdict banner\nGreen if net APR > 0 (fees cover costs), red otherwise. Shows the\ncapital-base breakdown so you can see how much of it is LP vs hedge\nmargin.\n\n### Top-row metrics\n- **Net PnL (USD)** — total PnL over the backtest window.\n- **Fees APR** — annualised fee income as % of capital base.\n- **LVR APR** — annualised loss-vs-rebalancing. Path-exact in\n  swap_level, n/a in hourly.\n- **Funding APR** — annualised funding paid/received on the perp.\n  Positive = you collect funding.\n- **Hedge cost APR** — taker fees + spread + impact + slippage.\n\n### Second-row metrics\n- **Fees / LVR** — coverage ratio.\n- **% time in range** — fees only accrue when in-range.\n- **Sharpe (daily)** — daily-net-PnL Sharpe, annualised by √365.\n- **Max drawdown** — worst peak-to-trough dip.\n\n### Charts\n- **Cumulative PnL** — running sum of net PnL.\n- **PnL attribution** — cumulative (line) or daily (stacked bar).\n  Cumulative shows which term is winning; daily shows which day cost\n  or earned what.\n- **ETH price** — reference price used to compute delta and mark hedge.\n- **LP delta vs Hedge delta** — should track closely; gaps are\n  discrete-hedge error.\n- **30-day rolling APR** (if enabled) — regime dependency check.\n\n### Sweep (swap_level only)\nInteractive Plotly heatmap over `range_width × hedge_band`. Hover shows\nper-cell Net APR, Sharpe, Fees/LVR. Callout points at the best cell.\n\n### Run comparison\nOverlay of cumulative-PnL curves for up to 5 stored runs, plus a KPI\ntable. Runs are pushed onto a bounded stack in session state; the last\nfive persist across button clicks in the same session (not across page\nreloads).'
+      [tab] label='Interpreting'
+        (markdown) '- If **Fees APR < |LVR APR|**, the position loses money to informed\n  flow faster than it earns from uninformed flow — no hedge\n  configuration can save it.\n- If **Fees APR > |LVR APR|** but **Net APR < 0**, hedge costs or\n  funding are eating the surplus. Try wider hedge band, higher fee\n  tier, or a period with more favourable funding.\n- **% time in range** below ~80% usually means the range is too tight\n  for the vol regime. Widen it and re-run.\n- The **sweep** helps: look for the cell with the highest net APR *and*\n  reasonable Sharpe — a great APR with negative Sharpe means one lucky\n  window carried the result.\n- The **rolling-APR distribution** shows regime dependency: a strategy\n  with median APR ≈ 0 but wide spread is a coin flip, not an edge.\n- Use **run comparison** to A/B-test parameter changes without losing\n  the baseline.'
+        (divider)
+        (subheader) 'Assumptions dataclass (source of truth)'
+        (help_info)

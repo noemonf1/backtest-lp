@@ -1,0 +1,52 @@
+  GET https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2026-08.zip
+  GET https://data.binance.vision/data/futures/um/monthly/fundingRate/ETHUSDT/ETHUSDT-fundingRate-2026-08.zip
+{
+ "binance": {
+  "klines": {
+   "paths": [
+    "/home/user/backtest-lp/data/ETHUSDT-klines-1m-2026-08.csv"
+   ],
+   "downloaded": [
+    "/home/user/backtest-lp/data/ETHUSDT-klines-1m-2026-08.csv"
+   ],
+   "skipped": []
+  },
+  "fundingRate": {
+   "paths": [
+    "/home/user/backtest-lp/data/ETHUSDT-fundingRate-2026-08.csv"
+   ],
+   "downloaded": [
+    "/home/user/backtest-lp/data/ETHUSDT-fundingRate-2026-08.csv"
+   ],
+   "skipped": []
+  }
+ },
+ "pool_hourly": {
+  "path": "/home/user/backtest-lp/data/pool_hourly_0x88e6a0_2026-08-01_2026-08-31.parquet",
+  "cached": false
+ }
+}
+  GET https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1h/ETHUSDT-1h-2026-08.zip
+{
+ "binance": {
+  "klines": {
+   "paths": [
+    "/home/user/backtest-lp/data/ETHUSDT-klines-1h-2026-08.csv"
+   ],
+   "downloaded": [
+    "/home/user/backtest-lp/data/ETHUSDT-klines-1h-2026-08.csv"
+   ],
+   "skipped": []
+  },
+  "fundingRate": {
+   "paths": [
+    "/home/user/backtest-lp/data/ETHUSDT-fundingRate-2026-08.csv"
+   ],
+   "downloaded": [],
+   "skipped": [
+    "/home/user/backtest-lp/data/ETHUSDT-fundingRate-2026-08.csv"
+   ]
+  }
+ }
+}
+wall s 5.4
