@@ -1,0 +1,16 @@
+sqrtP=43.1588 sqrtPa=39.7861 sqrtPb=46.2939 L_h=158844.24
+USDC leg y=L_h*(sqrtP-sqrtPa)=535,733.13  ETH leg x=L_h*(1/sqrtP-1/sqrtPb)=249.2467 ETH = 464,266.87 USD  total 1,000,000.00
+sqrtP-sqrtPa=3.3727  sqrtPb-sqrtP=3.1351  USDC share 53.57%  ETH share 46.43%
+max delta at lower bound = L_h*(1/sqrtPa-1/sqrtPb) = 561.2421 ETH; delta at entry 249.2467 = 44.41% of max
+first funding print 2026-08-01 00:00:00.001000+00:00 rate 6.744e-05; grid row0 hedge -249.2467 ETH price 1862.68 notional 464,266.87 -> cash = -(hedge*p)*rate = 31.31 USD; funding_usd on row0 = 31.31
+first 3 funding rows: [{'calc_time': 1785542400001, 'funding_interval_hours': 8, 'last_funding_rate': 6.744e-05}, {'calc_time': 1785571200000, 'funding_interval_hours': 8, 'last_funding_rate': 2.308e-05}, {'calc_time': 1785600000000, 'funding_interval_hours': 8, 'last_funding_rate': 5.777e-05}]
+funding stamps 93 max 47.954046379545645 2026-08-20 08:00:00+00:00 min -4.180142122937034 2026-08-03 08:00:00+00:00
+impact = N^2/1e5*0.8bps; equals spread+fee (5 bps * N) at N = 625,000 USD; at mean clip 42,368.55: impact 1.44 USD vs spread+fee 21.18 USD; at max clip 441,856: impact 156.19 vs 220.93
+trades 150 first trade row 2026-08-01 18:30:00+00:00 -18.40429097698501 second 2026-08-01 18:46:00+00:00 -19.253451639057744
+fees per day mean 934.0580602970331 turnover/day ETH 91.79207041858861
+sigma annualised from var/step 0.5176826472508944
+grid last price 2466.53 lp_value first/last 1000000.0 1063474.9255713646 max short -286.9044595659452 2026-08-01 18:46:00+00:00
+reposition row {'eth_price': 2251.02, 'lp_value_usd': 1033167.9217833674, 'lp_delta': 212.53863989487203, 'hedge_delta': -212.53863989487203, 'hedge_trade_eth': -196.2915452615485, 'hedge_cost_usd': 377.1176142000096, 'gas_usd': 540.0, 'lp_pnl_usd': -556.8623920876998}
+row before {'eth_price': 2252.59, 'lp_value_usd': 1033724.7841754552, 'lp_delta': 0.0, 'hedge_delta': -16.24709463332356}
+per-minute sd 0.0714% -> 3.4753% move = 48.7 minute-sds; per-day sd 2.71% -> 1.28 daily sds
+fees/gamma 0.7627519128066773 hedge cost bps of turnover 5.569633956505162 path/closed-form 1.0187610161595386

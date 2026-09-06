@@ -1,2 +1,34 @@
 Local app http://127.0.0.1:8501, engine swap_level, Mode Real data (files), swaps_0x88e6a0_2026-08-01_2026-08-31.parquet + ETHUSDT-klines-1m-2026-08.csv + ETHUSDT-fundingRate-2026-08.csv, all other sidebar controls at defaults. Text read from the DOM.
 
+### run7_default_real_data
+banner: FEES DO NOT COVER THE COST — net -11.39% APR · engine: swap_level · 31 days
+caption: Loaded 159,990 swaps · CEX 2026-08-01 00:00:59+00:00 → 2026-08-31 23:59:59+00:00
+caption: Capital base = LP 
+1
+,
+000
+,
+000
++
+ℎ
+𝑒
+𝑑
+𝑔
+𝑒
+𝑚
+𝑎
+𝑟
+𝑔
+𝑖
+𝑛
+1,000,000+hedgemargin198,120 = $1,198,120 (denominator for all APRs below)
+metric: Net PnL (USD) |  | $-11,592
+metric: Fees APR |  | 28.46%
+metric: LVR APR |  | 4.06%
+metric: Funding APR |  | 1.47% |  | collected (perp paid you)
+metric: Hedge cost APR |  | -3.48%
+metric: Fees / LVR |  | nan
+metric: % time in range |  | 98.2%
+metric: Sharpe (daily) |  | -5.55
+metric: Max drawdown |  | $-13,161
+

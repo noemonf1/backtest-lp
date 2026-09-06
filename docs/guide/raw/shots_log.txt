@@ -67,3 +67,14 @@
 2026-09-06T12:36:17Z file selectboxes now: {'Swaps file': 'data/swaps_0x88e6a0_2026-08-01_2026-08-31.parquet', 'CEX price file': 'data/ETHUSDT-klines-1m-2026-08.csv', 'Funding file': 'data/ETHUSDT-fundingRate-2026-08.csv'}
 2026-09-06T12:36:17Z screenshot 18_local_sidebar_real_data_files_set.png (82782 bytes)
 2026-09-06T12:36:18Z clicked Run backtest
+2026-09-06T12:39:01Z run finished (status widget detached)
+2026-09-06T12:39:01Z run 7 took 164s
+2026-09-06T12:39:01Z run 7 alerts: []
+2026-09-06T12:39:08Z run7_default_real_data banner: 'FEES DO NOT COVER THE COST — net -11.39% APR · engine: swap_level · 31 days'
+2026-09-06T12:39:08Z run7_default_real_data metrics: ['Net PnL (USD) |  | $-11,592', 'Fees APR |  | 28.46%', 'LVR APR |  | 4.06%', 'Funding APR |  | 1.47% |  | collected (perp paid you)', 'Hedge cost APR |  | -3.48%', 'Fees / LVR |  | nan', '% time in range |  | 98.2%', 'Sharpe (daily) |  | -5.55', 'Max drawdown |  | $-13,161']
+2026-09-06T12:39:23Z full_shot 19_local_run_default_full.png viewport 1600x2781 main=2741 sidebar=2741 (348905 bytes)
+2026-09-06T12:39:51Z clip_shot 20_local_run_verdict_banner.png clip={'x': 288, 'y': 361, 'width': 1324, 'height': 123} (28053 bytes)
+2026-09-06T12:40:07Z clip_shot 21_local_run_metric_tiles.png clip={'x': 288, 'y': 461, 'width': 1324, 'height': 219} (34742 bytes)
+2026-09-06T12:40:16Z clip_shot 22_local_run_cumulative_pnl.png clip={'x': 288, 'y': 728, 'width': 1324, 'height': 431} (38024 bytes)
+2026-09-06T12:40:32Z clip_shot 23_local_run_attribution_cumulative.png clip={'x': 288, 'y': 1156, 'width': 1324, 'height': 487} (33433 bytes)
+2026-09-06T12:40:47Z clip_shot 24_local_run_attribution_daily_bars.png clip={'x': 288, 'y': 1156, 'width': 1324, 'height': 525} (29874 bytes)
