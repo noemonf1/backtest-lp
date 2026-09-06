@@ -1,0 +1,2 @@
+Local app http://127.0.0.1:8501, engine swap_level, Mode Real data (files), swaps_0x88e6a0_2026-08-01_2026-08-31.parquet + ETHUSDT-klines-1m-2026-08.csv + ETHUSDT-fundingRate-2026-08.csv, all other sidebar controls at defaults. Text read from the DOM.
+

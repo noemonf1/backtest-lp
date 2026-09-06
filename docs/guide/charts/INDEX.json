@@ -1,0 +1,66 @@
+[
+ {
+  "file": "charts/default_cum_pnl.png",
+  "note": "Default run cumulative net, fees, hedged inventory P&L, with ETH price"
+ },
+ {
+  "file": "charts/default_delta_hedge.png",
+  "note": "Default run LP delta vs hedge"
+ },
+ {
+  "file": "charts/lvr_reconciliation.png",
+  "note": "Cumulative LVR: path-exact vs per-swap (klines / aggTrades / markout) vs closed form"
+ },
+ {
+  "file": "charts/default_daily_bars.png",
+  "note": "Default run daily bars"
+ },
+ {
+  "file": "charts/sweep_range.png",
+  "note": "Range width sweep (hedge band 3%, $1M)"
+ },
+ {
+  "file": "charts/sweep_band.png",
+  "note": "Hedge band sweep (range \u00b115%, $1M)"
+ },
+ {
+  "file": "charts/sweep_band_trades_cost.png",
+  "note": "Band sweep: trades vs cost"
+ },
+ {
+  "file": "charts/sweep_grid.png",
+  "note": "Hedge grid sweep"
+ },
+ {
+  "file": "charts/sweep_fee.png",
+  "note": "Fee tier sweep (not economically coherent, see text)"
+ },
+ {
+  "file": "charts/sweep_capital.png",
+  "note": "Capital sweep"
+ },
+ {
+  "file": "charts/sweep_leverage.png",
+  "note": "Leverage sweep"
+ },
+ {
+  "file": "charts/reposition_on_off.png",
+  "note": "Reposition on vs off"
+ },
+ {
+  "file": "charts/weekly_usd.png",
+  "note": "Weekly sub-windows, USD terms"
+ },
+ {
+  "file": "charts/weekly_apr.png",
+  "note": "Weekly sub-windows, annualised"
+ },
+ {
+  "file": "charts/hourly_runs.png",
+  "note": "Hourly engine runs"
+ },
+ {
+  "file": "charts/stress_tape.png",
+  "note": "Stress shock applied to the price tape"
+ }
+]

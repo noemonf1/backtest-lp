@@ -7,3 +7,6 @@
   Network URL: http://192.0.2.2:8501
   External URL: http://146.148.42.91:8501
 
+2026-09-06T12:36:19Z INFO backtest_app: swap_level_backtest start swaps=159990 cex_len=2678341 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T12:36:19Z INFO backtest_app: swap_level_backtest done in 0.42s swaps=159990 cex_len=2678341 capital=1000000 range_w=0.15 hedge_b=0.03
+2026-09-06T12:36:19Z INFO backtest_app: backtest_complete engine=swap_level net_apr=-11.39 days=31.0

@@ -1,0 +1,72 @@
+{
+ "swaps_0x88e6a0_2026-08-01_2026-08-31.parquet": {
+  "path": "data/swaps_0x88e6a0_2026-08-01_2026-08-31.parquet",
+  "window": "2026-08-01..2026-08-31 UTC",
+  "rows": 159990,
+  "first": "2026-08-01 00:00:47+0000",
+  "last": "2026-08-31 23:59:59+0000",
+  "bytes": 10468110,
+  "sha256": "3e28bbf3164c24bb801c7101cab0ca810623942e8a2d0876ee0f509fe90f8c83",
+  "cached_in_branch": true
+ },
+ "pool_hourly_0x88e6a0_2026-08-01_2026-09-01.parquet": {
+  "path": "data/pool_hourly_0x88e6a0_2026-08-01_2026-09-01.parquet",
+  "window": "2026-08-01 00:00..2026-09-01 00:00 UTC (hourly, lte end)",
+  "rows": 745,
+  "first": "2026-08-01 00:00:00+0000",
+  "last": "2026-09-01 00:00:00+0000",
+  "bytes": 50491,
+  "sha256": "7e3fdf480bef3e27ff240e6d52f941f9fbe0e8caf97029663f81f9eb5a4c4186",
+  "cached_in_branch": true
+ },
+ "pool_hourly_0x88e6a0_2026-08-01_2026-08-31.parquet": {
+  "path": "data/pool_hourly_0x88e6a0_2026-08-01_2026-08-31.parquet",
+  "window": "2026-08-01..2026-08-31 UTC",
+  "rows": 721,
+  "first": "2026-08-01 00:00:00+0000",
+  "last": "2026-08-31 00:00:00+0000",
+  "bytes": 48939,
+  "sha256": "8d944fe1e9f8a11df476698689fb3a6070537817e9e6ac1e39ffa1bd4cd26ca6",
+  "cached_in_branch": true
+ },
+ "ETHUSDT-klines-1m-2026-08.csv": {
+  "path": "data/ETHUSDT-klines-1m-2026-08.csv",
+  "window": "2026-08-01..2026-08-31 UTC",
+  "rows": 44640,
+  "first": "2026-08-01 00:00:00+0000",
+  "last": "2026-08-31 23:59:00+0000",
+  "bytes": 4947296,
+  "sha256": "f24c82daaf4eeed656444e05c5abec93d5286024036427739ce90a6baf3ad263",
+  "cached_in_branch": true
+ },
+ "ETHUSDT-klines-1h-2026-08.csv": {
+  "path": "data/ETHUSDT-klines-1h-2026-08.csv",
+  "window": "2026-08-01..2026-08-31 UTC",
+  "rows": 744,
+  "first": "2026-08-01 00:00:00+0000",
+  "last": "2026-08-31 23:00:00+0000",
+  "bytes": 89791,
+  "sha256": "aa699e2d4e816d75363bf9a24f7aff38ea2e57934586bf07e379569ff6befe7d",
+  "cached_in_branch": true
+ },
+ "ETHUSDT-fundingRate-2026-08.csv": {
+  "path": "data/ETHUSDT-fundingRate-2026-08.csv",
+  "window": "2026-08-01..2026-08-31 UTC",
+  "rows": 93,
+  "first": "2026-08-01 00:00:00+0000",
+  "last": "2026-08-31 16:00:00+0000",
+  "bytes": 2563,
+  "sha256": "e81333c5828b7611cc27ce119b928525cd1697d6beb1037c6d7007f510f8e37b",
+  "cached_in_branch": true
+ },
+ "ETHUSDT-aggTrades-2026-08.csv": {
+  "path": "data/ETHUSDT-aggTrades-2026-08.csv",
+  "window": "2026-08-01..2026-08-31 UTC",
+  "rows": 33010405,
+  "first": "2026-08-01 00:00:00+0000",
+  "last": "2026-08-31 23:59:59+0000",
+  "bytes": 2187210885,
+  "sha256": "5db024bf09c9091d87b3e8000b7ce2e935838c4ea9f831d557a7968eb44c8f86",
+  "cached_in_branch": false
+ }
+}

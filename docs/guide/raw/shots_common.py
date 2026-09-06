@@ -145,3 +145,90 @@ def metrics_text(pg):
 def sidebar_scroll_to(pg, locator):
     locator.scroll_into_view_if_needed()
     time.sleep(0.5)
+
+def content_height(pg):
+    return pg.evaluate("""()=>{
+      const m=document.querySelector('[data-testid="stMain"]')||document.querySelector('section.main');
+      const sb=document.querySelector('[data-testid="stSidebar"]');
+      const sbc=sb? (sb.querySelector('[data-testid="stSidebarContent"]')||sb):null;
+      const hm=m? m.scrollHeight:0;
+      const hs=sbc? sbc.scrollHeight:0;
+      return [hm,hs];
+    }""")
+
+def full_shot(pg, name, include_sidebar=True, max_h=14000):
+    """Streamlit scrolls inside [data-testid=stMain], so full_page=True only
+    captures one viewport. Resize the viewport to the content height instead."""
+    hm, hs = content_height(pg)
+    h = hm if not include_sidebar else max(hm, hs)
+    h = int(min(max(h + 40, 1000), max_h))
+    pg.set_viewport_size({"width": 1600, "height": h})
+    time.sleep(1.5)
+    # re-measure once (charts can re-layout on resize)
+    hm2, hs2 = content_height(pg)
+    h2 = int(min(max((hm2 if not include_sidebar else max(hm2, hs2)) + 40, 1000), max_h))
+    if abs(h2 - h) > 30:
+        pg.set_viewport_size({"width": 1600, "height": h2}); time.sleep(1.5); h = h2
+    path = f"{SHOTS}/{name}"
+    pg.screenshot(path=path, full_page=False)
+    log(f"full_shot {name} viewport 1600x{h} main={hm2} sidebar={hs2} ({os.path.getsize(path)} bytes)")
+    pg.set_viewport_size({"width": 1600, "height": 1000})
+    time.sleep(1.0)
+    return path
+
+# ---- tall-viewport clip helpers ------------------------------------------
+class Tall:
+    """Context manager: resize viewport to content height so every element is
+    on-screen and clip screenshots work (Streamlit scrolls inside stMain)."""
+    def __init__(self, pg, max_h=16000):
+        self.pg = pg; self.max_h = max_h
+    def __enter__(self):
+        hm, hs = content_height(self.pg)
+        h = int(min(max(max(hm, hs) + 40, 1000), self.max_h))
+        self.pg.set_viewport_size({"width": 1600, "height": h}); time.sleep(1.5)
+        hm2, hs2 = content_height(self.pg)
+        h2 = int(min(max(max(hm2, hs2) + 40, 1000), self.max_h))
+        if abs(h2 - h) > 30:
+            self.pg.set_viewport_size({"width": 1600, "height": h2}); time.sleep(1.5)
+        return self
+    def __exit__(self, *a):
+        self.pg.set_viewport_size({"width": 1600, "height": 1000}); time.sleep(1.0)
+
+def main_h3(pg, text):
+    return pg.locator('[data-testid="stMain"] h3', has_text=text).first
+
+def bbox(loc):
+    return loc.bounding_box()
+
+def clip_shot(pg, name, top_loc, bottom_loc=None, bottom_y=None, pad=12, x=None, w=None):
+    """Clip from the top of top_loc to the bottom of bottom_loc (or bottom_y).
+    Must be called inside Tall()."""
+    tb = bbox(top_loc)
+    if bottom_loc is not None:
+        bb = bbox(bottom_loc); by = bb["y"] + bb["height"]
+    else:
+        by = bottom_y
+    main = bbox(pg.locator('[data-testid="stMain"] [data-testid="stMainBlockContainer"]').first) \
+        if pg.locator('[data-testid="stMainBlockContainer"]').count() else bbox(pg.locator('[data-testid="stMain"]').first)
+    cx = main["x"] if x is None else x
+    cw = main["width"] if w is None else w
+    clip = {"x": max(cx - pad, 0), "y": max(tb["y"] - pad, 0), "width": cw + 2 * pad, "height": (by - tb["y"]) + 2 * pad}
+    path = f"{SHOTS}/{name}"
+    pg.screenshot(path=path, clip=clip)
+    log(f"clip_shot {name} clip={ {k: int(v) for k, v in clip.items()} } ({os.path.getsize(path)} bytes)")
+    return path
+
+def next_h3_after(pg, h3_loc):
+    """Return the next h3 in main after h3_loc, or None."""
+    y0 = bbox(h3_loc)["y"]
+    hs = pg.locator('[data-testid="stMain"] h3')
+    best = None; besty = None
+    for i in range(hs.count()):
+        b = hs.nth(i).bounding_box()
+        if b and b["y"] > y0 + 5 and (besty is None or b["y"] < besty):
+            best = hs.nth(i); besty = b["y"]
+    return best
+
+def main_bottom_y(pg):
+    b = bbox(pg.locator('[data-testid="stMainBlockContainer"]').first)
+    return b["y"] + b["height"]

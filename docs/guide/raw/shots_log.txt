@@ -39,3 +39,31 @@
 2026-09-06T12:29:45Z live demo alerts: ['Synthetic tape — GBM prices + simulated swaps. Great for validating the engine and exploring parameter sensitivity, but ']
 2026-09-06T12:29:48Z screenshot 15_live_demo_run.png (178949 bytes)
 2026-09-06T12:29:48Z === LIVE session end ===
+2026-09-06T12:30:37Z === LIVE session 2 (redo full-page shots with tall viewport) ===
+2026-09-06T12:30:52Z full_shot 01_live_backtest_tab.png viewport 1600x2345 main=2305 sidebar=2305 (135153 bytes)
+2026-09-06T12:31:02Z full_shot 02_live_docs_engines.png viewport 1600x2345 main=2305 sidebar=2305 (211880 bytes)
+2026-09-06T12:31:10Z full_shot 03_live_docs_data.png viewport 1600x2345 main=2305 sidebar=2305 (226467 bytes)
+2026-09-06T12:31:17Z full_shot 04_live_docs_inputs.png viewport 1600x2345 main=2305 sidebar=2305 (322152 bytes)
+2026-09-06T12:31:25Z full_shot 05_live_docs_outputs.png viewport 1600x2345 main=2305 sidebar=2305 (292038 bytes)
+2026-09-06T12:31:32Z full_shot 06_live_docs_interpreting.png viewport 1600x2345 main=2305 sidebar=2305 (359648 bytes)
+2026-09-06T12:31:36Z Mode select shows: 'Demo (synthetic tape)'; engine: 'swap_level (reference)'
+2026-09-06T12:31:36Z clicked Run backtest
+2026-09-06T12:33:47Z run finished (status widget detached)
+2026-09-06T12:33:56Z live demo metrics: ['Net PnL (USD) |  | $18,308', 'Fees APR |  | 75.17%', 'LVR APR |  | -50.95%', 'Funding APR |  | 3.49% |  | collected (perp paid you)', 'Hedge cost APR |  | -6.24%', 'Fees / LVR |  | 1.475', '% time in range |  | 96.4%', 'Sharpe (daily) |  | 20.28', 'Max drawdown |  | $-1,770']
+2026-09-06T12:33:56Z live demo h3: ['INSUFFICIENT WINDOW (25d < 30d) — net 20.08% APR · engine: swap_level · 25 days', 'Cumulative PnL', 'PnL attribution', 'ETH price and LP delta', 'Fetch data', 'Backtest window']
+2026-09-06T12:34:10Z full_shot 15_live_demo_run.png viewport 1600x2892 main=2852 sidebar=2852 (393326 bytes)
+2026-09-06T12:34:16Z === LIVE session 2 end ===
+2026-09-06T12:35:51Z === LOCAL session A start ===
+2026-09-06T12:36:01Z opened http://127.0.0.1:8501; title='ETH/USDC Hedged LP Backtest'
+2026-09-06T12:36:04Z local Fetch data expander text: keyboard_arrow_down |  | Fetch data |  | Download missing Binance CSVs into data/. Files already on disk are skipped — no network call. |  | From (YYYY-MM) |  | To (YYYY-MM) |  | CEX price resolution |  | Fetch now |  | Pool swap events (needed by the swap_level engine). Fetched from the Uniswap v3 subgraph via The Graph gateway — requires THEGRAPH_API_KEY in your env (get a free key). Slow: ~2–3M swaps/month for ETH/USDC 0.05%, many minutes per month. Cached in data/. |  | Swaps from (YYYY-MM-DD) |  | Swaps to (YYYY-MM-DD) |  | Fetch swap events |  | Cancel
+2026-09-06T12:36:04Z screenshot 16_local_sidebar_fetch_data.png (96960 bytes)
+2026-09-06T12:36:08Z set_select 'Mode' -> 'Real data (files)'; widget now shows 'Mode'
+2026-09-06T12:36:08Z   Swaps file: 'data/swaps_0x88e6a0_2026-08-01_2026-08-31.parquet'
+2026-09-06T12:36:08Z   CEX price file: 'data/ETHUSDT-aggTrades-2026-08.csv'
+2026-09-06T12:36:08Z   Funding file: '(none — assume 0)'
+2026-09-06T12:36:09Z screenshot 17_local_sidebar_real_data_defaults.png (82092 bytes)
+2026-09-06T12:36:13Z set_select 'CEX price file' -> 'data/ETHUSDT-klines-1m-2026-08.csv'; widget now shows 'CEX price file'
+2026-09-06T12:36:16Z set_select 'Funding file' -> 'data/ETHUSDT-fundingRate-2026-08.csv'; widget now shows 'Funding file'
+2026-09-06T12:36:17Z file selectboxes now: {'Swaps file': 'data/swaps_0x88e6a0_2026-08-01_2026-08-31.parquet', 'CEX price file': 'data/ETHUSDT-klines-1m-2026-08.csv', 'Funding file': 'data/ETHUSDT-fundingRate-2026-08.csv'}
+2026-09-06T12:36:17Z screenshot 18_local_sidebar_real_data_files_set.png (82782 bytes)
+2026-09-06T12:36:18Z clicked Run backtest
