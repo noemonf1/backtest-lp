@@ -78,3 +78,4 @@
 2026-09-06T12:40:16Z clip_shot 22_local_run_cumulative_pnl.png clip={'x': 288, 'y': 728, 'width': 1324, 'height': 431} (38024 bytes)
 2026-09-06T12:40:32Z clip_shot 23_local_run_attribution_cumulative.png clip={'x': 288, 'y': 1156, 'width': 1324, 'height': 487} (33433 bytes)
 2026-09-06T12:40:47Z clip_shot 24_local_run_attribution_daily_bars.png clip={'x': 288, 'y': 1156, 'width': 1324, 'height': 525} (29874 bytes)
+2026-09-06T12:47:28Z session A killed manually: browser renderer wedged at 8.8 GB RSS / 110% CPU after clip 24; restarting from run 7 with a leaner capture flow (session B)
