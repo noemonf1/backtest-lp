@@ -1,0 +1,32 @@
+Local app, engine hourly (fast fallback), Mode Local CSV files, CEX price file data/ETHUSDT-klines-1m-2026-08.csv, Funding file data/ETHUSDT-fundingRate-2026-08.csv.
+
+### hourly_stress_-20pct_7d_linear
+banner: FEES COVER THE COST — net 79.37% APR · engine: hourly · 30 days
+alert: Stress test active: -20% linear price move over last 7 days. Results are synthetic.
+caption: Loaded 744 bars · 2026-08-01 00:00:00+00:00 → 2026-08-31 23:00:00+00:00
+caption: Capital base = LP $1,000,000 + hedge margin $0 = $1,000,000 (denominator for all APRs below)   [text normalised; the app renders 'hedge margin' through LaTeX]
+metric: Net PnL (USD) |  | $65,194
+metric: Fees APR |  | 0.00%
+metric: LVR APR |  | 0.00%
+metric: Funding APR |  | 1.12% |  | collected (perp paid you)
+metric: Hedge cost APR |  | -1.69%
+metric: Fees / LVR |  | nan
+metric: % time in range |  | 69.8%
+metric: Sharpe (daily) |  | None
+metric: Max drawdown |  | $-3,981
+
+### hourly_stress_-30pct_1d_linear
+banner: FEES COVER THE COST — net 76.87% APR · engine: hourly · 30 days
+alert: Stress test active: -30% linear price move over last 1 days. Results are synthetic.
+caption: Loaded 744 bars · 2026-08-01 00:00:00+00:00 → 2026-08-31 23:00:00+00:00
+caption: Capital base = LP $1,000,000 + hedge margin $0 = $1,000,000 (denominator for all APRs below)   [text normalised; the app renders 'hedge margin' through LaTeX]
+metric: Net PnL (USD) |  | $63,136
+metric: Fees APR |  | 0.00%
+metric: LVR APR |  | 0.00%
+metric: Funding APR |  | 1.11% |  | collected (perp paid you)
+metric: Hedge cost APR |  | -1.78%
+metric: Fees / LVR |  | nan
+metric: % time in range |  | 62.8%
+metric: Sharpe (daily) |  | None
+metric: Max drawdown |  | $-6,039
+

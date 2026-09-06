@@ -28,3 +28,11 @@
 2026-09-06T13:03:50Z INFO backtest_app: sweep start x_field=hedge_band x_n=5 y_field=range_width y_n=6 total_cells=30
 2026-09-06T13:04:04Z INFO backtest_app: sweep done in 14.67s x_field=hedge_band x_n=5 y_field=range_width y_n=6 total_cells=30
 2026-09-06T13:04:04Z INFO backtest_app: sweep_result cells_completed=30 cancelled=False
+2026-09-06T13:16:28Z INFO backtest_app: stress_test_applied pct=-0.2 shape=linear days=7
+2026-09-06T13:16:28Z INFO backtest_app: hourly_backtest start bars=744 capital=1000000 range_w=0.15 rebalance=threshold
+2026-09-06T13:16:29Z INFO backtest_app: hourly_backtest done in 0.50s bars=744 capital=1000000 range_w=0.15 rebalance=threshold
+2026-09-06T13:16:29Z INFO backtest_app: backtest_complete engine=hourly net_apr=79.37 days=30
+2026-09-06T13:16:53Z INFO backtest_app: stress_test_applied pct=-0.3 shape=linear days=1
+2026-09-06T13:16:53Z INFO backtest_app: hourly_backtest start bars=744 capital=1000000 range_w=0.15 rebalance=threshold
+2026-09-06T13:16:54Z INFO backtest_app: hourly_backtest done in 0.47s bars=744 capital=1000000 range_w=0.15 rebalance=threshold
+2026-09-06T13:16:54Z INFO backtest_app: backtest_complete engine=hourly net_apr=76.87 days=30

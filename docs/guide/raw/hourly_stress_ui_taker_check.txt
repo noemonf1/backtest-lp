@@ -1,0 +1,5 @@
+Assumptions() binance_taker_fee = 0.0004 ; sidebar derive writes taker_fee_bps/10000 = 4.5/10000 = 0.00045 (app.py:648)
+-20pct 7d linear taker=0.0004: net=65320 netAPR=79.53 fees=0 funding=920 fundAPR=1.12 hedge=1260 hedgeAPR=-1.53 inr=69.8 dd=-3953
+-20pct 7d linear taker=0.00045: net=65194 netAPR=79.37 fees=0 funding=920 fundAPR=1.12 hedge=1386 hedgeAPR=-1.69 inr=69.8 dd=-3981
+-30pct 1d linear taker=0.0004: net=63269 netAPR=77.03 fees=0 funding=909 fundAPR=1.11 hedge=1329 hedgeAPR=-1.62 inr=62.8 dd=-6004
+-30pct 1d linear taker=0.00045: net=63136 netAPR=76.87 fees=0 funding=909 fundAPR=1.11 hedge=1462 hedgeAPR=-1.78 inr=62.8 dd=-6039

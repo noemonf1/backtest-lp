@@ -222,6 +222,8 @@ Backtest by month (same file): `Loaded data spans only 1 month — need at least
 | −30%, linear, last 1 day | 25 | 1,726.57 | 0 | 909 | 1,329 | +63,269 | 77.03% | 339 | 62.8% |
 | −30%, step, last 1 day | 25 | 1,726.57 (min 1,684.89) | 0 | 972 | 1,358 | −15,947 | −19.42% | 317 | 64.1% |
 
+Through the UI (`raw/shots_local_hourly_metrics.txt`, screenshots 40 and 43) the same two linear runs show net $65,194 (79.37% APR, hedge cost APR −1.69%) and $63,136 (76.87%, −1.78%). The difference from the Python rows is the taker fee: the sidebar's `Binance taker fee (bps)` widget writes `binance_taker_fee = 4.5 / 10,000` on every render (app.py:648), while `bt.Assumptions()` defaults it to 0.0004. Rerunning with `binance_taker_fee=0.00045` gives 65,194 and 63,136 exactly (`raw/hourly_stress_ui_taker_check.txt`). The swap_level engine is unaffected because it reads `taker_fee_bps`, which is 4.5 in both places.
+
 A 30% drop over one day at the end of the tape pushes ETH back inside the ±15% band (1,584 to 2,144) and below it in the step case. The linear and step cases differ by 79,216 USD of reported net for the same end price because of the section 2 sign error: the linear ramp lets the engine reduce the short in 24 steps and book each reduction with the wrong sign, the step does it in one bar. The stress panel is a synthetic overlay on the weaker engine, and its output carries that engine's defect.
 
 ## 12. The app's own sweep

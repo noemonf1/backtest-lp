@@ -147,3 +147,66 @@
 2026-09-06T13:03:47Z checkbox 'Rolling-window distribution (30d)' checked=False
 2026-09-06T13:03:47Z checkbox 'Backtest by month' checked=False
 2026-09-06T13:03:47Z clicked Run backtest
+2026-09-06T13:06:03Z run finished (status widget detached)
+2026-09-06T13:06:03Z run 10 (sweep) took 136s
+2026-09-06T13:06:16Z run 10 metrics: ['Net PnL (USD) |  | $-11,592', 'Fees APR |  | 28.46%', 'LVR APR |  | 4.06%', 'Funding APR |  | 1.47% |  | collected (perp paid you)', 'Hedge cost APR |  | -3.48%', 'Fees / LVR |  | nan', '% time in range |  | 98.2%', 'Sharpe (daily) |  | -5.55', 'Max drawdown |  | $-13,161']
+2026-09-06T13:06:16Z run 10 h3s: ['FEES DO NOT COVER THE COST — net -11.39% APR · engine: swap_level · 31 days', 'Cumulative PnL', 'PnL attribution', 'ETH price and LP delta', 'Parameter sweep', 'Fetch data', 'Backtest window', 'Engine', 'LP leg', 'Hedge leg', 'Mechanics (swap_level)', 'LP fee tier — 1 / 5 / 30 / 100 bps.', 'Run controls', 'Verdict banner', 'Top-row metrics', 'Second-row metrics', 'Charts', 'Sweep (swap_level only)', 'Run comparison', 'Assumptions dataclass (source of truth)']
+2026-09-06T13:06:16Z run 10 alerts: ['Best cell: Range width (±) 50% × Hedge band 5.0% → net APR 1.50%, Sharpe 0.77']
+2026-09-06T13:06:17Z sweep text inputs: ['X values (comma-separated)', 'Y values (comma-separated)']
+2026-09-06T13:06:24Z screenshot 31_local_run_sweep_full.png viewport 1600x3553
+2026-09-06T13:06:53Z crop 32_local_run_sweep_section.png box=(288, 2545, 1600, 3525) (60589 bytes)
+2026-09-06T13:07:21Z screenshot 33_local_run_sweep_table_open.png
+2026-09-06T13:07:23Z grid cells found: 156
+2026-09-06T13:12:04Z sweep table text chars: 835
+2026-09-06T13:12:04Z === LOCAL session C end ===
+2026-09-06T13:12:15Z === LOCAL session D (hourly) start ===
+2026-09-06T13:12:30Z set_select 'Backtest engine' -> 'hourly (fast fallback)'; widget now shows 'Backtest engine'
+2026-09-06T13:12:34Z set_select 'Mode' -> 'Local CSV files'; widget now shows 'Mode'
+2026-09-06T13:12:37Z set_select 'CEX price file' -> 'data/ETHUSDT-klines-1m-2026-08.csv'; widget now shows 'CEX price file'
+2026-09-06T13:12:37Z hourly files: {'CEX price file': 'data/ETHUSDT-klines-1m-2026-08.csv', 'Funding file': 'data/ETHUSDT-fundingRate-2026-08.csv'}
+2026-09-06T13:12:37Z hourly widgets: ['', 'Backtest engine', 'Mode', 'CEX price file', 'Funding file', 'Range specification', 'Rebalance mode', 'Perp leverage', '', '']
+2026-09-06T13:12:40Z screenshot 34_local_hourly_sidebar_engine_data.png (74093 bytes)
+2026-09-06T13:12:42Z hourly expander 'Position sizing': keyboard_arrow_down |  | Position sizing |  | Capital deployed (USD) |  | Range specification |  | Range width (± fraction around spot) |  | 0.15 |  | 0.02 |  | 0.75 |  | Our share of pool active liquidity |  | Pool volume as fraction of Binance quote volume
+2026-09-06T13:12:42Z screenshot 35_local_hourly_sidebar_position_sizing.png (89042 bytes)
+2026-09-06T13:12:44Z hourly expander 'Hedge policy': keyboard_arrow_down |  | Hedge policy |  | Rebalance mode |  | Rebalance threshold (fraction of |delta|) |  | 0.05 |  | 0.01 |  | 0.2 |  | Perp leverage |  | Margin buffer (× notional/leverage)
+2026-09-06T13:12:44Z screenshot 36_local_hourly_sidebar_hedge_policy.png (81764 bytes)
+2026-09-06T13:12:47Z hourly expander 'Cost model': keyboard_arrow_down |  | Cost model |  | LP fee tier (bps) |  | Binance taker fee (bps) |  | Flat slippage on hedge trades (bps)
+2026-09-06T13:12:47Z screenshot 37_local_hourly_sidebar_cost_model.png (80584 bytes)
+2026-09-06T13:12:53Z set_checkbox 'Stress test (price shock)' -> True; now True
+2026-09-06T13:12:54Z Analysis + Run (stress on): keyboard_arrow_down |  | Analysis + Run |  | Rolling-window distribution (30d) |  | Backtest by month |  | Stress test (price shock) |  | Shock over last N days |  | Total price move (%) |  | -20 |  | -50 |  | 50 |  | Shape |  | Run label (optional)
+2026-09-06T13:12:54Z Shock days value: 7
+2026-09-06T13:15:31Z set_select 'Backtest engine' -> 'hourly (fast fallback)'; widget now shows 'Backtest engine'
+2026-09-06T13:15:33Z set_checkbox 'Stress test (price shock)' -> True; now True
+2026-09-06T13:15:53Z session D failed at the stress slider: Streamlit's slider is a react-aria widget with a hidden input[type=range], no role=slider. Shots 34-37 kept. Session D2 redoes the stress part using the hidden range input.
+2026-09-06T13:15:54Z === LOCAL session D2 (hourly stress) start ===
+2026-09-06T13:16:09Z set_select 'Backtest engine' -> 'hourly (fast fallback)'; widget now shows 'Backtest engine'
+2026-09-06T13:16:12Z set_select 'Mode' -> 'Local CSV files'; widget now shows 'Mode'
+2026-09-06T13:16:16Z set_select 'CEX price file' -> 'data/ETHUSDT-klines-1m-2026-08.csv'; widget now shows 'CEX price file'
+2026-09-06T13:16:16Z hourly files: {'CEX price file': 'data/ETHUSDT-klines-1m-2026-08.csv', 'Funding file': 'data/ETHUSDT-fundingRate-2026-08.csv'}
+2026-09-06T13:16:16Z hourly widgets: ['', 'Backtest engine', 'Mode', 'CEX price file', 'Funding file', 'Range specification', 'Rebalance mode', 'Perp leverage', '', '']
+2026-09-06T13:16:16Z 34-37 already captured in session D; skipping
+2026-09-06T13:16:23Z set_checkbox 'Stress test (price shock)' -> True; now True
+2026-09-06T13:16:24Z Analysis + Run (stress on): keyboard_arrow_down |  | Analysis + Run |  | Rolling-window distribution (30d) |  | Backtest by month |  | Stress test (price shock) |  | Shock over last N days |  | Total price move (%) |  | -20 |  | -50 |  | 50 |  | Shape |  | Run label (optional)
+2026-09-06T13:16:24Z Shock days value: 7
+2026-09-06T13:16:24Z slider text: Total price move (%) |  | -20 |  | -50 |  | 50; value -20
+2026-09-06T13:16:24Z Shape: linear
+2026-09-06T13:16:28Z screenshot 38_local_hourly_stress_controls_default.png (84999 bytes)
+2026-09-06T13:16:28Z clicked Run backtest
+2026-09-06T13:16:36Z run finished (status widget detached)
+2026-09-06T13:16:36Z stress run A took 8s
+2026-09-06T13:16:36Z hourly_stress_-20pct_7d_linear banner 'FEES COVER THE COST — net 79.37% APR · engine: hourly · 30 days' alerts ['Stress test active: -20% linear price move over last 7 days. Results are synthetic.'] metrics ['Net PnL (USD) |  | $65,194', 'Fees APR |  | 0.00%', 'LVR APR |  | 0.00%', 'Funding APR |  | 1.12% |  | collected (perp paid you)', 'Hedge cost APR |  | -1.69%', 'Fees / LVR |  | nan', '% time in range |  | 69.8%', 'Sharpe (daily) |  | None', 'Max drawdown |  | $-3,981']
+2026-09-06T13:16:39Z screenshot 39_local_hourly_stress_default_full.png viewport 1600x2813
+2026-09-06T13:16:39Z crop 40_local_hourly_stress_default_metrics.png box=(288, 323, 1600, 752) (70297 bytes)
+2026-09-06T13:16:44Z Shock days now: 1
+2026-09-06T13:16:52Z slider now: -30
+2026-09-06T13:16:52Z stress controls now: days=1 pct=-30 shape=linear
+2026-09-06T13:16:53Z screenshot 41_local_hourly_stress_controls_-30_1d.png (153636 bytes)
+2026-09-06T13:16:53Z clicked Run backtest
+2026-09-06T13:17:01Z run finished (status widget detached)
+2026-09-06T13:17:01Z stress run B took 8s
+2026-09-06T13:17:01Z hourly_stress_-30pct_1d_linear banner 'FEES COVER THE COST — net 76.87% APR · engine: hourly · 30 days' alerts ['Stress test active: -30% linear price move over last 1 days. Results are synthetic.'] metrics ['Net PnL (USD) |  | $63,136', 'Fees APR |  | 0.00%', 'LVR APR |  | 0.00%', 'Funding APR |  | 1.11% |  | collected (perp paid you)', 'Hedge cost APR |  | -1.78%', 'Fees / LVR |  | nan', '% time in range |  | 62.8%', 'Sharpe (daily) |  | None', 'Max drawdown |  | $-6,039']
+2026-09-06T13:17:04Z screenshot 42_local_hourly_stress_-30_1d_full.png viewport 1600x3494
+2026-09-06T13:17:04Z crop 43_local_hourly_stress_-30_1d_metrics.png box=(288, 323, 1600, 752) (70829 bytes)
+2026-09-06T13:17:04Z crop 44_local_hourly_run_comparison.png box=(288, 2617, 1600, 3465) (49946 bytes)
+2026-09-06T13:17:04Z === LOCAL session D2 end ===
+2026-09-06T13:18:21Z INDEX.md written; all sessions complete

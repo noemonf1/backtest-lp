@@ -99,6 +99,8 @@ After `Run backtest` the main area shows, in order: a verdict banner with the ne
 
 `Run range × hedge-band sweep` runs one backtest per cell of a grid (default 5 hedge bands × 6 range widths, 30 runs, 15.8 s on the August tape) and shows a heatmap plus a `Full sweep table` expander. `Rolling-window distribution (30d)` shows the net APR of each trailing 30-day window; with 31 days of data that is 2 windows. `Backtest by month` runs one backtest per calendar month; with one month of data it shows `Loaded data spans only 1 month — need at least 2`. The stress test lives in the same expander but only appears when the `hourly` engine is selected; it is a synthetic price shock applied to the last N days and is discussed in section 8.11.
 
+![The full results page with the sweep on: headline results identical to the default run, then the Parameter sweep section.](screenshots/31_local_run_sweep_full.png)
+
 ### 0.8 The engine from Python in five lines
 
 ```
@@ -405,6 +407,14 @@ Verdict: the headline is robust to the price file; the attribution is not. Prope
 
 ### 8.2 The hourly engine on the same window
 
+![Sidebar with the hourly engine selected in Local CSV files mode: the CEX price file and funding file selectboxes.](screenshots/34_local_hourly_sidebar_engine_data.png)
+
+![Hourly engine, Position sizing expander: range specification, range width, pool share, pool volume multiplier.](screenshots/35_local_hourly_sidebar_position_sizing.png)
+
+![Hourly engine, Hedge policy expander: rebalance mode and threshold, leverage, margin buffer.](screenshots/36_local_hourly_sidebar_hedge_policy.png)
+
+![Hourly engine, Cost model expander: fee tier, taker fee, flat slippage.](screenshots/37_local_hourly_sidebar_cost_model.png)
+
 The `hourly (fast fallback)` engine in `Local CSV files` mode reports net +69,274 USD (+84.34% APR) with fees 0. Fees are zero because the mode sets the volume to zero before calling the engine (app.py:1137-1138). The net is positive because the engine's realised hedge P&L carries the wrong sign: a short bought back above its average price is booked as a gain (kimi/uniswap_delta_hedge_backtest.py:393). On the first reducing trade it books −92.03 USD where +92.03 is correct; over a month in which ETH rose 32% it books +106,112 on a short where the correct figure is −45,646 (`raw/hourly_hedge_sign_check.txt`). With the correct hedge P&L the same run is −82,485 USD. The engine's `pool_share` default of 0.001 is 27× below the measured 0.02655 for this position; its `pool_volume_multiplier` default of 0.08 is 7.8× above the measured pool-to-Binance volume ratio of 0.01023. Its `PnL attribution` charts also show the hedge cost 319× too large because of a cumulative-versus-per-bar mix-up in the columns (SCENARIOS.md section 2). Verdict: do not use this engine for a number. Property of the code.
 
 ### 8.3 Range width
@@ -512,11 +522,23 @@ Two flat weeks ended within 312 USD of zero. The week with the 3.48% minute, the
 
 ### 8.11 Stress shock (hourly engine only)
 
-The stress test rewrites the OHLC bars of the last N days by a linear ramp or a step and reruns the hourly engine (app.py:1876-1905, 1944-1954); the swap tape and fees are untouched, so it does not exist for the reference engine. At the sidebar defaults (−20% linear over the last 7 days) the hourly engine reports net +65,320; at −30% over 1 day, +63,269 (linear) and −15,947 (step). The 79,216 USD difference between the last two for the same end price is the hourly engine's sign error acting on 24 partial buy-backs versus one. Verdict: a synthetic overlay on the engine with the defect; not evidence about anything.
+![Stress test controls at their defaults in the Analysis + Run expander: shock over last 7 days, total move −20%, shape linear.](screenshots/38_local_hourly_stress_controls_default.png)
+
+![Stressed run at the defaults: the "Stress test active" warning, the green verdict at 79.37% APR with Fees APR 0.00%, and the nine tiles.](screenshots/40_local_hourly_stress_default_metrics.png)
+
+![Stressed run at −30% over the last 1 day: verdict 76.87% APR, Fees APR 0.00%, Sharpe None.](screenshots/43_local_hourly_stress_-30_1d_metrics.png)
+
+![Run comparison of the two hourly stress runs: both daily cumulative lines start near −60,000 and jump to about +65,000 on Aug 20.](screenshots/44_local_hourly_run_comparison.png)
+
+The stress test rewrites the OHLC bars of the last N days by a linear ramp or a step and reruns the hourly engine (app.py:1876-1905, 1944-1954); the swap tape and fees are untouched, so it does not exist for the reference engine. On screen, at the sidebar defaults (−20% linear over the last 7 days) the hourly engine reports `FEES COVER THE COST — net 79.37% APR` with `Fees APR 0.00%` and Net PnL $65,194; at −30% linear over 1 day, 76.87% and $63,136. From Python with `bt.Assumptions()` the same two runs give 65,320 and 63,269: the sidebar's taker-fee widget writes `binance_taker_fee = 4.5 / 10,000` (app.py:648) while the dataclass default is 0.0004, and rerunning with 0.00045 reproduces the screen numbers exactly (`raw/hourly_stress_ui_taker_check.txt`). A −30% step over 1 day gives −15,947. The 79,216 USD difference between the linear and step cases for the same end price is the hourly engine's sign error acting on 24 partial buy-backs versus one. The comparison chart makes the defect visible: both stress runs start the month at −60,000 (the 68,000 USD of capital the engine leaves unused at t0, `raw/hourly_hedge_sign_check.txt`) and jump to +65,000 on Aug 20 when the short is bought back above its average price. Verdict: a synthetic overlay on the engine with the defect; not evidence about anything.
 
 ![What the stress shock does to the price tape: unshocked, −30% linear over the last day, −30% step.](charts/stress_tape.png)
 
 ### 8.12 The app's own sweep
+
+![Parameter sweep section after a run with the sweep option on: axis pickers at their defaults and the net-APR heatmap, all cells yellow to red except one.](screenshots/32_local_run_sweep_section.png)
+
+![Full sweep table expander opened: the first ten of 30 rows.](screenshots/33_local_run_sweep_table_open.png)
 
 `Run range × hedge-band sweep` at the default grid: 30 cells, 15.8 s. The app's callout reads `Best cell: Range width (±) 50% × Hedge band 5.0% → net APR 1.50%, Sharpe 0.77`. That cell made 4 trades in 31 days; the neighbouring cell at band 10% made 2 and shows −8.73%. One trade's timing against a 32% trend separates them. The full 30-row table is in SCENARIOS.md section 12. Every cell with more than 25 trades is negative.
 
@@ -605,6 +627,6 @@ From the repository root with the data files in place (`cp data-cache/* data/`, 
 | Section 7 through the UI, rolling, by-month, section 8.12 sweep | `python3 docs/guide/raw/apptest_runs.py` |
 | Section 3 derivations | `python3 docs/guide/raw/guide_derivations.py` |
 | Charts | `python3 docs/guide/raw/make_charts.py` |
-| Screenshots | `python3 docs/guide/raw/shots_*.py` (Playwright; see `screenshots/INDEX.md`) |
+| Screenshots | `python3 docs/guide/raw/shots_live.py`, `shots_live2.py`, `shots_local_a.py`, `shots_local_b.py`, `shots_local_c.py`, `shots_local_d.py` (Playwright; captions in `screenshots/INDEX.md`) |
 | Formula checks (SOURCES.md) | `python3 docs/guide/raw/sources_check.py` |
 | This document as .docx | `python3 docs/guide/raw/build_docx.py` |

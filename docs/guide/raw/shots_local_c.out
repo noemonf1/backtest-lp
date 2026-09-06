@@ -7,3 +7,15 @@
 2026-09-06T13:03:47Z checkbox 'Rolling-window distribution (30d)' checked=False
 2026-09-06T13:03:47Z checkbox 'Backtest by month' checked=False
 2026-09-06T13:03:47Z clicked Run backtest
+2026-09-06T13:06:03Z run finished (status widget detached)
+2026-09-06T13:06:03Z run 10 (sweep) took 136s
+2026-09-06T13:06:16Z run 10 metrics: ['Net PnL (USD) |  | $-11,592', 'Fees APR |  | 28.46%', 'LVR APR |  | 4.06%', 'Funding APR |  | 1.47% |  | collected (perp paid you)', 'Hedge cost APR |  | -3.48%', 'Fees / LVR |  | nan', '% time in range |  | 98.2%', 'Sharpe (daily) |  | -5.55', 'Max drawdown |  | $-13,161']
+2026-09-06T13:06:16Z run 10 h3s: ['FEES DO NOT COVER THE COST — net -11.39% APR · engine: swap_level · 31 days', 'Cumulative PnL', 'PnL attribution', 'ETH price and LP delta', 'Parameter sweep', 'Fetch data', 'Backtest window', 'Engine', 'LP leg', 'Hedge leg', 'Mechanics (swap_level)', 'LP fee tier — 1 / 5 / 30 / 100 bps.', 'Run controls', 'Verdict banner', 'Top-row metrics', 'Second-row metrics', 'Charts', 'Sweep (swap_level only)', 'Run comparison', 'Assumptions dataclass (source of truth)']
+2026-09-06T13:06:16Z run 10 alerts: ['Best cell: Range width (±) 50% × Hedge band 5.0% → net APR 1.50%, Sharpe 0.77']
+2026-09-06T13:06:17Z sweep text inputs: ['X values (comma-separated)', 'Y values (comma-separated)']
+2026-09-06T13:06:24Z screenshot 31_local_run_sweep_full.png viewport 1600x3553
+2026-09-06T13:06:53Z crop 32_local_run_sweep_section.png box=(288, 2545, 1600, 3525) (60589 bytes)
+2026-09-06T13:07:21Z screenshot 33_local_run_sweep_table_open.png
+2026-09-06T13:07:23Z grid cells found: 156
+2026-09-06T13:12:04Z sweep table text chars: 835
+2026-09-06T13:12:04Z === LOCAL session C end ===
