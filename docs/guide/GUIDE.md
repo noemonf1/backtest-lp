@@ -35,41 +35,112 @@ streamlit run app.py --server.headless true --server.port 8501
 
 The page is then at `http://127.0.0.1:8501`. The repository's `requirements.txt` pins `pandas==3.0.5` and `numpy==2.5.1`, which do not exist on PyPI; the versions above are the ones that install and pass the test suite (ENVIRONMENT.md). Python 3.11.15 was used.
 
-### 0.3 The sidebar, top to bottom
+### 0.3 The sidebar, control by control
 
-Each expander is a group of controls. The full table of all 59 widget call sites with their defaults, ranges and the code that consumes each one is Appendix A.
+Every control does exactly one of four things. It picks the **data** the run reads. It changes the **position** (how much liquidity, struck where, re-struck when). It changes the **hedge policy** (how often you trade the perp and how far you let delta drift). Or it changes a **cost assumption**. Nothing else in the sidebar affects a number. Four controls do nothing at all in some modes, listed in Appendix A.
+
+Two quantities recur below, so define them once.
+
+- **L (liquidity)** is the position's size parameter. The engine sets it by `L = capital / value(L = 1)` at the entry price (run_claude.py:232-234). Value scales linearly in L, so L is the position's notional in Uniswap units. A narrower band gives more L per dollar, because the same dollars are spread over less price space.
+- **Max delta** is the ETH the position holds when the price sits at or below the bottom of its band, `L_h × (1/√P_lo − 1/√P_hi)` (run_claude.py:187-190). At the default t0 it is 561.24 ETH against an entry delta of 249.25. It is the position's delta range, and the hedge band is quoted as a fraction of it.
+
+#### 0.3.1 Engine and data source
 
 ![Fetch data expander on the live deployment: month range for Binance downloads, CEX price resolution, Fetch now, swap event date range, Fetch swap events, Cancel.](screenshots/07_live_sidebar_fetch_data.png)
 
-`Fetch data` downloads the price and funding files from Binance's public archive and the swap events from a public index of the Ethereum chain. Section 0.4 walks through it.
+`Fetch data` only downloads files. It changes no number in a backtest. Section 0.4 walks through it.
 
-![Save / load config expander: download the current assumptions as JSON, upload one, reset to defaults.](screenshots/08_live_sidebar_save_load_config.png)
+| Control | What the choice means | How it enters the calculation | On the August data |
+|---|---|---|---|
+| Backtest engine | `swap_level` prices every individual pool trade against the exchange. `hourly` reads 1-hour bars and estimates fees from a volume guess. | Picks `bt.run_swap_level` or `bt.run_hourly` (app.py:1938, 1967). The hourly engine has no LVR term at all and books realised hedge P&L with the wrong sign. | swap_level −11,592 USD. hourly +69,274 USD, which is wrong (section 8.2). Use swap_level. |
+| Mode (swap_level) | `Demo` generates a fake price path and fake trades. `Real data (files)` reads the three files below. | Demo calls `make_demo_data` (run_claude.py:363); the run then carries a yellow "numbers do NOT reflect real PnL" banner. | This guide never uses Demo. |
+| Demo days, Annualised vol, Starting ETH price, RNG seed | The four parameters of the synthetic tape: how long, how volatile, from what price, and which random draw. | Passed straight to the geometric Brownian generator (run_claude.py:363-378). Changing the seed changes the answer with everything else fixed. | Not used. |
+| Swaps file | Which pool-trade tape to price against. This is the fee and adverse-selection source. | `bt.load_swaps` then per-swap attribution (run_claude.py:458-535). | 159,990 swaps, August 2026. |
+| CEX price file | Which exchange tape marks the position, prices the hedge and defines "fair" for LVR. 1-minute bars are coarse, aggTrades is every trade. | Resampled to 1 second and forward-filled (run_claude.py:295-315). A 1-minute bar means the mark can be 59 seconds stale when a swap is priced. | Changes net by 9 USD. Changes the reported LVR from −4,134 to +34,360 (section 6). This is the most consequential file choice in the app. |
+| Funding file | Whether the perp carry is counted. `(none — assume 0)` sets it to zero. | Each 8-hour print becomes `−(hedge × price) × rate` on the nearest grid row (run_claude.py:645-660). | With funding −11,592. Without it −13,086. |
 
-`Save / load config` writes the 24 assumption fields to a JSON file or reads one back (APP_MAP.md section 4.4).
+#### 0.3.2 Backtest window
 
 ![Backtest window expander: optional start and end dates that clip the loaded data.](screenshots/09_live_sidebar_backtest_window.png)
 
-`Backtest window` clips the loaded series to a date range. Both fields default to empty, which means the whole file. The end date is exclusive of the day named (APP_MAP.md contradiction C8).
+Two dates that clip every loaded series before the engine sees them (app.py:1028-1042). Empty means the whole file. Use it to test a sub-period without re-downloading. The end date is exclusive of the day you name, which the help text does not say (Appendix A, C8). Clipping changes the entry price, so the whole position is re-struck around a different spot: the four weekly runs in section 8.10 are nothing but this control moved four times, and they range from +1.35% to −34% annualised.
+
+#### 0.3.3 Position sizing
 
 ![Position sizing expander: capital deployed, range width, reposition switch and buffer.](screenshots/10_live_sidebar_position_sizing.png)
 
-`Position sizing` holds the capital (default 1,000,000 USD), the range width as a fraction around the entry price (default ±15%), whether to re-centre the range after the price leaves it (default yes) and how long the price must stay outside before re-centring (default 6 hours).
+| Control | What the choice means | How it enters the calculation | On the August data |
+|---|---|---|---|
+| Capital deployed (USD) | The dollars in the LP leg. It does not include hedge margin, which is added on top for the APR denominator. | Sets L (run_claude.py:232-234). Fees, LVR and hedge size all scale with L, so most terms are near-linear in capital. The exception is your share of the pool. | 100k to 10M: fee APR falls 29.3% to 22.4%, net APR falls −11.0% to −20.6% (section 8.7). |
+| Range width (± fraction around spot) | The two strikes of the strangle, as a percentage band around the entry price. 0.15 means 1,583 to 2,143 at an entry of 1,862.68. | Converted to tick bounds, then L is solved for the capital (run_claude.py:219-234). Bounds are rounded outward to multiples of 10 ticks, which is 0.1% steps. | ±2% earns 4.2x the fees of ±15% and loses 11x as much: −129,455 against −11,592 (section 8.3). |
+| Reposition when out of range? | Whether to re-strike the strangle around the new spot after the price leaves the band, or to sit in one token and stop earning. | `build_position_schedule` walks the price grid and re-strikes when triggered (run_claude.py:557-575). Off means one position for the whole window. | On: 98.2% of flow in range, net −11,592. Off: 44.5% in range, net −8,812. In a trending month, not re-striking lost less (section 8.9). |
+| Reposition buffer (hours) | How long the price must stay outside the band before you accept the break and re-strike. It is a whipsaw filter. | The out-of-range clock resets on any re-entry; only a continuous stay longer than the buffer triggers (run_claude.py:558-570). | 6 hours. ETH left the band on Aug 19 and the re-strike fired on Aug 20 at 02:50. |
+
+The intuition on range width is the whole strategy in one line. Concentrating your dollars into a narrow band buys you more fee share per dollar and more gamma per dollar in the same proportion. You are not choosing between more income and more risk. You are choosing the scale of both at once, and the market decides which one wins.
+
+For the `hourly` engine this expander shows different controls: absolute price bounds instead of a width, plus `Our share of pool active liquidity` and `Pool volume as fraction of Binance quote volume`. Those two are the hourly engine's substitute for a real swap tape. It multiplies a guessed pool volume by a guessed share to invent a fee number. Both defaults are far from what August actually was: the share default 0.001 against a measured 0.02655, the volume multiplier 0.08 against a measured 0.01023 (section 8.2).
+
+#### 0.3.4 Hedge policy
 
 ![Hedge policy expander: hedge band, perp leverage, margin buffer.](screenshots/11_live_sidebar_hedge_policy.png)
 
-`Hedge policy` holds the rehedge band (default 3% of the position's maximum delta), the leverage used to compute the margin (default 4x) and a margin buffer multiplier (default 1.5).
+| Control | What the choice means | How it enters the calculation | On the August data |
+|---|---|---|---|
+| Hedge band (fraction of max delta) | The dead zone. You rehedge only when your residual delta exceeds this fraction of the position's full delta range. | `band = hedge_band × max_delta`, and the engine trades only when `abs(lp_delta + hedge) > band` on a grid row (run_claude.py:610-620). At the default, 3% of 561.24 ETH is a 16.84 ETH tolerance. | 0.5%: 3,218 trades, 13,390 USD of execution. 10%: 15 trades, 1,492 USD, but a worse drawdown (section 8.4). |
+| Perp leverage | How much margin you post against the perp short. | Only `margin = max_notional / leverage × margin_buffer` (run_claude.py:720). It is the APR denominator and nothing else. No liquidation, no margin call, no funding on margin is modelled. | Every leverage gives net −11,592 USD. Only the APR moves, −7.61% at 1x to −12.65% at 10x (section 8.8). |
+| Margin buffer | An extra collateral multiple on top of the leverage requirement, for liquidation safety. | Multiplies the margin, same denominator effect. | Default 1.5. Margin 198,120 USD on a peak notional of 528,320. |
+
+The hedge band is the familiar rehedge-frequency trade-off, expressed in a fixed number of ETH rather than in delta percent or dollars. Tight band, small tracking error, large execution bill. Wide band, cheap, but you carry unhedged gamma between trades. The band does not change your fees or your gamma cost at all: across the whole sweep, fees stayed at 28,956 and LVR at −4,134 in every row. It only changes what you pay to track.
+
+For `hourly`, this expander instead offers `Rebalance mode` (threshold or periodic), a threshold quoted as a fraction of current delta rather than max delta, and a fixed period in hours.
+
+#### 0.3.5 Cost model
 
 ![Cost model expander: LP fee tier, Binance taker fee, half-spread, linear impact, gas per reposition, swap cost to re-ratio.](screenshots/12_live_sidebar_cost_model.png)
 
-`Cost model` holds the pool's fee tier (default 5 bps), the perp taker fee (4.5 bps), a half-spread (0.5 bps), an impact coefficient (0.8 bps per 100,000 USD clip), the gas paid per reposition (40 USD) and the cost of re-ratioing the two tokens when repositioning (5 bps of capital).
+| Control | What the choice means | How it enters the calculation | On the August data |
+|---|---|---|---|
+| LP fee tier (bps) | The fee the pool charges takers, which is your gross income rate. | Two places: your fee is `tier × gross input × your share` (run_claude.py:511-513), and the taker's execution price for the LVR measure is computed net of the same tier (517-522). | Sweeping it is incoherent because the tape is flow that chose a 5 bp pool (section 8.6). Leave it at the pool's own tier. |
+| Binance taker fee (bps) | Your commission per hedge trade. | `cost = notional × (half_spread + taker) / 1e4` (run_claude.py:623-624). | 4.5 bps of 6,355,283 USD turnover. |
+| Half-spread when using klines (bps) | The half bid-ask you cross on every hedge trade, since a bar file has no book. | Same line as the taker fee. Applied for every price source, not only klines (Appendix A, C15). | 0.5 bps. Together with the taker fee, 3,178 USD of the 3,540 execution cost. |
+| Linear impact (bps per $100k clip) | How much your own hedge order moves the perp against you, per 100,000 USD of clip. | `cost += notional × (notional / 1e5) × impact / 1e4` (run_claude.py:625). Note the notional appears twice, so the cost is quadratic in clip size and the bps rate rises with the clip. | 362 USD of 3,540 at 1M capital. 36,204 of 67,982 at 10M, where the mean clip is 424k. It equals the spread and fee only above a 625,000 USD clip. |
+| Gas per reposition (USD) | The chain transaction fee to close and reopen the position. | Charged once per re-strike (run_claude.py:571, 693). | 40 USD, once. |
+| Swap cost to re-ratio on reposition (bps) | The one people miss. When the price leaves your band, your inventory is 100% one token: all USDC if the price ran up through the top. A new band centred on the new spot needs roughly 54/46 USDC and ETH again, so you must go and buy the ETH back in the market. This charge is that round trip, quoted in bps of position value. | Deducted from the position value at the re-strike (run_claude.py:570), and then added again in the gas column (694). | 5 bps of 1,033,725 = 516.86 USD, plus 40 gas = 556.86. The gas column then books another 540 (which is 5 bps of the initial capital, not the current). The one re-strike is charged 1,096.86 USD for a 556.86 USD event. |
+
+So a re-strike costs you three things: the chain fee, the market cost of re-ratioing the inventory, and the fact that you are re-opening a short-gamma position at a new strike, which is the real cost and is not in this expander at all.
+
+#### 0.3.6 Mechanics (advanced)
 
 ![Mechanics (advanced) expander: hedge decision grid in seconds, fee markout window.](screenshots/13_live_sidebar_mechanics_advanced.png)
 
-`Mechanics (advanced)` holds the hedge decision interval (60 s) and the markout window used to mark each swap against the exchange price (0 s).
+| Control | What the choice means | How it enters the calculation | On the August data |
+|---|---|---|---|
+| Hedge decision grid (s) | How often you look at the position and decide whether to trade. It is the simulation's clock. | Three jobs at once (run_claude.py:548, 596, 679): the price series is resampled to this interval, the hedge decision is made on it, the LP is marked on it, and per-swap fees are aggregated into it. | 10 s and 30 s give the same answer as 60 s, because a 1-minute price file only changes once a minute. Coarser grids (300 s) hedge less and lost less on this tape (section 8.5). |
+| Fee markout window (s) | The horizon at which you judge each swap. 0 means score the trade at the moment it happened. 300 means score it against the price five minutes later. | Sets the timestamp used to look up the exchange price for every swap: both the USD conversion of ETH-side fees and the whole LVR measure (run_claude.py:491-496). | 0 gives LVR −4,134 on a 1-minute file. 60 s gives +36,655. It does not touch net P&L, only the attribution (section 6). |
+
+Markout is the market maker's own diagnostic. A fill that looks flat at the touch and bad thirty seconds later was adverse. Here it is being used to work around a stale price file. With a 1-second aggTrades tape the correct setting is 0.
+
+#### 0.3.7 Analysis and Run
 
 ![Analysis + Run expander: sweep, rolling-window distribution, backtest by month, run label.](screenshots/14_live_sidebar_analysis_plus_run.png)
 
-`Analysis + Run` switches on three optional analyses (a two-axis parameter sweep, a 30-day rolling distribution, a by-month breakdown) and takes a label for the run. The `Run backtest` button is in the main area.
+These four do not change the run. They add work after it.
+
+**Run range × hedge-band sweep.** Runs the entire backtest once per cell of a two-dimensional grid and draws a heatmap of net APR. The name is stale: you pick both axes from six fields (range width, hedge band, fee tier, taker fee, leverage, hedge grid) and type your own values, so it is a general two-parameter sweep. The default grid is 5 hedge bands by 6 range widths, so 30 full backtests, which took 15.8 seconds on the August files. What it is for: seeing whether your parameter choice sits on a plateau or on a spike. What to watch: the app prints a "Best cell" callout, and on one month of data that callout is noise. Its winner was the ±50% range with a 5% band, a cell that traded four times in 31 days; its neighbour at a 10% band traded twice and shows −8.73%. One trade's timing separates them.
+
+**Rolling-window distribution (30d).** Takes the daily net P&L, sums each trailing 30-day window, divides by the capital base and annualises by 365/30, then shows that series and its min, quartiles, median and max (app.py:1172-1180). The question it answers is regime stability: not "what did this make over my sample" but "what would it have made over each 30-day stretch inside my sample", which is the honest way to look at a backtest that has one headline number. It needs many months to say anything. On 31 days of data there are two windows and the table reads min −11.62, max −11.57. That is the same number printed twice.
+
+**Backtest by month.** Splits the loaded data into calendar months and runs one full backtest per month, then plots monthly net APR bars (app.py:1655-1802). Months with fewer than 5 days or 100 swaps are skipped. Same purpose as the rolling window, coarser and easier to read. With one month loaded it prints "need at least 2 for a monthly breakdown" and produces nothing.
+
+**Stress test (price shock).** Appears only when the `hourly` engine is selected. It multiplies the last N days of the price bars by a ramp or a step of your chosen size, then re-runs. The swap tape is untouched, so fees do not respond to the shock at all. It is a synthetic overlay on the weaker engine (section 8.11).
+
+**Run label.** A name for the run so you can find it in the `Run comparison` overlay at the bottom of the page, which keeps the last five runs.
+
+#### 0.3.8 Save / load config
+
+![Save / load config expander: download the current assumptions as JSON, upload one, reset to defaults.](screenshots/08_live_sidebar_save_load_config.png)
+
+Writes all 24 assumption fields to a JSON file, reads one back, or resets everything to defaults. Use it to keep a parameter set reproducible across sessions, since the app stores nothing between page loads (Appendix A, section 4.4).
 
 ### 0.4 Loading real data through the sidebar
 
